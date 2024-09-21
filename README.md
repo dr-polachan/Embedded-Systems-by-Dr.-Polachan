@@ -1,2 +1,4 @@
 # embedded-systems-design-course
-Course offered by Prof. Kurian Polachan at IIIT-Bangalore.
+Course offered by Prof. Polachan at IIIT-Bangalore.
+
+
