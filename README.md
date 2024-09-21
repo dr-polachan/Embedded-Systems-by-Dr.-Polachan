@@ -30,3 +30,22 @@ This course covers topics including:
 - [Lab 2: Analog and Digital Peripherals](#)
 - [Lab 3: Low-Power Design](#)
 - (Add more lab sessions as required)
+
+## Student Projects
+Here are some of the projects students will work on as part of the course:
+
+- **Project 1: IoT-Based Environmental Monitoring System**
+  - Description: Develop a sensor-based system using a mixed-signal SoC to monitor temperature, humidity, and air quality.
+  - [Project Guide and Details](#)
+
+- **Project 2: Wearable Health Monitoring System**
+  - Description: Design a wearable device for tracking health parameters such as heart rate and blood pressure, using ultra-low-power communication protocols.
+  - [Project Guide and Details](#)
+
+- **Project 3: Smart Home Automation**
+  - Description: Build a smart home system to control lighting and appliances remotely, using embedded communication protocols.
+  - [Project Guide and Details](#)
+
+- **Project 4: Custom Project**
+  - Description: Students may propose their own projects related to embedded systems and get them approved by the course instructor.
+  - [Project Submission Guidelines](#)
