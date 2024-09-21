@@ -2,8 +2,7 @@
 A Course offered by Dr. Polachan at IIIT-Bangalore.
 
 
-# Lecture Slides
+# Course Slides
 
-# Resources
-
-## PSoC-5 Lab Book
+# Course Lab
+## PSoC-4 Lab Book
