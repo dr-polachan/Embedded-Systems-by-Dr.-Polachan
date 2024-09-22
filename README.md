@@ -3,6 +3,7 @@ GitHub repository hosting the resources and projects for the following courses o
 
 ### VL 864 - Embedded Systems Design  
 **Offered**: 2023, 2024  
+**Teaching Assistant**: [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
 
 **Course Contents**:  
 This course covers a range of topics in embedded systems design, including:  
