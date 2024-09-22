@@ -1,52 +1,19 @@
 # Embedded Systems Course
 A Course offered by Dr. Polachan at IIIT-Bangalore.
+https://sites.google.com/view/cdwl/professor
 
 ## Course Overview
 This course covers topics including:
-- Mixed-Signal System Design
-- SoC Architecture
-- I/O Subsystems
-- Memory Types
-- Digital Subsystems
-- Analog Subsystems
-- SoC Packaging
-- Board Design
-- Firmware Design
-- Embedded Communication Protocols
-- Ultra-Low Power Design Considerations
-- Case Studies of Mixed-Signal Systems
-- PCB Design and Fabrication
-- EDA Tools, Component Selection, BOM Management, Soldering, Rigid-Flex PCBs
+
+Introduction and overview of mixed-signal system design, the architecture of mixed-signal SoCs, I/O subsystem (I/O types, drive modes), memory types, microcontroller subsystem,  digital subsystem (counter, PWM), analog subsystem (ADC, PGA), electrical specifications (absolute maximum ratings, device and subsystem specifications), basics of SoC packaging, board design, firmware design (booting sequence, interrupt handling), IC programming, bootloader concepts, embedded communication protocols (I2C, SPI, UART), ultra-low power design considerations (low-power modes, watch-dog timers), power management (dc/dc converters, linear regulators), case studies of mixed-signal system designs (e.g., on-body wearable designs).
+
+Introduction to electronics packaging. Types of IC packages and their comparisons. Introduction to PCB and its Components: Traces, pads, vias, layers, etc. PCB materials and their properties. Fabrication process: From design to a physical board. Importance of hierarchy in complex designs. Blocks, sub-circuits, and modules; top-down vs. bottom-up design. Introduction to schematic design. Transition from schematic to layout. Electronic Design Automation (EDA) tools overview and hands-on sessions. Component selection: How to choose components from different vendors. Bill of Materials (BOM) management.  Gerber and other manufacturing files: Their importance, generation, and validation. Submitting designs to PCB fabs: Understanding lead times, costs, and design reviews. Introduction to soldering: its importance and types. Materials and equipment used in soldering: solder, flux, soldering iron, etc. Soldering techniques, best practices, and safety precautions. Hands-on soldering assignments with various components. Introduction and design of rigid-flex PCBs, their advantages, and limitations. 
 
 ## Course Slides
-- [Lecture 1: Introduction to Mixed-Signal Systems](#)
-- [Lecture 2: SoC Architecture and I/O Subsystems](#)
-- [Lecture 3: Digital and Analog Subsystems](#)
-- (Add more slides/links as required)
 
 ## Course Lab
-### 
 - [PSoC-4 Lab Book](Examples/README.md)
-- [Lab 1: Introduction to PSoC-4](#)
-- [Lab 2: Analog and Digital Peripherals](#)
-- [Lab 3: Low-Power Design](#)
-- (Add more lab sessions as required)
 
 ## Student Projects
-Here are some of the projects students will work on as part of the course:
 
-- **Project 1: IoT-Based Environmental Monitoring System**
-  - Description: Develop a sensor-based system using a mixed-signal SoC to monitor temperature, humidity, and air quality.
-  - [Project Guide and Details](#)
 
-- **Project 2: Wearable Health Monitoring System**
-  - Description: Design a wearable device for tracking health parameters such as heart rate and blood pressure, using ultra-low-power communication protocols.
-  - [Project Guide and Details](#)
-
-- **Project 3: Smart Home Automation**
-  - Description: Build a smart home system to control lighting and appliances remotely, using embedded communication protocols.
-  - [Project Guide and Details](#)
-
-- **Project 4: Custom Project**
-  - Description: Students may propose their own projects related to embedded systems and get them approved by the course instructor.
-  - [Project Submission Guidelines](#)
