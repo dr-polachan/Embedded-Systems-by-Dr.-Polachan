@@ -1,6 +1,6 @@
 # PSoC-4 Lab Book
 
-The following code examples were created with the help of students enrolled in the Embedded Systems course in 2023. The examples run on the CY8CKIT-149 kit from Infineon Technologies and were developed using the PSoC Creator IDE.
+The following code examples were created with the help of students enrolled in the Embedded Systems course in 2023. The examples run on CY8CKIT-149 kit from Infineon Technologies and were developed using the PSoC Creator IDE.
 
 ![CY8CKIT-149; Picture Courtesy - Digikey](PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/image.png)
 
