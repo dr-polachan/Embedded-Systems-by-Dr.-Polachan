@@ -1,6 +1,5 @@
 # Embedded Systems Course
-A Course offered by Dr. Polachan at IIIT-Bangalore.
-https://sites.google.com/view/cdwl/professor
+A Course offered by [Dr. Polachan at IIIT-Bangalore](https://sites.google.com/view/cdwl/professor).
 
 ## Course Overview
 This course covers topics including:
