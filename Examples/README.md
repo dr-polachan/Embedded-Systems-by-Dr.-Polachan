@@ -64,8 +64,6 @@ CY8CKIT-149; Picture Courtesy - Digikey
 
 [LED Toggle with PWM Interrupt](PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/LED%20Toggle%20with%20PWM%20Interrupt%20fffd051c359e8131861bda51fca0a633.md)
 
-[LED control with double tap](PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/LED%20control%20with%20double%20tap%20fffd051c359e81898febd1883a4f5d3d.md)
-
 [Turn ON LED in Sequence](PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/Turn%20ON%20LED%20in%20Sequence%20fffd051c359e8131b981d2e0687d0fe9.md)
 
 **— END**
