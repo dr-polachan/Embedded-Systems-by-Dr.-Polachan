@@ -25,7 +25,8 @@ This course covers topics including:
 - (Add more slides/links as required)
 
 ## Course Lab
-### PSoC-4 Lab Book
+### 
+![PSoC-4 Lab Book](Examples/README.md)
 - [Lab 1: Introduction to PSoC-4](#)
 - [Lab 2: Analog and Digital Peripherals](#)
 - [Lab 3: Low-Power Design](#)
