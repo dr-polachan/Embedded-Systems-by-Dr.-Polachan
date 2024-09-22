@@ -22,19 +22,15 @@ This course covers a range of topics in embedded systems design, including:
 
 **Course Contents**:  
 This course covers a range of topics in electronics systems packaging, including:  
-- Introduction to electronics packaging  
-- Types of IC packages and their comparisons  
+- Introduction to electronics packaging, types of IC packages and their comparisons  
 - Introduction to PCB and its components (traces, pads, vias, layers, etc.)  
-- PCB materials and their properties, PCB fabrication process (from design to physical board)  
-- Importance of hierarchy in complex designs (blocks, sub-circuits, and modules; top-down vs. bottom-up design)  
-- Introduction to schematic design and layout  
-- Component selection (choosing components from different vendors)  
-- Bill of Materials (BOM) management  
+- PCB materials and their properties, PCB fabrication process 
+- Hierarchical PCB designs (blocks, sub-circuits, and modules; top-down vs. bottom-up design)  
+- Introduction to schematic design and layout using KiCAD or Altium Designer  
+- Component selection (choosing components from different vendors), Bill of Materials (BOM) management  
 - Gerber and other manufacturing files (generation and validation)  
 - Submitting designs to PCB fabs (understanding lead times, costs, and design reviews)  
 - Introduction to soldering (importance, techniques, best practices, safety precautions)  
-- Hands-on soldering assignments with various components  
-- Introduction to rigid-flex PCBs, their design, advantages, and limitations
 
 ## Course Slides
 
