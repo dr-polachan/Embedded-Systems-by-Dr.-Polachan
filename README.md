@@ -31,7 +31,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 ## Course Slides
 
-## Course Lab
+## Code Examples
 - [PSoC-4 Lab Book](Code%20Examples/README.md)
 
 ## Student Projects
