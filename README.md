@@ -30,6 +30,9 @@ This course covers a range of topics in electronics systems packaging, including
 - Introduction to soldering (importance, techniques, best practices, safety precautions)  
 
 ## Course Slides
+### Embedded Systems
+- [Lecture 1: Course Introduction](https://github.com/dr-polachan/Embedded-Systems-by-Dr.-Polachan/blob/main/Lecture%20Slides/Embedded-Systems/Lecture-1-Course-Introduction.pdf): An introduction to the course on Embedded Systems.
+
 
 ## Code Examples
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
