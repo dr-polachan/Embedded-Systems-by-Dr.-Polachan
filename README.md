@@ -31,7 +31,8 @@ This course covers a range of topics in electronics systems packaging, including
 
 ## Course Slides
 ### Embedded Systems
-- [Lecture 1: Course Introduction](https://github.com/dr-polachan/Embedded-Systems-by-Dr.-Polachan/blob/main/Lecture%20Slides/Embedded-Systems/Lecture-1-Course-Introduction.pdf): An introduction to the course on Embedded Systems.
+- [Lecture 1: Course Introduction](./Lecture%20Slides/Embedded-Systems/Lecture-1-Course-Introduction.pdf): An introduction to the course on Embedded Systems.
+
 
 
 ## Code Examples
