@@ -17,7 +17,7 @@ This course covers a range of topics in embedded systems design, including:
 - Case studies of mixed-signal system designs (e.g., on-body wearable designs)
 
 ### VL 603 - Electronics Systems Packaging  
-**Offered**: 2024  
+**Offered**: 2023  
 
 **Course Contents**:  
 This course covers a range of topics in electronics systems packaging, including:  
