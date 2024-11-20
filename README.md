@@ -38,7 +38,8 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 4: Communication Protocols (UART, SPI and I2C)](./Lecture%20Slides/Embedded-Systems/Lecture-4-Communication-Protocols.pdf)
 - [Lecture 5: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Lecture-5-Digital-Blocks.pdf)
 - [Lecture 6: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Lecture-6-Analog-Blocks.pdf)
-- [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming](./Lecture%20Slides/Embedded-Systems/Lecture-7-Embedded-Computer.pdf)
+- [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Lecture-7-Embedded-Computer.pdf)
+- [Lecture 8: Power Management (Basics of Pwer Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 
 ## Code Examples
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
