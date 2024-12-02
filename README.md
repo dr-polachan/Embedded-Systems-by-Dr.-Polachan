@@ -29,7 +29,7 @@ This course covers a range of topics in electronics systems packaging, including
 - Component selection (choosing components from different vendors), Bill of Materials (BOM) management  
 - Submitting designs to PCB fabs (understanding lead times, costs, and design reviews)  
 - Introduction to soldering (importance, techniques, best practices, safety precautions)
-- Case studies of packaging mixed-signal systems (e.g., on-body wearable designs, microcontroller development kits)
+- Case studies of packaging mixed-signal systems (e.g., on-body wearable designs, development kits)
 
 ## Course Slides
 ### Embedded Systems
