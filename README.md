@@ -25,10 +25,11 @@ This course covers a range of topics in electronics systems packaging, including
 - Introduction to electronic systems packaging, IC packages and their comparisons  
 - Printed Circuit Boards (PCB) and its components (traces, pads, vias, layers, etc.)  
 - PCB materials and their properties, PCB fabrication process 
-- Schematic design, layout and gerber files generation using KiCAD or Altium Designer, 
+- Schematic design, layout and gerber files generation using KiCAD or Altium Designer 
 - Component selection (choosing components from different vendors), Bill of Materials (BOM) management  
 - Submitting designs to PCB fabs (understanding lead times, costs, and design reviews)  
-- Introduction to soldering (importance, techniques, best practices, safety precautions)  
+- Introduction to soldering (importance, techniques, best practices, safety precautions)
+- Case studies of packaging mixed-signal systems (e.g., on-body wearable designs, microcontroller development kits)
 
 ## Course Slides
 ### Embedded Systems
