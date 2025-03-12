@@ -2,7 +2,7 @@
 # Embedded Systems Courses 
 GitHub repository hosting the resources and projects for the following courses offered at [International Institute of Information Technology, Bangalore (IIIT-B)](https://www.iiitb.ac.in/), instructed by [Dr. Kurian Polachan](https://iiitb.ac.in/faculty/kurian-polachan).
 
-### VL 864 - Embedded Systems Design  
+## VL 864 - Embedded Systems Design  
 **Offered**: 2023, 2024  
 **Teaching Assistant**: [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
 
@@ -17,8 +17,8 @@ This course covers a range of topics in embedded systems design, including:
 - Power management, ultra-low power design  
 - Case studies of mixed-signal system designs (e.g., on-body wearable designs)
 
-### VL 603 - Electronics Systems Packaging  
-**Offered**: 2023  
+## VL 603 - Electronic Systems Packaging  
+**Offered**: 2023, 2025
 
 **Course Contents**:  
 This course covers a range of topics in electronics systems packaging, including:  
@@ -33,6 +33,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 ## Course Slides
 ### Embedded Systems
+**Lecture Slides**
 - [Lecture 1: Course Introduction](./Lecture%20Slides/Embedded-Systems/Lecture-1-Course-Introduction.pdf)
 - [Lecture 2: Basics of Embedded Systems](./Lecture%20Slides/Embedded-Systems/Lecture-2-Basics-of-Embedded-Systems.pdf)
 - [Lecture 3: IO Pins and Drives](./Lecture%20Slides/Embedded-Systems/Lecture-3-IO-Pins-n-Drives.pdf)
@@ -42,8 +43,13 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Lecture-7-Embedded-Computer.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 
-#### Code Examples
+**Lab Materials**
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
 
-## Student Projects
+**Course Projects**
+
+### Electronic Systems Packaging
+
+**Course Projects**
+- [RP2040 Evaluation Board; KICAD Design by Chandra Shekhar Jha] https://github.com/csjha2000/RP2040 
 
