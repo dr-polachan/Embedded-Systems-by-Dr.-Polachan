@@ -42,7 +42,8 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Lecture-7-Embedded-Computer.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 
-## Code Examples
+#### Code Examples
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
 
 ## Student Projects
+
