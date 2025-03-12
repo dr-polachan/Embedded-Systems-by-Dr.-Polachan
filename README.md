@@ -49,7 +49,8 @@ This course covers a range of topics in electronics systems packaging, including
 **Course Projects**
 
 ### Electronic Systems Packaging
-
+**Lecture Slides**
+**Lab Materials**
 **Course Projects**
 - [RP2040 Evaluation Board; KICAD Design by Chandra Shekhar Jha] https://github.com/csjha2000/RP2040 
 
