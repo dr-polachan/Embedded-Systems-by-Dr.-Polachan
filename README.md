@@ -34,13 +34,13 @@ This course covers a range of topics in electronics systems packaging, including
 ## Course Slides
 ### Embedded Systems
 **Lecture Slides**
-- [Lecture 1: Course Introduction](./Lecture%20Slides/Embedded-Systems/Lecture-1-Course-Introduction.pdf)
-- [Lecture 2: Basics of Embedded Systems](./Lecture%20Slides/Embedded-Systems/Lecture-2-Basics-of-Embedded-Systems.pdf)
-- [Lecture 3: IO Pins and Drives](./Lecture%20Slides/Embedded-Systems/Lecture-3-IO-Pins-n-Drives.pdf)
-- [Lecture 4: Communication Protocols (UART, SPI and I2C)](./Lecture%20Slides/Embedded-Systems/Lecture-4-Communication-Protocols.pdf)
-- [Lecture 5: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Lecture-5-Digital-Blocks.pdf)
-- [Lecture 6: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Lecture-6-Analog-Blocks.pdf)
-- [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Lecture-7-Embedded-Computer.pdf)
+- [Lecture 1: Course Introduction](./Lecture%20Slides/Embedded-Systems/Course-Introduction.pdf)
+- [Lecture 2: Basics of Embedded Systems](./Lecture%20Slides/Embedded-Systems/Basics-of-Embedded-Systems.pdf)
+- [Lecture 3: IO Pins and Drives](./Lecture%20Slides/Embedded-Systems/IO-Pins-n-Drives.pdf)
+- [Lecture 4: Communication Protocols (UART, SPI and I2C)](./Lecture%20Slides/Embedded-Systems/Communication-Protocols.pdf)
+- [Lecture 5: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Digital-Blocks.pdf)
+- [Lecture 6: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Analog-Blocks.pdf)
+- [Lecture 7: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Embedded-Computer.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 
 **Lab Materials**
