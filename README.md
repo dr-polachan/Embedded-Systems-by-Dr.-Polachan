@@ -50,6 +50,14 @@ This course covers a range of topics in electronics systems packaging, including
 
 ### Electronic Systems Packaging
 **Lecture Slides**
+- [Packaging of Integrated Circuits]
+- [Packaging of Passives]
+- [Packaging of Batteries]
+- [Fundamentals of Printed Circuit Board; Design, Fabrication and Assembly]
+- [Introduction to Thermal Design]
+- [Introduction to ESD]
+- [Hierarchical Design of Electronic Systems]
+- [Case Studies]
 
 **Lab Materials**
 - [(Video Tutorial) PCB Design Full Tutorial with KICAD](https://www.youtube.com/watch?v=NpqO1U52hpY)  
