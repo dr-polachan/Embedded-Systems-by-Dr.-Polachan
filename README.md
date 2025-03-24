@@ -57,7 +57,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [Introduction to Thermal Design]
 - [Introduction to ESD]
 - [Hierarchical Design of Electronic Systems]
-- [Case Studies]
+- [System Design Case Studies]
 
 **Lab Materials**
 - [(Video Tutorial) PCB Design Full Tutorial with KICAD](https://www.youtube.com/watch?v=NpqO1U52hpY)  
