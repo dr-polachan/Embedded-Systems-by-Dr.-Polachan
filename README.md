@@ -66,4 +66,7 @@ This course covers a range of topics in electronics systems packaging, including
 **Course Projects**
 - [RP2040 Evaluation Board KICAD Design by Chandra Shekhar Jha](https://github.com/csjha2000/RP2040)
 
-
+**Reference Materials**
+- [Reflow and Wave Soldering methods to attach SMDs by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=ORTmAqTk6xw&list=PLD50A0FB75B98EDA3&index=33)
+- [Tin-lead and lead-free solders,Phase diagrams,Thermal profiles for reflow soldering by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=HEyzweP9RTM)
+  
