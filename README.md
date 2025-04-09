@@ -48,6 +48,11 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Course Projects**
 
+**Reference Materials**
+(Advanced Research Topic) Physical Unclonable Function for Securing IoT Nodes
+(Advanced Research Topic) Interent of Bodies and Human Body Communication
+(Advanced Research Topic) TinyML - Machine Learning for Resource Constrained Devices 
+
 ### Electronic Systems Packaging
 **Lecture Slides**
 - [Packaging of Integrated Circuits]
