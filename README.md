@@ -12,10 +12,9 @@ This course covers a range of topics in embedded systems design, including:
 - Overview of mixed-signal System-On-Chips (SoC)  
 - SoC Internals: I/O subsystems (types and drive modes), memory types, microcontroller subsystems, digital subsystems (counters, PWM), and analog subsystems (ADC, PGA)  
 - Electrical specifications: Absolute maximum ratings, device, and subsystem specifications  
-- Firmware design, IC programming, and bootloader concepts  
+- Embedded Firmware design, IC programming, and bootloader concepts  
 - Embedded communication protocols (I2C, SPI, UART)  
 - Power management, ultra-low power design
-- Embedded firmware design
 - Machine learning for resource constrained embedded devices -- TinyML
 - Case studies of mixed-signal system designs (e.g., on-body wearable designs)
 
