@@ -15,7 +15,7 @@ This course covers a range of topics in embedded systems design, including:
 - Firmware design, IC programming, and bootloader concepts  
 - Embedded communication protocols (I2C, SPI, UART)  
 - Power management, ultra-low power design
-- Introduction to TinyML; machine learning for resource constrained embedded devices
+- Machine learning for resource constrained embedded devices -- TinyML
 - Case studies of mixed-signal system designs (e.g., on-body wearable designs)
 
 ## VL 603 - Electronic Systems Packaging  
