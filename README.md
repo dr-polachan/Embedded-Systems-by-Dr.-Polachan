@@ -56,8 +56,9 @@ This course covers a range of topics in electronics systems packaging, including
 
 ### Electronic Systems Packaging
 **Lecture Slides**
-- [Packaging of Integrated Circuits]
-- [Packaging of Passives]
+- [Lecture 1: Packaging of Integrated Circuits](./Lecture%20Slides/Electronic-Systems-Packaging/packaging-IC.pdf)
+- [Lecture 2: Packaging of Passives](./Lecture%20Slides/Electronic-Systems-Packaging/packaging-Passives.pdf)
+- [Lecture 3: Packaging of Batteries](./Lecture%20Slides/Electronic-Systems-Packaging/packaging-Batteries.pdf)
 - [Packaging of Batteries]
 - [Fundamentals of Printed Circuit Board; Design, Fabrication and Assembly]
 - [Introduction to Thermal Design]
