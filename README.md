@@ -62,7 +62,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 4: Hierarchical Design of Electronic Systems](./Lecture%20Slides/Electronic-Systems-Packaging/Hierarchical-System-Design.pdf)
 - [Lecture 5: Fundamentals of Printed Circuit Board; Design, Fabrication and Assembly](./Lecture%20Slides/Electronic-Systems-Packaging/fundamentals-of-pcb.pdf)
 - [Lecture 6: Introduction to Thermal Design](./Lecture%20Slides/thermal-design.pdf)
-- [Introduction to ESD](./Lecture%20Slides/esd.pdf)
+- [Lecture 7: Introduction to ESD](./Lecture%20Slides/esd.pdf)
 - [System Design Case Studies]
 
 **Lab Materials**
