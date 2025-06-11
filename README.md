@@ -60,8 +60,8 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 2: Packaging of Passives](./Lecture%20Slides/Electronic-Systems-Packaging/packaging-Passives.pdf)
 - [Lecture 3: Packaging of Batteries](./Lecture%20Slides/Electronic-Systems-Packaging/packaging-Batteries.pdf)
 - [Lecture 4: Hierarchical Design of Electronic Systems](./Lecture%20Slides/Electronic-Systems-Packaging/Hierarchical-System-Design.pdf)
-- [Fundamentals of Printed Circuit Board; Design, Fabrication and Assembly]
-- [Introduction to Thermal Design]
+- [Lecture 5: Fundamentals of Printed Circuit Board; Design, Fabrication and Assembly](./Lecture%20Slides/Electronic-Systems-Packaging/fundamentals-of-pcb.pdf)
+- [Lecture 6: Introduction to Thermal Design](./Lecture%20Slides/thermal-design.pdf)
 - [Introduction to ESD]
 - [System Design Case Studies]
 
