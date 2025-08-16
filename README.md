@@ -55,7 +55,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
 - [Youtube Video: FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
 - **(Advanced Topic)** Physical Unclonable Function for Securing IoT Nodes
-- **(Advanced Topic)** Internet of Bodies and Human Body Communication
+- **(Advanced Topic)** [Internet of Bodies and Human Body Communication by Dr. Kurian Polachan](https://www.youtube.com/watch?v=6mZ-H0szbes)
 - **(Advanced Topic)** TinyML – Machine Learning for Resource Constrained Devices 
 
 ### Electronic Systems Packaging
