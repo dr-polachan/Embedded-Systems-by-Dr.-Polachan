@@ -4,7 +4,9 @@ GitHub repository hosting the resources and projects for the embedded systems co
 
 ## VL 864 - Embedded Systems Design  
 **Offered**: 2023, 2024  
-**Teaching Assistant**: [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
+**Teaching Assistant**: 
+- Talakokkula Karthik Satyanarayana and Bhavana (2025)
+- [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
 
 **Course Contents**:  
 This course covers a range of topics in embedded systems design, including:  
@@ -51,6 +53,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Reference Materials**
 - [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
+- [Youtube Video: FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
 - **(Advanced Topic)** Physical Unclonable Function for Securing IoT Nodes
 - **(Advanced Topic)** Internet of Bodies and Human Body Communication
 - **(Advanced Topic)** TinyML – Machine Learning for Resource Constrained Devices 
