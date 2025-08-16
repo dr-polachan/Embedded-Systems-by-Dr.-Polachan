@@ -5,7 +5,7 @@ GitHub repository hosting the resources and projects for the embedded systems co
 ## VL 864 - Embedded Systems Design  
 **Offered**: 2023, 2024  
 **Teaching Assistant**: 
-- Talakokkula Karthik Satyanarayana and Bhavana (2025)
+- Talakokkula Karthik Satyanarayana, Nagarajan S and Bhavana (2025)
 - [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
 
 **Course Contents**:  
