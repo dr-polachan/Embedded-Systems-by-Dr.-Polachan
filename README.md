@@ -3,10 +3,10 @@
 GitHub repository hosting the resources and projects for the embedded systems courses offered at [International Institute of Information Technology, Bangalore (IIIT-B)](https://www.iiitb.ac.in/), instructed by [Dr. Kurian Polachan](https://sites.google.com/view/cdwl/home).
 
 ## VL 864 - Embedded Systems Design  
-**Offered**: 2023, 2024  
+**Offered**: 2023, 2024, 2025
 **Teaching Assistant**: 
-- Talakokkula Karthik Satyanarayana, Nagarajan S and Bhavana (2025)
-- [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1) (2024)
+- Year 2025: Talakokkula Karthik Satyanarayana, Nagarajan S and Bhavana
+- Year 2024: [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1)
 
 **Course Contents**:  
 This course covers a range of topics in embedded systems design, including:  
