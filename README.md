@@ -54,6 +54,7 @@ This course covers a range of topics in electronics systems packaging, including
 **Reference Materials**
 - [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
 - [(Video Tutorial) Setup of FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
+- [PyBlkSim - An Open Source Block Based Discrete Time Simulator](https://github.com/dr-polachan/pyblksim)
 - **(Advanced Topic)** Physical Unclonable Function for Securing IoT Nodes
 - **(Advanced Topic)** [Internet of Bodies and Human Body Communication by Dr. Kurian Polachan](https://www.youtube.com/watch?v=6mZ-H0szbes)
 - **(Advanced Topic)** TinyML – Machine Learning for Resource Constrained Devices 
