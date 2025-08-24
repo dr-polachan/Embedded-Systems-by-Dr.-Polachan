@@ -1,5 +1,5 @@
 # 🚧 Page Work in Progress 🚧
-  
+
 # Embedded Systems Courses 
 GitHub repository hosting the resources and projects for the embedded systems courses offered at [International Institute of Information Technology, Bangalore (IIIT-B)](https://www.iiitb.ac.in/), instructed by [Dr. Kurian Polachan](https://sites.google.com/view/cdwl/home).
 
@@ -49,7 +49,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Lab Materials**
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
-- [LTspice](./Code%20Examples/LTspice/basic-gates/README.md) (simulation files for basic digital logic gates)
+- [LTspice](Code%20Examples/LTspice/basic-gates/README.md) (simulation files for basic digital logic gates)
 
 **Course Projects**
 
