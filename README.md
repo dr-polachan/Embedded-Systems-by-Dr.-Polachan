@@ -48,7 +48,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Lab Materials**
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
-- [LTspice](Code%20Examples/LTspice/basic-gates/README.md) (simulation files for basic digital logic gates)
+- [LTspice](./Code%20Examples/LTspice/basic-gates/README.md) (simulation files for basic digital logic gates)
 
 **Course Projects**
 
@@ -82,4 +82,4 @@ This course covers a range of topics in electronics systems packaging, including
 **Reference Materials**
 - [Reflow and Wave Soldering methods to attach SMDs by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=ORTmAqTk6xw&list=PLD50A0FB75B98EDA3&index=33)
 - [Tin-lead and lead-free solders,Phase diagrams,Thermal profiles for reflow soldering by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=HEyzweP9RTM)
-  
+
