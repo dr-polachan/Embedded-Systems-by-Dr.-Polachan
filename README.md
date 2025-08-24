@@ -49,7 +49,6 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Lab Materials**
 - [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
-- [LTspice](Code%20Examples/LTspice/basic-gates) (simulation files for basic digital logic gates)
 
 **Course Projects**
 
@@ -57,6 +56,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
 - [(Video Tutorial) Setup of FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
 - [PyBlkSim - An Open Source Block Based Discrete Time Simulator](https://github.com/dr-polachan/pyblksim)
+- [LTspice](Code%20Examples/LTspice/basic-gates) (simulation files for basic digital logic gates)
 - **(Advanced Topic)** Physical Unclonable Function for Securing IoT Nodes
 - **(Advanced Topic)** [Internet of Bodies and Human Body Communication by Dr. Kurian Polachan](https://www.youtube.com/watch?v=6mZ-H0szbes)
 - **(Advanced Topic)** TinyML – Machine Learning for Resource Constrained Devices 
