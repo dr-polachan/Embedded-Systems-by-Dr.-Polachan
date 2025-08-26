@@ -53,13 +53,17 @@ This course covers a range of topics in electronics systems packaging, including
 **Course Projects**
 
 **Reference Materials**
-- [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
-- [(Video Tutorial) Setup of FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
-- [PyBlkSim - An Open Source Block Based Discrete Time Simulator](https://github.com/dr-polachan/pyblksim)
-- [LTspice](Code%20Examples/LTspice/basic-gates) (simulation files for basic digital logic gates)
-- **(Advanced Topic)** Physical Unclonable Function for Securing IoT Nodes
-- **(Advanced Topic)** [Internet of Bodies and Human Body Communication by Dr. Kurian Polachan](https://www.youtube.com/watch?v=6mZ-H0szbes)
-- **(Advanced Topic)** TinyML – Machine Learning for Resource Constrained Devices 
+- **RTOS Tutorials**
+  - [FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://github.com/Karthik23tala/Embedded-C-Lab-Book?tab=readme-ov-file)
+  - [(Video Tutorial) Setup of FreeRTOS on PSoC 5LP by IIIT-B Student, Talakokkula Karthik Satyanarayana](https://www.youtube.com/watch?v=UlVEE2PlcXQ)
+- **LTspice Tutorials**
+  - [LTspice Files for Basic Digital Logic Gates and Combinational Circuits Simulations by Dr. Kurian Polachan](Code%20Examples/LTspice/basic-gates)
+  - [(Video Tutorial) LTspice Drawing Symbols by Dr. Kurian Polachan](https://www.youtube.com/watch?v=f6usnvAUl_A&feature=youtu.be)
+- **Advanced Topics**
+  - [PyBlkSim - An Open Source Block Based Discrete Time Simulator](https://github.com/dr-polachan/pyblksim)
+  - Physical Unclonable Function for Securing IoT Nodes
+  - [Internet of Bodies and Human Body Communication by Dr. Kurian Polachan](https://www.youtube.com/watch?v=6mZ-H0szbes)
+  - TinyML – Machine Learning for Resource Constrained Devices 
 
 ### Electronic Systems Packaging
 **Lecture Slides**
@@ -73,7 +77,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [System Design Case Studies]
 
 **Lab Materials**
-- **KICAD Tutorials #1**
+- **KICAD Tutorials**
   - [(Video Tutorial) PCB Design Full Tutorial with KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=NpqO1U52hpY)  
   - [(Video Tutorial) Importing Symbols, Footprints, and 3D Models in KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=-AH720Zc-Fg)
   - [(Video Tutorial) KICAD: Generating Gerber Files Using Plugin - Fabrication Toolkit by Dr. Kurian Polachan](https://www.youtube.com/watch?v=GEexEjGzz-4)
