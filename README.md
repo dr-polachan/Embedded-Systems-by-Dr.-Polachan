@@ -73,9 +73,11 @@ This course covers a range of topics in electronics systems packaging, including
 - [System Design Case Studies]
 
 **Lab Materials**
-- [(Video Tutorial) PCB Design Full Tutorial with KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=NpqO1U52hpY)  
-- [(Video Tutorial) Importing Symbols, Footprints, and 3D Models in KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=-AH720Zc-Fg)
-- [(Video Tutorial) KICAD: Generating Gerber Files Using Plugin - Fabrication Toolkit](https://www.youtube.com/watch?v=GEexEjGzz-4)
+- **KICAD Tutorials #1**
+  - [(Video Tutorial) PCB Design Full Tutorial with KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=NpqO1U52hpY)  
+  - [(Video Tutorial) Importing Symbols, Footprints, and 3D Models in KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=-AH720Zc-Fg)
+  - [(Video Tutorial) KICAD: Generating Gerber Files Using Plugin - Fabrication Toolkit by Dr. Kurian Polachan](https://www.youtube.com/watch?v=GEexEjGzz-4)
+  - [(Video Tutorial) Hierarchical Schematic Design by Dr. Kurian Polachan](https://www.youtube.com/watch?v=aEfVsJ7I0Vk)
 
 **Course Projects**
 - [RP2040 Evaluation Board KICAD Design by Chandra Shekhar Jha](https://github.com/csjha2000/RP2040)
