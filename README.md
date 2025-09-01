@@ -48,7 +48,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 
 **Lab Materials**
-- [PSoC-4 Lab Book](Code%20Examples/README.md) (for reference only; functionality and performance not verified)
+- [PSoC-4 Lab Book](Code%20Examples/PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/README.md) *(for reference only; functionality and performance not verified)*
 
 **Course Projects**
 
