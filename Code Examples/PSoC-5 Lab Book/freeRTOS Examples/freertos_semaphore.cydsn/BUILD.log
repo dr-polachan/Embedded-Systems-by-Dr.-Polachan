@@ -1,0 +1,5 @@
+--------------- Build Started: 10/29/2025 12:43:04 Project: freertos_semaphore, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+The link step is up to date, no work needs to be done.
+--------------- Build Succeeded: 10/29/2025 12:43:05 ---------------

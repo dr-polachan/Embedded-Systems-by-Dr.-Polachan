@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore\TopDesign</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Pins</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Analog</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Clocks</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Interrupts</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\DMA</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\System</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Directives</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\Flash Security</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.cydwr\EEPROM</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\arm_cm3</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\arm_cm3\port.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\arm_cm3\portmacro.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\croutine.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\deprecated_definitions.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\event_groups.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\FreeRTOS.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\list.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\message_buffer.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\mpu_prototypes.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\mpu_wrappers.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\portable.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\projdefs.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\queue.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\semphr.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\stack_macros.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\StackMacros.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\stream_buffer.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\task.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\include\timers.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\memang</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\memang\heap_1.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\croutine.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\event_groups.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\FreeRTOSConfig.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\list.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\queue.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\stream_buffer.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\tasks.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos\timers.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\Header Files</v>
+<v>freertos_semaphore-000\freertos_semaphore\Header Files\cyapicallbacks.h</v>
+<v>freertos_semaphore-000\freertos_semaphore\Source Files</v>
+<v>freertos_semaphore-000\freertos_semaphore\Source Files\FreeRTOS.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\Source Files\main.c</v>
+<v>freertos_semaphore-000\freertos_semaphore\Generated_Source</v>
+<v>freertos_semaphore-000\freertos_semaphore\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\TopDesign</v>
+<v>freertos_semaphore-000\freertos_semaphore\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\TopDesign</v>
+<v>freertos_semaphore-000\freertos_semaphore\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\FreeRTOS.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_1.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\led.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.elf</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.hex</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.map</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.gpdsc</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.rpt</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\FreeRTOS.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_1.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\led.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.elf</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.hex</v>
+<v>freertos_semaphore-000\freertos_semaphore\CortexM3\ARM_GCC_541\Debug\freertos_semaphore.map</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.gpdsc</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore.rpt</v>
+<v>freertos_semaphore-000\freertos_semaphore\freertos_semaphore_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\PSoC 5LP Architecture TRM</v>
+<v>freertos_semaphore-000\freertos_semaphore\CY8C58LP Family Datasheet</v>
+<v>freertos_semaphore-000\freertos_semaphore\System Reference Guides</v>
+<v>freertos_semaphore-000\freertos_semaphore\System Reference Guides\cy_boot_v5_80</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_constant_v1_0.pdf</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_pins_v2_20</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>freertos_semaphore-000\freertos_semaphore\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>freertos_semaphore-000</v>
+<v>freertos_semaphore-000\freertos_semaphore</v>
+<v>freertos_semaphore-000\freertos_semaphore\PSoC 5LP Architecture TRM</v>
+<v>freertos_semaphore-000\freertos_semaphore\CY8C58LP Family Datasheet</v>
+<v>freertos_semaphore-000\freertos_semaphore\System Reference Guides</v>
+<v>freertos_semaphore-000\freertos_semaphore\System Reference Guides\cy_boot_v5_80</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_constant_v1_0.pdf</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_pins_v2_20</v>
+<v>freertos_semaphore-000\freertos_semaphore\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>freertos_semaphore-000\freertos_semaphore\UART_v2_50.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs />
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal" /><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

@@ -1,0 +1,1636 @@
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.led_task,"ax",%progbits
+  20              		.align	2
+  21              		.global	led_task
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	led_task, %function
+  25              	led_task:
+  26              	.LFB69:
+  27              		.file 1 "main.c"
+   1:main.c        **** /*
+   2:main.c        **** 
+   3:main.c        **** */
+   4:main.c        **** 
+   5:main.c        **** #include <stdio.h>
+   6:main.c        **** #include <stdlib.h>
+   7:main.c        **** #include <math.h>
+   8:main.c        **** #include <string.h>
+   9:main.c        **** #include "project.h"
+  10:main.c        **** #include "FreeRTOS.h"
+  11:main.c        **** #include "task.h"
+  12:main.c        **** #include "timers.h"
+  13:main.c        **** #include "queue.h"
+  14:main.c        **** #include "semphr.h"
+  15:main.c        **** 
+  16:main.c        **** extern void FreeRTOS_Start();
+  17:main.c        **** 
+  18:main.c        **** static SemaphoreHandle_t uart_mutex = NULL; /* mutex to protect UART */
+  19:main.c        **** 
+  20:main.c        **** void led_task()
+  21:main.c        **** {
+  28              		.loc 1 21 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 56
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 8EB0     		sub	sp, sp, #56
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 2
+
+
+  37              		.cfi_def_cfa_offset 64
+  38              	.LVL0:
+  22:main.c        ****     char msg[50];
+  23:main.c        ****     uint16 led_count = 1;
+  39              		.loc 1 23 0
+  40 0004 0124     		movs	r4, #1
+  41              	.LVL1:
+  42              	.L3:
+  43              	.LBB2:
+  24:main.c        **** 
+  25:main.c        ****     while(1)
+  26:main.c        ****     {   
+  27:main.c        ****         uint8 led_state = !led_Read();  
+  44              		.loc 1 27 0
+  45 0006 FFF7FEFF 		bl	led_Read
+  46              	.LVL2:
+  28:main.c        ****         led_Write(led_state);
+  47              		.loc 1 28 0
+  48 000a B0FA80F0 		clz	r0, r0
+  49              	.LVL3:
+  50 000e 4009     		lsrs	r0, r0, #5
+  51 0010 FFF7FEFF 		bl	led_Write
+  52              	.LVL4:
+  29:main.c        ****         
+  30:main.c        ****         if (xSemaphoreTake(uart_mutex, pdMS_TO_TICKS(100)) == pdTRUE)
+  53              		.loc 1 30 0
+  54 0014 6421     		movs	r1, #100
+  55 0016 0E4B     		ldr	r3, .L5
+  56 0018 1868     		ldr	r0, [r3]
+  57 001a FFF7FEFF 		bl	xQueueSemaphoreTake
+  58              	.LVL5:
+  59 001e 0128     		cmp	r0, #1
+  60 0020 0ED1     		bne	.L2
+  31:main.c        ****         {
+  32:main.c        ****             sprintf(msg, "LED toggled %d\r\n", led_count);
+  61              		.loc 1 32 0
+  62 0022 2246     		mov	r2, r4
+  63 0024 0B49     		ldr	r1, .L5+4
+  64 0026 01A8     		add	r0, sp, #4
+  65 0028 FFF7FEFF 		bl	sprintf
+  66              	.LVL6:
+  33:main.c        ****             UART_PutString(msg);
+  67              		.loc 1 33 0
+  68 002c 01A8     		add	r0, sp, #4
+  69 002e FFF7FEFF 		bl	UART_PutString
+  70              	.LVL7:
+  34:main.c        ****             xSemaphoreGive(uart_mutex);
+  71              		.loc 1 34 0
+  72 0032 0023     		movs	r3, #0
+  73 0034 1A46     		mov	r2, r3
+  74 0036 1946     		mov	r1, r3
+  75 0038 0548     		ldr	r0, .L5
+  76 003a 0068     		ldr	r0, [r0]
+  77 003c FFF7FEFF 		bl	xQueueGenericSend
+  78              	.LVL8:
+  79              	.L2:
+  35:main.c        ****         }
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 3
+
+
+  36:main.c        ****         
+  37:main.c        ****         vTaskDelay(pdMS_TO_TICKS(500));
+  80              		.loc 1 37 0
+  81 0040 4FF4FA70 		mov	r0, #500
+  82 0044 FFF7FEFF 		bl	vTaskDelay
+  83              	.LVL9:
+  38:main.c        ****         led_count++;
+  84              		.loc 1 38 0
+  85 0048 0134     		adds	r4, r4, #1
+  86              	.LVL10:
+  87 004a A4B2     		uxth	r4, r4
+  88              	.LVL11:
+  89              	.LBE2:
+  39:main.c        ****     }
+  90              		.loc 1 39 0
+  91 004c DBE7     		b	.L3
+  92              	.L6:
+  93 004e 00BF     		.align	2
+  94              	.L5:
+  95 0050 00000000 		.word	.LANCHOR0
+  96 0054 00000000 		.word	.LC0
+  97              		.cfi_endproc
+  98              	.LFE69:
+  99              		.size	led_task, .-led_task
+ 100              		.section	.text.uart_task,"ax",%progbits
+ 101              		.align	2
+ 102              		.global	uart_task
+ 103              		.thumb
+ 104              		.thumb_func
+ 105              		.type	uart_task, %function
+ 106              	uart_task:
+ 107              	.LFB70:
+  40:main.c        **** }
+  41:main.c        **** 
+  42:main.c        **** void uart_task()
+  43:main.c        **** {
+ 108              		.loc 1 43 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 56
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112 0000 10B5     		push	{r4, lr}
+ 113              		.cfi_def_cfa_offset 8
+ 114              		.cfi_offset 4, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 8EB0     		sub	sp, sp, #56
+ 117              		.cfi_def_cfa_offset 64
+ 118              	.LVL12:
+  44:main.c        ****     uint16 counter = 1;    
+ 119              		.loc 1 44 0
+ 120 0004 0124     		movs	r4, #1
+ 121              	.LVL13:
+ 122              	.L9:
+  45:main.c        ****     char msg[50];            
+  46:main.c        **** 
+  47:main.c        ****     while (1)
+  48:main.c        ****     {
+  49:main.c        ****         
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 4
+
+
+  50:main.c        ****         
+  51:main.c        ****         if (xSemaphoreTake(uart_mutex, pdMS_TO_TICKS(100)) == pdTRUE)
+ 123              		.loc 1 51 0
+ 124 0006 6421     		movs	r1, #100
+ 125 0008 0D4B     		ldr	r3, .L11
+ 126 000a 1868     		ldr	r0, [r3]
+ 127 000c FFF7FEFF 		bl	xQueueSemaphoreTake
+ 128              	.LVL14:
+ 129 0010 0128     		cmp	r0, #1
+ 130 0012 0ED1     		bne	.L8
+  52:main.c        ****         {
+  53:main.c        ****             sprintf(msg, "Live %d\r\n", counter);
+ 131              		.loc 1 53 0
+ 132 0014 2246     		mov	r2, r4
+ 133 0016 0B49     		ldr	r1, .L11+4
+ 134 0018 01A8     		add	r0, sp, #4
+ 135 001a FFF7FEFF 		bl	sprintf
+ 136              	.LVL15:
+  54:main.c        ****             UART_PutString(msg);  
+ 137              		.loc 1 54 0
+ 138 001e 01A8     		add	r0, sp, #4
+ 139 0020 FFF7FEFF 		bl	UART_PutString
+ 140              	.LVL16:
+  55:main.c        ****             xSemaphoreGive(uart_mutex);
+ 141              		.loc 1 55 0
+ 142 0024 0023     		movs	r3, #0
+ 143 0026 1A46     		mov	r2, r3
+ 144 0028 1946     		mov	r1, r3
+ 145 002a 0548     		ldr	r0, .L11
+ 146 002c 0068     		ldr	r0, [r0]
+ 147 002e FFF7FEFF 		bl	xQueueGenericSend
+ 148              	.LVL17:
+ 149              	.L8:
+  56:main.c        ****         }
+  57:main.c        ****         
+  58:main.c        ****         counter++; 
+ 150              		.loc 1 58 0
+ 151 0032 0134     		adds	r4, r4, #1
+ 152              	.LVL18:
+ 153 0034 A4B2     		uxth	r4, r4
+ 154              	.LVL19:
+  59:main.c        ****         vTaskDelay(pdMS_TO_TICKS(1000)); 
+ 155              		.loc 1 59 0
+ 156 0036 4FF47A70 		mov	r0, #1000
+ 157 003a FFF7FEFF 		bl	vTaskDelay
+ 158              	.LVL20:
+  60:main.c        ****     }
+ 159              		.loc 1 60 0
+ 160 003e E2E7     		b	.L9
+ 161              	.L12:
+ 162              		.align	2
+ 163              	.L11:
+ 164 0040 00000000 		.word	.LANCHOR0
+ 165 0044 14000000 		.word	.LC1
+ 166              		.cfi_endproc
+ 167              	.LFE70:
+ 168              		.size	uart_task, .-uart_task
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 5
+
+
+ 169              		.section	.text.main,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	main
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.type	main, %function
+ 175              	main:
+ 176              	.LFB71:
+  61:main.c        **** }
+  62:main.c        **** 
+  63:main.c        **** 
+  64:main.c        **** int main(void)
+  65:main.c        **** {
+ 177              		.loc 1 65 0
+ 178              		.cfi_startproc
+ 179              		@ Volatile: function does not return.
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182 0000 00B5     		push	{lr}
+ 183              		.cfi_def_cfa_offset 4
+ 184              		.cfi_offset 14, -4
+ 185 0002 83B0     		sub	sp, sp, #12
+ 186              		.cfi_def_cfa_offset 16
+  66:main.c        ****     CyGlobalIntEnable;
+ 187              		.loc 1 66 0
+ 188              		.syntax unified
+ 189              	@ 66 "main.c" 1
+ 190 0004 62B6     		CPSIE   i
+ 191              	@ 0 "" 2
+  67:main.c        ****         
+  68:main.c        ****     UART_Start();
+ 192              		.loc 1 68 0
+ 193              		.thumb
+ 194              		.syntax unified
+ 195 0006 FFF7FEFF 		bl	UART_Start
+ 196              	.LVL21:
+  69:main.c        ****     UART_ClearTxBuffer();
+ 197              		.loc 1 69 0
+ 198 000a FFF7FEFF 		bl	UART_ClearTxBuffer
+ 199              	.LVL22:
+  70:main.c        ****     
+  71:main.c        ****     FreeRTOS_Start();
+ 200              		.loc 1 71 0
+ 201 000e FFF7FEFF 		bl	FreeRTOS_Start
+ 202              	.LVL23:
+  72:main.c        ****     
+  73:main.c        ****     uart_mutex = xSemaphoreCreateMutex();
+ 203              		.loc 1 73 0
+ 204 0012 0120     		movs	r0, #1
+ 205 0014 FFF7FEFF 		bl	xQueueCreateMutex
+ 206              	.LVL24:
+ 207 0018 0B4B     		ldr	r3, .L16
+ 208 001a 1860     		str	r0, [r3]
+  74:main.c        ****     
+  75:main.c        ****     xTaskCreate(led_task, "LED_Task", 200, NULL, 5, NULL);
+ 209              		.loc 1 75 0
+ 210 001c 0024     		movs	r4, #0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 6
+
+
+ 211 001e 0194     		str	r4, [sp, #4]
+ 212 0020 0525     		movs	r5, #5
+ 213 0022 0095     		str	r5, [sp]
+ 214 0024 2346     		mov	r3, r4
+ 215 0026 C822     		movs	r2, #200
+ 216 0028 0849     		ldr	r1, .L16+4
+ 217 002a 0948     		ldr	r0, .L16+8
+ 218 002c FFF7FEFF 		bl	xTaskCreate
+ 219              	.LVL25:
+  76:main.c        ****     xTaskCreate(uart_task, "UART_Task", 200, NULL, 5, NULL);
+ 220              		.loc 1 76 0
+ 221 0030 0194     		str	r4, [sp, #4]
+ 222 0032 0095     		str	r5, [sp]
+ 223 0034 2346     		mov	r3, r4
+ 224 0036 C822     		movs	r2, #200
+ 225 0038 0649     		ldr	r1, .L16+12
+ 226 003a 0748     		ldr	r0, .L16+16
+ 227 003c FFF7FEFF 		bl	xTaskCreate
+ 228              	.LVL26:
+  77:main.c        ****     
+  78:main.c        ****     vTaskStartScheduler();
+ 229              		.loc 1 78 0
+ 230 0040 FFF7FEFF 		bl	vTaskStartScheduler
+ 231              	.LVL27:
+ 232              	.L14:
+ 233 0044 FEE7     		b	.L14
+ 234              	.L17:
+ 235 0046 00BF     		.align	2
+ 236              	.L16:
+ 237 0048 00000000 		.word	.LANCHOR0
+ 238 004c 20000000 		.word	.LC2
+ 239 0050 00000000 		.word	led_task
+ 240 0054 2C000000 		.word	.LC3
+ 241 0058 00000000 		.word	uart_task
+ 242              		.cfi_endproc
+ 243              	.LFE71:
+ 244              		.size	main, .-main
+ 245              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 246              		.align	2
+ 247              	.LC0:
+ 248 0000 4C454420 		.ascii	"LED toggled %d\015\012\000"
+ 248      746F6767 
+ 248      6C656420 
+ 248      25640D0A 
+ 248      00
+ 249 0011 000000   		.space	3
+ 250              	.LC1:
+ 251 0014 4C697665 		.ascii	"Live %d\015\012\000"
+ 251      2025640D 
+ 251      0A00
+ 252 001e 0000     		.space	2
+ 253              	.LC2:
+ 254 0020 4C45445F 		.ascii	"LED_Task\000"
+ 254      5461736B 
+ 254      00
+ 255 0029 000000   		.space	3
+ 256              	.LC3:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 7
+
+
+ 257 002c 55415254 		.ascii	"UART_Task\000"
+ 257      5F546173 
+ 257      6B00
+ 258              		.bss
+ 259              		.align	2
+ 260              		.set	.LANCHOR0,. + 0
+ 261              		.type	uart_mutex, %object
+ 262              		.size	uart_mutex, 4
+ 263              	uart_mutex:
+ 264 0000 00000000 		.space	4
+ 265              		.text
+ 266              	.Letext0:
+ 267              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 268              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 269              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 270              		.file 5 "..\\FreeRTOS\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 271              		.file 6 "..\\FreeRTOS\\Source\\include/queue.h"
+ 272              		.file 7 "..\\FreeRTOS\\Source\\include/semphr.h"
+ 273              		.file 8 "Generated_Source\\PSoC5/led.h"
+ 274              		.file 9 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 275              		.file 10 "Generated_Source\\PSoC5/UART.h"
+ 276              		.file 11 "..\\FreeRTOS\\Source\\include/task.h"
+ 277              		.file 12 "Generated_Source\\PSoC5/core_cm3.h"
+ 278              		.section	.debug_info,"",%progbits
+ 279              	.Ldebug_info0:
+ 280 0000 2B040000 		.4byte	0x42b
+ 281 0004 0400     		.2byte	0x4
+ 282 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 283 000a 04       		.byte	0x4
+ 284 000b 01       		.uleb128 0x1
+ 285 000c 73000000 		.4byte	.LASF45
+ 286 0010 0C       		.byte	0xc
+ 287 0011 19020000 		.4byte	.LASF46
+ 288 0015 50020000 		.4byte	.LASF47
+ 289 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 290 001d 00000000 		.4byte	0
+ 291 0021 00000000 		.4byte	.Ldebug_line0
+ 292 0025 02       		.uleb128 0x2
+ 293 0026 01       		.byte	0x1
+ 294 0027 06       		.byte	0x6
+ 295 0028 D2020000 		.4byte	.LASF0
+ 296 002c 03       		.uleb128 0x3
+ 297 002d 00000000 		.4byte	.LASF4
+ 298 0031 02       		.byte	0x2
+ 299 0032 1D       		.byte	0x1d
+ 300 0033 37000000 		.4byte	0x37
+ 301 0037 02       		.uleb128 0x2
+ 302 0038 01       		.byte	0x1
+ 303 0039 08       		.byte	0x8
+ 304 003a 4C010000 		.4byte	.LASF1
+ 305 003e 02       		.uleb128 0x2
+ 306 003f 02       		.byte	0x2
+ 307 0040 05       		.byte	0x5
+ 308 0041 7E010000 		.4byte	.LASF2
+ 309 0045 02       		.uleb128 0x2
+ 310 0046 02       		.byte	0x2
+ 311 0047 07       		.byte	0x7
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 8
+
+
+ 312 0048 21010000 		.4byte	.LASF3
+ 313 004c 03       		.uleb128 0x3
+ 314 004d 15000000 		.4byte	.LASF5
+ 315 0051 02       		.byte	0x2
+ 316 0052 3F       		.byte	0x3f
+ 317 0053 57000000 		.4byte	0x57
+ 318 0057 02       		.uleb128 0x2
+ 319 0058 04       		.byte	0x4
+ 320 0059 05       		.byte	0x5
+ 321 005a A0020000 		.4byte	.LASF6
+ 322 005e 03       		.uleb128 0x3
+ 323 005f 01010000 		.4byte	.LASF7
+ 324 0063 02       		.byte	0x2
+ 325 0064 41       		.byte	0x41
+ 326 0065 69000000 		.4byte	0x69
+ 327 0069 02       		.uleb128 0x2
+ 328 006a 04       		.byte	0x4
+ 329 006b 07       		.byte	0x7
+ 330 006c 5A010000 		.4byte	.LASF8
+ 331 0070 02       		.uleb128 0x2
+ 332 0071 08       		.byte	0x8
+ 333 0072 05       		.byte	0x5
+ 334 0073 0B020000 		.4byte	.LASF9
+ 335 0077 02       		.uleb128 0x2
+ 336 0078 08       		.byte	0x8
+ 337 0079 07       		.byte	0x7
+ 338 007a BF010000 		.4byte	.LASF10
+ 339 007e 04       		.uleb128 0x4
+ 340 007f 04       		.byte	0x4
+ 341 0080 05       		.byte	0x5
+ 342 0081 696E7400 		.ascii	"int\000"
+ 343 0085 02       		.uleb128 0x2
+ 344 0086 04       		.byte	0x4
+ 345 0087 07       		.byte	0x7
+ 346 0088 A9010000 		.4byte	.LASF11
+ 347 008c 02       		.uleb128 0x2
+ 348 008d 08       		.byte	0x8
+ 349 008e 04       		.byte	0x4
+ 350 008f C6020000 		.4byte	.LASF12
+ 351 0093 02       		.uleb128 0x2
+ 352 0094 04       		.byte	0x4
+ 353 0095 07       		.byte	0x7
+ 354 0096 02020000 		.4byte	.LASF13
+ 355 009a 02       		.uleb128 0x2
+ 356 009b 01       		.byte	0x1
+ 357 009c 08       		.byte	0x8
+ 358 009d 20020000 		.4byte	.LASF14
+ 359 00a1 03       		.uleb128 0x3
+ 360 00a2 D6010000 		.4byte	.LASF15
+ 361 00a6 03       		.byte	0x3
+ 362 00a7 18       		.byte	0x18
+ 363 00a8 2C000000 		.4byte	0x2c
+ 364 00ac 03       		.uleb128 0x3
+ 365 00ad FA010000 		.4byte	.LASF16
+ 366 00b1 03       		.byte	0x3
+ 367 00b2 2C       		.byte	0x2c
+ 368 00b3 4C000000 		.4byte	0x4c
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 9
+
+
+ 369 00b7 03       		.uleb128 0x3
+ 370 00b8 97020000 		.4byte	.LASF17
+ 371 00bc 03       		.byte	0x3
+ 372 00bd 30       		.byte	0x30
+ 373 00be 5E000000 		.4byte	0x5e
+ 374 00c2 02       		.uleb128 0x2
+ 375 00c3 08       		.byte	0x8
+ 376 00c4 04       		.byte	0x4
+ 377 00c5 41000000 		.4byte	.LASF18
+ 378 00c9 02       		.uleb128 0x2
+ 379 00ca 04       		.byte	0x4
+ 380 00cb 04       		.byte	0x4
+ 381 00cc 5B000000 		.4byte	.LASF19
+ 382 00d0 05       		.uleb128 0x5
+ 383 00d1 4A020000 		.4byte	.LASF20
+ 384 00d5 04       		.byte	0x4
+ 385 00d6 E401     		.2byte	0x1e4
+ 386 00d8 37000000 		.4byte	0x37
+ 387 00dc 05       		.uleb128 0x5
+ 388 00dd 88010000 		.4byte	.LASF21
+ 389 00e1 04       		.byte	0x4
+ 390 00e2 E501     		.2byte	0x1e5
+ 391 00e4 45000000 		.4byte	0x45
+ 392 00e8 03       		.uleb128 0x3
+ 393 00e9 01030000 		.4byte	.LASF22
+ 394 00ed 05       		.byte	0x5
+ 395 00ee 38       		.byte	0x38
+ 396 00ef 57000000 		.4byte	0x57
+ 397 00f3 03       		.uleb128 0x3
+ 398 00f4 0A000000 		.4byte	.LASF23
+ 399 00f8 05       		.byte	0x5
+ 400 00f9 3F       		.byte	0x3f
+ 401 00fa B7000000 		.4byte	0xb7
+ 402 00fe 03       		.uleb128 0x3
+ 403 00ff 1F000000 		.4byte	.LASF24
+ 404 0103 06       		.byte	0x6
+ 405 0104 30       		.byte	0x30
+ 406 0105 09010000 		.4byte	0x109
+ 407 0109 06       		.uleb128 0x6
+ 408 010a 04       		.byte	0x4
+ 409 010b 0F010000 		.4byte	0x10f
+ 410 010f 07       		.uleb128 0x7
+ 411 0110 99010000 		.4byte	.LASF48
+ 412 0114 03       		.uleb128 0x3
+ 413 0115 6C010000 		.4byte	.LASF25
+ 414 0119 07       		.byte	0x7
+ 415 011a 25       		.byte	0x25
+ 416 011b FE000000 		.4byte	0xfe
+ 417 011f 08       		.uleb128 0x8
+ 418 0120 B6010000 		.4byte	.LASF28
+ 419 0124 01       		.byte	0x1
+ 420 0125 14       		.byte	0x14
+ 421 0126 00000000 		.4byte	.LFB69
+ 422 012a 58000000 		.4byte	.LFE69-.LFB69
+ 423 012e 01       		.uleb128 0x1
+ 424 012f 9C       		.byte	0x9c
+ 425 0130 F6010000 		.4byte	0x1f6
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 10
+
+
+ 426 0134 09       		.uleb128 0x9
+ 427 0135 6D736700 		.ascii	"msg\000"
+ 428 0139 01       		.byte	0x1
+ 429 013a 16       		.byte	0x16
+ 430 013b F6010000 		.4byte	0x1f6
+ 431 013f 02       		.uleb128 0x2
+ 432 0140 91       		.byte	0x91
+ 433 0141 44       		.sleb128 -60
+ 434 0142 0A       		.uleb128 0xa
+ 435 0143 8F010000 		.4byte	.LASF26
+ 436 0147 01       		.byte	0x1
+ 437 0148 17       		.byte	0x17
+ 438 0149 DC000000 		.4byte	0xdc
+ 439 014d 00000000 		.4byte	.LLST0
+ 440 0151 0B       		.uleb128 0xb
+ 441 0152 06000000 		.4byte	.LBB2
+ 442 0156 46000000 		.4byte	.LBE2-.LBB2
+ 443 015a 0A       		.uleb128 0xa
+ 444 015b 0C010000 		.4byte	.LASF27
+ 445 015f 01       		.byte	0x1
+ 446 0160 1B       		.byte	0x1b
+ 447 0161 D0000000 		.4byte	0xd0
+ 448 0165 2A000000 		.4byte	.LLST1
+ 449 0169 0C       		.uleb128 0xc
+ 450 016a 0A000000 		.4byte	.LVL2
+ 451 016e 99030000 		.4byte	0x399
+ 452 0172 0C       		.uleb128 0xc
+ 453 0173 14000000 		.4byte	.LVL4
+ 454 0177 A4030000 		.4byte	0x3a4
+ 455 017b 0D       		.uleb128 0xd
+ 456 017c 1E000000 		.4byte	.LVL5
+ 457 0180 AF030000 		.4byte	0x3af
+ 458 0184 8F010000 		.4byte	0x18f
+ 459 0188 0E       		.uleb128 0xe
+ 460 0189 01       		.uleb128 0x1
+ 461 018a 51       		.byte	0x51
+ 462 018b 02       		.uleb128 0x2
+ 463 018c 08       		.byte	0x8
+ 464 018d 64       		.byte	0x64
+ 465 018e 00       		.byte	0
+ 466 018f 0D       		.uleb128 0xd
+ 467 0190 2C000000 		.4byte	.LVL6
+ 468 0194 BB030000 		.4byte	0x3bb
+ 469 0198 B2010000 		.4byte	0x1b2
+ 470 019c 0E       		.uleb128 0xe
+ 471 019d 01       		.uleb128 0x1
+ 472 019e 50       		.byte	0x50
+ 473 019f 02       		.uleb128 0x2
+ 474 01a0 91       		.byte	0x91
+ 475 01a1 44       		.sleb128 -60
+ 476 01a2 0E       		.uleb128 0xe
+ 477 01a3 01       		.uleb128 0x1
+ 478 01a4 51       		.byte	0x51
+ 479 01a5 05       		.uleb128 0x5
+ 480 01a6 03       		.byte	0x3
+ 481 01a7 00000000 		.4byte	.LC0
+ 482 01ab 0E       		.uleb128 0xe
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 11
+
+
+ 483 01ac 01       		.uleb128 0x1
+ 484 01ad 52       		.byte	0x52
+ 485 01ae 02       		.uleb128 0x2
+ 486 01af 74       		.byte	0x74
+ 487 01b0 00       		.sleb128 0
+ 488 01b1 00       		.byte	0
+ 489 01b2 0D       		.uleb128 0xd
+ 490 01b3 32000000 		.4byte	.LVL7
+ 491 01b7 C6030000 		.4byte	0x3c6
+ 492 01bb C6010000 		.4byte	0x1c6
+ 493 01bf 0E       		.uleb128 0xe
+ 494 01c0 01       		.uleb128 0x1
+ 495 01c1 50       		.byte	0x50
+ 496 01c2 02       		.uleb128 0x2
+ 497 01c3 91       		.byte	0x91
+ 498 01c4 44       		.sleb128 -60
+ 499 01c5 00       		.byte	0
+ 500 01c6 0D       		.uleb128 0xd
+ 501 01c7 40000000 		.4byte	.LVL8
+ 502 01cb D1030000 		.4byte	0x3d1
+ 503 01cf E3010000 		.4byte	0x1e3
+ 504 01d3 0E       		.uleb128 0xe
+ 505 01d4 01       		.uleb128 0x1
+ 506 01d5 51       		.byte	0x51
+ 507 01d6 01       		.uleb128 0x1
+ 508 01d7 30       		.byte	0x30
+ 509 01d8 0E       		.uleb128 0xe
+ 510 01d9 01       		.uleb128 0x1
+ 511 01da 52       		.byte	0x52
+ 512 01db 01       		.uleb128 0x1
+ 513 01dc 30       		.byte	0x30
+ 514 01dd 0E       		.uleb128 0xe
+ 515 01de 01       		.uleb128 0x1
+ 516 01df 53       		.byte	0x53
+ 517 01e0 01       		.uleb128 0x1
+ 518 01e1 30       		.byte	0x30
+ 519 01e2 00       		.byte	0
+ 520 01e3 0F       		.uleb128 0xf
+ 521 01e4 48000000 		.4byte	.LVL9
+ 522 01e8 DD030000 		.4byte	0x3dd
+ 523 01ec 0E       		.uleb128 0xe
+ 524 01ed 01       		.uleb128 0x1
+ 525 01ee 50       		.byte	0x50
+ 526 01ef 03       		.uleb128 0x3
+ 527 01f0 0A       		.byte	0xa
+ 528 01f1 F401     		.2byte	0x1f4
+ 529 01f3 00       		.byte	0
+ 530 01f4 00       		.byte	0
+ 531 01f5 00       		.byte	0
+ 532 01f6 10       		.uleb128 0x10
+ 533 01f7 9A000000 		.4byte	0x9a
+ 534 01fb 06020000 		.4byte	0x206
+ 535 01ff 11       		.uleb128 0x11
+ 536 0200 93000000 		.4byte	0x93
+ 537 0204 31       		.byte	0x31
+ 538 0205 00       		.byte	0
+ 539 0206 08       		.uleb128 0x8
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 12
+
+
+ 540 0207 69000000 		.4byte	.LASF29
+ 541 020b 01       		.byte	0x1
+ 542 020c 2A       		.byte	0x2a
+ 543 020d 00000000 		.4byte	.LFB70
+ 544 0211 48000000 		.4byte	.LFE70-.LFB70
+ 545 0215 01       		.uleb128 0x1
+ 546 0216 9C       		.byte	0x9c
+ 547 0217 B2020000 		.4byte	0x2b2
+ 548 021b 0A       		.uleb128 0xa
+ 549 021c 61000000 		.4byte	.LASF30
+ 550 0220 01       		.byte	0x1
+ 551 0221 2C       		.byte	0x2c
+ 552 0222 DC000000 		.4byte	0xdc
+ 553 0226 41000000 		.4byte	.LLST2
+ 554 022a 09       		.uleb128 0x9
+ 555 022b 6D736700 		.ascii	"msg\000"
+ 556 022f 01       		.byte	0x1
+ 557 0230 2D       		.byte	0x2d
+ 558 0231 F6010000 		.4byte	0x1f6
+ 559 0235 02       		.uleb128 0x2
+ 560 0236 91       		.byte	0x91
+ 561 0237 44       		.sleb128 -60
+ 562 0238 0D       		.uleb128 0xd
+ 563 0239 10000000 		.4byte	.LVL14
+ 564 023d AF030000 		.4byte	0x3af
+ 565 0241 4C020000 		.4byte	0x24c
+ 566 0245 0E       		.uleb128 0xe
+ 567 0246 01       		.uleb128 0x1
+ 568 0247 51       		.byte	0x51
+ 569 0248 02       		.uleb128 0x2
+ 570 0249 08       		.byte	0x8
+ 571 024a 64       		.byte	0x64
+ 572 024b 00       		.byte	0
+ 573 024c 0D       		.uleb128 0xd
+ 574 024d 1E000000 		.4byte	.LVL15
+ 575 0251 BB030000 		.4byte	0x3bb
+ 576 0255 6F020000 		.4byte	0x26f
+ 577 0259 0E       		.uleb128 0xe
+ 578 025a 01       		.uleb128 0x1
+ 579 025b 50       		.byte	0x50
+ 580 025c 02       		.uleb128 0x2
+ 581 025d 91       		.byte	0x91
+ 582 025e 44       		.sleb128 -60
+ 583 025f 0E       		.uleb128 0xe
+ 584 0260 01       		.uleb128 0x1
+ 585 0261 51       		.byte	0x51
+ 586 0262 05       		.uleb128 0x5
+ 587 0263 03       		.byte	0x3
+ 588 0264 14000000 		.4byte	.LC1
+ 589 0268 0E       		.uleb128 0xe
+ 590 0269 01       		.uleb128 0x1
+ 591 026a 52       		.byte	0x52
+ 592 026b 02       		.uleb128 0x2
+ 593 026c 74       		.byte	0x74
+ 594 026d 00       		.sleb128 0
+ 595 026e 00       		.byte	0
+ 596 026f 0D       		.uleb128 0xd
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 13
+
+
+ 597 0270 24000000 		.4byte	.LVL16
+ 598 0274 C6030000 		.4byte	0x3c6
+ 599 0278 83020000 		.4byte	0x283
+ 600 027c 0E       		.uleb128 0xe
+ 601 027d 01       		.uleb128 0x1
+ 602 027e 50       		.byte	0x50
+ 603 027f 02       		.uleb128 0x2
+ 604 0280 91       		.byte	0x91
+ 605 0281 44       		.sleb128 -60
+ 606 0282 00       		.byte	0
+ 607 0283 0D       		.uleb128 0xd
+ 608 0284 32000000 		.4byte	.LVL17
+ 609 0288 D1030000 		.4byte	0x3d1
+ 610 028c A0020000 		.4byte	0x2a0
+ 611 0290 0E       		.uleb128 0xe
+ 612 0291 01       		.uleb128 0x1
+ 613 0292 51       		.byte	0x51
+ 614 0293 01       		.uleb128 0x1
+ 615 0294 30       		.byte	0x30
+ 616 0295 0E       		.uleb128 0xe
+ 617 0296 01       		.uleb128 0x1
+ 618 0297 52       		.byte	0x52
+ 619 0298 01       		.uleb128 0x1
+ 620 0299 30       		.byte	0x30
+ 621 029a 0E       		.uleb128 0xe
+ 622 029b 01       		.uleb128 0x1
+ 623 029c 53       		.byte	0x53
+ 624 029d 01       		.uleb128 0x1
+ 625 029e 30       		.byte	0x30
+ 626 029f 00       		.byte	0
+ 627 02a0 0F       		.uleb128 0xf
+ 628 02a1 3E000000 		.4byte	.LVL20
+ 629 02a5 DD030000 		.4byte	0x3dd
+ 630 02a9 0E       		.uleb128 0xe
+ 631 02aa 01       		.uleb128 0x1
+ 632 02ab 50       		.byte	0x50
+ 633 02ac 03       		.uleb128 0x3
+ 634 02ad 0A       		.byte	0xa
+ 635 02ae E803     		.2byte	0x3e8
+ 636 02b0 00       		.byte	0
+ 637 02b1 00       		.byte	0
+ 638 02b2 12       		.uleb128 0x12
+ 639 02b3 F5010000 		.4byte	.LASF49
+ 640 02b7 01       		.byte	0x1
+ 641 02b8 40       		.byte	0x40
+ 642 02b9 7E000000 		.4byte	0x7e
+ 643 02bd 00000000 		.4byte	.LFB71
+ 644 02c1 5C000000 		.4byte	.LFE71-.LFB71
+ 645 02c5 01       		.uleb128 0x1
+ 646 02c6 9C       		.byte	0x9c
+ 647 02c7 77030000 		.4byte	0x377
+ 648 02cb 0C       		.uleb128 0xc
+ 649 02cc 0A000000 		.4byte	.LVL21
+ 650 02d0 E9030000 		.4byte	0x3e9
+ 651 02d4 0C       		.uleb128 0xc
+ 652 02d5 0E000000 		.4byte	.LVL22
+ 653 02d9 F4030000 		.4byte	0x3f4
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 14
+
+
+ 654 02dd 0C       		.uleb128 0xc
+ 655 02de 12000000 		.4byte	.LVL23
+ 656 02e2 FF030000 		.4byte	0x3ff
+ 657 02e6 0D       		.uleb128 0xd
+ 658 02e7 18000000 		.4byte	.LVL24
+ 659 02eb 0A040000 		.4byte	0x40a
+ 660 02ef F9020000 		.4byte	0x2f9
+ 661 02f3 0E       		.uleb128 0xe
+ 662 02f4 01       		.uleb128 0x1
+ 663 02f5 50       		.byte	0x50
+ 664 02f6 01       		.uleb128 0x1
+ 665 02f7 31       		.byte	0x31
+ 666 02f8 00       		.byte	0
+ 667 02f9 0D       		.uleb128 0xd
+ 668 02fa 30000000 		.4byte	.LVL25
+ 669 02fe 16040000 		.4byte	0x416
+ 670 0302 33030000 		.4byte	0x333
+ 671 0306 0E       		.uleb128 0xe
+ 672 0307 01       		.uleb128 0x1
+ 673 0308 50       		.byte	0x50
+ 674 0309 05       		.uleb128 0x5
+ 675 030a 03       		.byte	0x3
+ 676 030b 00000000 		.4byte	led_task
+ 677 030f 0E       		.uleb128 0xe
+ 678 0310 01       		.uleb128 0x1
+ 679 0311 51       		.byte	0x51
+ 680 0312 05       		.uleb128 0x5
+ 681 0313 03       		.byte	0x3
+ 682 0314 20000000 		.4byte	.LC2
+ 683 0318 0E       		.uleb128 0xe
+ 684 0319 01       		.uleb128 0x1
+ 685 031a 52       		.byte	0x52
+ 686 031b 02       		.uleb128 0x2
+ 687 031c 08       		.byte	0x8
+ 688 031d C8       		.byte	0xc8
+ 689 031e 0E       		.uleb128 0xe
+ 690 031f 01       		.uleb128 0x1
+ 691 0320 53       		.byte	0x53
+ 692 0321 02       		.uleb128 0x2
+ 693 0322 74       		.byte	0x74
+ 694 0323 00       		.sleb128 0
+ 695 0324 0E       		.uleb128 0xe
+ 696 0325 02       		.uleb128 0x2
+ 697 0326 7D       		.byte	0x7d
+ 698 0327 00       		.sleb128 0
+ 699 0328 02       		.uleb128 0x2
+ 700 0329 75       		.byte	0x75
+ 701 032a 00       		.sleb128 0
+ 702 032b 0E       		.uleb128 0xe
+ 703 032c 02       		.uleb128 0x2
+ 704 032d 7D       		.byte	0x7d
+ 705 032e 04       		.sleb128 4
+ 706 032f 02       		.uleb128 0x2
+ 707 0330 74       		.byte	0x74
+ 708 0331 00       		.sleb128 0
+ 709 0332 00       		.byte	0
+ 710 0333 0D       		.uleb128 0xd
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 15
+
+
+ 711 0334 40000000 		.4byte	.LVL26
+ 712 0338 16040000 		.4byte	0x416
+ 713 033c 6D030000 		.4byte	0x36d
+ 714 0340 0E       		.uleb128 0xe
+ 715 0341 01       		.uleb128 0x1
+ 716 0342 50       		.byte	0x50
+ 717 0343 05       		.uleb128 0x5
+ 718 0344 03       		.byte	0x3
+ 719 0345 00000000 		.4byte	uart_task
+ 720 0349 0E       		.uleb128 0xe
+ 721 034a 01       		.uleb128 0x1
+ 722 034b 51       		.byte	0x51
+ 723 034c 05       		.uleb128 0x5
+ 724 034d 03       		.byte	0x3
+ 725 034e 2C000000 		.4byte	.LC3
+ 726 0352 0E       		.uleb128 0xe
+ 727 0353 01       		.uleb128 0x1
+ 728 0354 52       		.byte	0x52
+ 729 0355 02       		.uleb128 0x2
+ 730 0356 08       		.byte	0x8
+ 731 0357 C8       		.byte	0xc8
+ 732 0358 0E       		.uleb128 0xe
+ 733 0359 01       		.uleb128 0x1
+ 734 035a 53       		.byte	0x53
+ 735 035b 02       		.uleb128 0x2
+ 736 035c 74       		.byte	0x74
+ 737 035d 00       		.sleb128 0
+ 738 035e 0E       		.uleb128 0xe
+ 739 035f 02       		.uleb128 0x2
+ 740 0360 7D       		.byte	0x7d
+ 741 0361 00       		.sleb128 0
+ 742 0362 02       		.uleb128 0x2
+ 743 0363 75       		.byte	0x75
+ 744 0364 00       		.sleb128 0
+ 745 0365 0E       		.uleb128 0xe
+ 746 0366 02       		.uleb128 0x2
+ 747 0367 7D       		.byte	0x7d
+ 748 0368 04       		.sleb128 4
+ 749 0369 02       		.uleb128 0x2
+ 750 036a 74       		.byte	0x74
+ 751 036b 00       		.sleb128 0
+ 752 036c 00       		.byte	0
+ 753 036d 0C       		.uleb128 0xc
+ 754 036e 44000000 		.4byte	.LVL27
+ 755 0372 22040000 		.4byte	0x422
+ 756 0376 00       		.byte	0
+ 757 0377 13       		.uleb128 0x13
+ 758 0378 16010000 		.4byte	.LASF31
+ 759 037c 01       		.byte	0x1
+ 760 037d 12       		.byte	0x12
+ 761 037e 14010000 		.4byte	0x114
+ 762 0382 05       		.uleb128 0x5
+ 763 0383 03       		.byte	0x3
+ 764 0384 00000000 		.4byte	uart_mutex
+ 765 0388 14       		.uleb128 0x14
+ 766 0389 3F010000 		.4byte	.LASF50
+ 767 038d 0C       		.byte	0xc
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 16
+
+
+ 768 038e 1207     		.2byte	0x712
+ 769 0390 94030000 		.4byte	0x394
+ 770 0394 15       		.uleb128 0x15
+ 771 0395 AC000000 		.4byte	0xac
+ 772 0399 16       		.uleb128 0x16
+ 773 039a 48000000 		.4byte	.LASF32
+ 774 039e 48000000 		.4byte	.LASF32
+ 775 03a2 08       		.byte	0x8
+ 776 03a3 29       		.byte	0x29
+ 777 03a4 16       		.uleb128 0x16
+ 778 03a5 51000000 		.4byte	.LASF33
+ 779 03a9 51000000 		.4byte	.LASF33
+ 780 03ad 08       		.byte	0x8
+ 781 03ae 26       		.byte	0x26
+ 782 03af 17       		.uleb128 0x17
+ 783 03b0 DE020000 		.4byte	.LASF34
+ 784 03b4 DE020000 		.4byte	.LASF34
+ 785 03b8 06       		.byte	0x6
+ 786 03b9 8A05     		.2byte	0x58a
+ 787 03bb 16       		.uleb128 0x16
+ 788 03bc ED010000 		.4byte	.LASF35
+ 789 03c0 ED010000 		.4byte	.LASF35
+ 790 03c4 09       		.byte	0x9
+ 791 03c5 E7       		.byte	0xe7
+ 792 03c6 16       		.uleb128 0x16
+ 793 03c7 F2020000 		.4byte	.LASF36
+ 794 03cb F2020000 		.4byte	.LASF36
+ 795 03cf 0A       		.byte	0xa
+ 796 03d0 8B       		.byte	0x8b
+ 797 03d1 17       		.uleb128 0x17
+ 798 03d2 25020000 		.4byte	.LASF37
+ 799 03d6 25020000 		.4byte	.LASF37
+ 800 03da 06       		.byte	0x6
+ 801 03db 8A02     		.2byte	0x28a
+ 802 03dd 17       		.uleb128 0x17
+ 803 03de A9020000 		.4byte	.LASF38
+ 804 03e2 A9020000 		.4byte	.LASF38
+ 805 03e6 0B       		.byte	0xb
+ 806 03e7 F602     		.2byte	0x2f6
+ 807 03e9 16       		.uleb128 0x16
+ 808 03ea 34010000 		.4byte	.LASF39
+ 809 03ee 34010000 		.4byte	.LASF39
+ 810 03f2 0A       		.byte	0xa
+ 811 03f3 54       		.byte	0x54
+ 812 03f4 16       		.uleb128 0x16
+ 813 03f5 37020000 		.4byte	.LASF40
+ 814 03f9 37020000 		.4byte	.LASF40
+ 815 03fd 0A       		.byte	0xa
+ 816 03fe 8F       		.byte	0x8f
+ 817 03ff 16       		.uleb128 0x16
+ 818 0400 DE010000 		.4byte	.LASF41
+ 819 0404 DE010000 		.4byte	.LASF41
+ 820 0408 01       		.byte	0x1
+ 821 0409 10       		.byte	0x10
+ 822 040a 17       		.uleb128 0x17
+ 823 040b B4020000 		.4byte	.LASF42
+ 824 040f B4020000 		.4byte	.LASF42
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 17
+
+
+ 825 0413 06       		.byte	0x6
+ 826 0414 8605     		.2byte	0x586
+ 827 0416 17       		.uleb128 0x17
+ 828 0417 0C030000 		.4byte	.LASF43
+ 829 041b 0C030000 		.4byte	.LASF43
+ 830 041f 0B       		.byte	0xb
+ 831 0420 4A01     		.2byte	0x14a
+ 832 0422 17       		.uleb128 0x17
+ 833 0423 2D000000 		.4byte	.LASF44
+ 834 0427 2D000000 		.4byte	.LASF44
+ 835 042b 0B       		.byte	0xb
+ 836 042c 9704     		.2byte	0x497
+ 837 042e 00       		.byte	0
+ 838              		.section	.debug_abbrev,"",%progbits
+ 839              	.Ldebug_abbrev0:
+ 840 0000 01       		.uleb128 0x1
+ 841 0001 11       		.uleb128 0x11
+ 842 0002 01       		.byte	0x1
+ 843 0003 25       		.uleb128 0x25
+ 844 0004 0E       		.uleb128 0xe
+ 845 0005 13       		.uleb128 0x13
+ 846 0006 0B       		.uleb128 0xb
+ 847 0007 03       		.uleb128 0x3
+ 848 0008 0E       		.uleb128 0xe
+ 849 0009 1B       		.uleb128 0x1b
+ 850 000a 0E       		.uleb128 0xe
+ 851 000b 55       		.uleb128 0x55
+ 852 000c 17       		.uleb128 0x17
+ 853 000d 11       		.uleb128 0x11
+ 854 000e 01       		.uleb128 0x1
+ 855 000f 10       		.uleb128 0x10
+ 856 0010 17       		.uleb128 0x17
+ 857 0011 00       		.byte	0
+ 858 0012 00       		.byte	0
+ 859 0013 02       		.uleb128 0x2
+ 860 0014 24       		.uleb128 0x24
+ 861 0015 00       		.byte	0
+ 862 0016 0B       		.uleb128 0xb
+ 863 0017 0B       		.uleb128 0xb
+ 864 0018 3E       		.uleb128 0x3e
+ 865 0019 0B       		.uleb128 0xb
+ 866 001a 03       		.uleb128 0x3
+ 867 001b 0E       		.uleb128 0xe
+ 868 001c 00       		.byte	0
+ 869 001d 00       		.byte	0
+ 870 001e 03       		.uleb128 0x3
+ 871 001f 16       		.uleb128 0x16
+ 872 0020 00       		.byte	0
+ 873 0021 03       		.uleb128 0x3
+ 874 0022 0E       		.uleb128 0xe
+ 875 0023 3A       		.uleb128 0x3a
+ 876 0024 0B       		.uleb128 0xb
+ 877 0025 3B       		.uleb128 0x3b
+ 878 0026 0B       		.uleb128 0xb
+ 879 0027 49       		.uleb128 0x49
+ 880 0028 13       		.uleb128 0x13
+ 881 0029 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 18
+
+
+ 882 002a 00       		.byte	0
+ 883 002b 04       		.uleb128 0x4
+ 884 002c 24       		.uleb128 0x24
+ 885 002d 00       		.byte	0
+ 886 002e 0B       		.uleb128 0xb
+ 887 002f 0B       		.uleb128 0xb
+ 888 0030 3E       		.uleb128 0x3e
+ 889 0031 0B       		.uleb128 0xb
+ 890 0032 03       		.uleb128 0x3
+ 891 0033 08       		.uleb128 0x8
+ 892 0034 00       		.byte	0
+ 893 0035 00       		.byte	0
+ 894 0036 05       		.uleb128 0x5
+ 895 0037 16       		.uleb128 0x16
+ 896 0038 00       		.byte	0
+ 897 0039 03       		.uleb128 0x3
+ 898 003a 0E       		.uleb128 0xe
+ 899 003b 3A       		.uleb128 0x3a
+ 900 003c 0B       		.uleb128 0xb
+ 901 003d 3B       		.uleb128 0x3b
+ 902 003e 05       		.uleb128 0x5
+ 903 003f 49       		.uleb128 0x49
+ 904 0040 13       		.uleb128 0x13
+ 905 0041 00       		.byte	0
+ 906 0042 00       		.byte	0
+ 907 0043 06       		.uleb128 0x6
+ 908 0044 0F       		.uleb128 0xf
+ 909 0045 00       		.byte	0
+ 910 0046 0B       		.uleb128 0xb
+ 911 0047 0B       		.uleb128 0xb
+ 912 0048 49       		.uleb128 0x49
+ 913 0049 13       		.uleb128 0x13
+ 914 004a 00       		.byte	0
+ 915 004b 00       		.byte	0
+ 916 004c 07       		.uleb128 0x7
+ 917 004d 13       		.uleb128 0x13
+ 918 004e 00       		.byte	0
+ 919 004f 03       		.uleb128 0x3
+ 920 0050 0E       		.uleb128 0xe
+ 921 0051 3C       		.uleb128 0x3c
+ 922 0052 19       		.uleb128 0x19
+ 923 0053 00       		.byte	0
+ 924 0054 00       		.byte	0
+ 925 0055 08       		.uleb128 0x8
+ 926 0056 2E       		.uleb128 0x2e
+ 927 0057 01       		.byte	0x1
+ 928 0058 3F       		.uleb128 0x3f
+ 929 0059 19       		.uleb128 0x19
+ 930 005a 03       		.uleb128 0x3
+ 931 005b 0E       		.uleb128 0xe
+ 932 005c 3A       		.uleb128 0x3a
+ 933 005d 0B       		.uleb128 0xb
+ 934 005e 3B       		.uleb128 0x3b
+ 935 005f 0B       		.uleb128 0xb
+ 936 0060 8701     		.uleb128 0x87
+ 937 0062 19       		.uleb128 0x19
+ 938 0063 11       		.uleb128 0x11
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 19
+
+
+ 939 0064 01       		.uleb128 0x1
+ 940 0065 12       		.uleb128 0x12
+ 941 0066 06       		.uleb128 0x6
+ 942 0067 40       		.uleb128 0x40
+ 943 0068 18       		.uleb128 0x18
+ 944 0069 9742     		.uleb128 0x2117
+ 945 006b 19       		.uleb128 0x19
+ 946 006c 01       		.uleb128 0x1
+ 947 006d 13       		.uleb128 0x13
+ 948 006e 00       		.byte	0
+ 949 006f 00       		.byte	0
+ 950 0070 09       		.uleb128 0x9
+ 951 0071 34       		.uleb128 0x34
+ 952 0072 00       		.byte	0
+ 953 0073 03       		.uleb128 0x3
+ 954 0074 08       		.uleb128 0x8
+ 955 0075 3A       		.uleb128 0x3a
+ 956 0076 0B       		.uleb128 0xb
+ 957 0077 3B       		.uleb128 0x3b
+ 958 0078 0B       		.uleb128 0xb
+ 959 0079 49       		.uleb128 0x49
+ 960 007a 13       		.uleb128 0x13
+ 961 007b 02       		.uleb128 0x2
+ 962 007c 18       		.uleb128 0x18
+ 963 007d 00       		.byte	0
+ 964 007e 00       		.byte	0
+ 965 007f 0A       		.uleb128 0xa
+ 966 0080 34       		.uleb128 0x34
+ 967 0081 00       		.byte	0
+ 968 0082 03       		.uleb128 0x3
+ 969 0083 0E       		.uleb128 0xe
+ 970 0084 3A       		.uleb128 0x3a
+ 971 0085 0B       		.uleb128 0xb
+ 972 0086 3B       		.uleb128 0x3b
+ 973 0087 0B       		.uleb128 0xb
+ 974 0088 49       		.uleb128 0x49
+ 975 0089 13       		.uleb128 0x13
+ 976 008a 02       		.uleb128 0x2
+ 977 008b 17       		.uleb128 0x17
+ 978 008c 00       		.byte	0
+ 979 008d 00       		.byte	0
+ 980 008e 0B       		.uleb128 0xb
+ 981 008f 0B       		.uleb128 0xb
+ 982 0090 01       		.byte	0x1
+ 983 0091 11       		.uleb128 0x11
+ 984 0092 01       		.uleb128 0x1
+ 985 0093 12       		.uleb128 0x12
+ 986 0094 06       		.uleb128 0x6
+ 987 0095 00       		.byte	0
+ 988 0096 00       		.byte	0
+ 989 0097 0C       		.uleb128 0xc
+ 990 0098 898201   		.uleb128 0x4109
+ 991 009b 00       		.byte	0
+ 992 009c 11       		.uleb128 0x11
+ 993 009d 01       		.uleb128 0x1
+ 994 009e 31       		.uleb128 0x31
+ 995 009f 13       		.uleb128 0x13
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 20
+
+
+ 996 00a0 00       		.byte	0
+ 997 00a1 00       		.byte	0
+ 998 00a2 0D       		.uleb128 0xd
+ 999 00a3 898201   		.uleb128 0x4109
+ 1000 00a6 01       		.byte	0x1
+ 1001 00a7 11       		.uleb128 0x11
+ 1002 00a8 01       		.uleb128 0x1
+ 1003 00a9 31       		.uleb128 0x31
+ 1004 00aa 13       		.uleb128 0x13
+ 1005 00ab 01       		.uleb128 0x1
+ 1006 00ac 13       		.uleb128 0x13
+ 1007 00ad 00       		.byte	0
+ 1008 00ae 00       		.byte	0
+ 1009 00af 0E       		.uleb128 0xe
+ 1010 00b0 8A8201   		.uleb128 0x410a
+ 1011 00b3 00       		.byte	0
+ 1012 00b4 02       		.uleb128 0x2
+ 1013 00b5 18       		.uleb128 0x18
+ 1014 00b6 9142     		.uleb128 0x2111
+ 1015 00b8 18       		.uleb128 0x18
+ 1016 00b9 00       		.byte	0
+ 1017 00ba 00       		.byte	0
+ 1018 00bb 0F       		.uleb128 0xf
+ 1019 00bc 898201   		.uleb128 0x4109
+ 1020 00bf 01       		.byte	0x1
+ 1021 00c0 11       		.uleb128 0x11
+ 1022 00c1 01       		.uleb128 0x1
+ 1023 00c2 31       		.uleb128 0x31
+ 1024 00c3 13       		.uleb128 0x13
+ 1025 00c4 00       		.byte	0
+ 1026 00c5 00       		.byte	0
+ 1027 00c6 10       		.uleb128 0x10
+ 1028 00c7 01       		.uleb128 0x1
+ 1029 00c8 01       		.byte	0x1
+ 1030 00c9 49       		.uleb128 0x49
+ 1031 00ca 13       		.uleb128 0x13
+ 1032 00cb 01       		.uleb128 0x1
+ 1033 00cc 13       		.uleb128 0x13
+ 1034 00cd 00       		.byte	0
+ 1035 00ce 00       		.byte	0
+ 1036 00cf 11       		.uleb128 0x11
+ 1037 00d0 21       		.uleb128 0x21
+ 1038 00d1 00       		.byte	0
+ 1039 00d2 49       		.uleb128 0x49
+ 1040 00d3 13       		.uleb128 0x13
+ 1041 00d4 2F       		.uleb128 0x2f
+ 1042 00d5 0B       		.uleb128 0xb
+ 1043 00d6 00       		.byte	0
+ 1044 00d7 00       		.byte	0
+ 1045 00d8 12       		.uleb128 0x12
+ 1046 00d9 2E       		.uleb128 0x2e
+ 1047 00da 01       		.byte	0x1
+ 1048 00db 3F       		.uleb128 0x3f
+ 1049 00dc 19       		.uleb128 0x19
+ 1050 00dd 03       		.uleb128 0x3
+ 1051 00de 0E       		.uleb128 0xe
+ 1052 00df 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 21
+
+
+ 1053 00e0 0B       		.uleb128 0xb
+ 1054 00e1 3B       		.uleb128 0x3b
+ 1055 00e2 0B       		.uleb128 0xb
+ 1056 00e3 27       		.uleb128 0x27
+ 1057 00e4 19       		.uleb128 0x19
+ 1058 00e5 49       		.uleb128 0x49
+ 1059 00e6 13       		.uleb128 0x13
+ 1060 00e7 8701     		.uleb128 0x87
+ 1061 00e9 19       		.uleb128 0x19
+ 1062 00ea 11       		.uleb128 0x11
+ 1063 00eb 01       		.uleb128 0x1
+ 1064 00ec 12       		.uleb128 0x12
+ 1065 00ed 06       		.uleb128 0x6
+ 1066 00ee 40       		.uleb128 0x40
+ 1067 00ef 18       		.uleb128 0x18
+ 1068 00f0 9742     		.uleb128 0x2117
+ 1069 00f2 19       		.uleb128 0x19
+ 1070 00f3 01       		.uleb128 0x1
+ 1071 00f4 13       		.uleb128 0x13
+ 1072 00f5 00       		.byte	0
+ 1073 00f6 00       		.byte	0
+ 1074 00f7 13       		.uleb128 0x13
+ 1075 00f8 34       		.uleb128 0x34
+ 1076 00f9 00       		.byte	0
+ 1077 00fa 03       		.uleb128 0x3
+ 1078 00fb 0E       		.uleb128 0xe
+ 1079 00fc 3A       		.uleb128 0x3a
+ 1080 00fd 0B       		.uleb128 0xb
+ 1081 00fe 3B       		.uleb128 0x3b
+ 1082 00ff 0B       		.uleb128 0xb
+ 1083 0100 49       		.uleb128 0x49
+ 1084 0101 13       		.uleb128 0x13
+ 1085 0102 02       		.uleb128 0x2
+ 1086 0103 18       		.uleb128 0x18
+ 1087 0104 00       		.byte	0
+ 1088 0105 00       		.byte	0
+ 1089 0106 14       		.uleb128 0x14
+ 1090 0107 34       		.uleb128 0x34
+ 1091 0108 00       		.byte	0
+ 1092 0109 03       		.uleb128 0x3
+ 1093 010a 0E       		.uleb128 0xe
+ 1094 010b 3A       		.uleb128 0x3a
+ 1095 010c 0B       		.uleb128 0xb
+ 1096 010d 3B       		.uleb128 0x3b
+ 1097 010e 05       		.uleb128 0x5
+ 1098 010f 49       		.uleb128 0x49
+ 1099 0110 13       		.uleb128 0x13
+ 1100 0111 3F       		.uleb128 0x3f
+ 1101 0112 19       		.uleb128 0x19
+ 1102 0113 3C       		.uleb128 0x3c
+ 1103 0114 19       		.uleb128 0x19
+ 1104 0115 00       		.byte	0
+ 1105 0116 00       		.byte	0
+ 1106 0117 15       		.uleb128 0x15
+ 1107 0118 35       		.uleb128 0x35
+ 1108 0119 00       		.byte	0
+ 1109 011a 49       		.uleb128 0x49
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 22
+
+
+ 1110 011b 13       		.uleb128 0x13
+ 1111 011c 00       		.byte	0
+ 1112 011d 00       		.byte	0
+ 1113 011e 16       		.uleb128 0x16
+ 1114 011f 2E       		.uleb128 0x2e
+ 1115 0120 00       		.byte	0
+ 1116 0121 3F       		.uleb128 0x3f
+ 1117 0122 19       		.uleb128 0x19
+ 1118 0123 3C       		.uleb128 0x3c
+ 1119 0124 19       		.uleb128 0x19
+ 1120 0125 6E       		.uleb128 0x6e
+ 1121 0126 0E       		.uleb128 0xe
+ 1122 0127 03       		.uleb128 0x3
+ 1123 0128 0E       		.uleb128 0xe
+ 1124 0129 3A       		.uleb128 0x3a
+ 1125 012a 0B       		.uleb128 0xb
+ 1126 012b 3B       		.uleb128 0x3b
+ 1127 012c 0B       		.uleb128 0xb
+ 1128 012d 00       		.byte	0
+ 1129 012e 00       		.byte	0
+ 1130 012f 17       		.uleb128 0x17
+ 1131 0130 2E       		.uleb128 0x2e
+ 1132 0131 00       		.byte	0
+ 1133 0132 3F       		.uleb128 0x3f
+ 1134 0133 19       		.uleb128 0x19
+ 1135 0134 3C       		.uleb128 0x3c
+ 1136 0135 19       		.uleb128 0x19
+ 1137 0136 6E       		.uleb128 0x6e
+ 1138 0137 0E       		.uleb128 0xe
+ 1139 0138 03       		.uleb128 0x3
+ 1140 0139 0E       		.uleb128 0xe
+ 1141 013a 3A       		.uleb128 0x3a
+ 1142 013b 0B       		.uleb128 0xb
+ 1143 013c 3B       		.uleb128 0x3b
+ 1144 013d 05       		.uleb128 0x5
+ 1145 013e 00       		.byte	0
+ 1146 013f 00       		.byte	0
+ 1147 0140 00       		.byte	0
+ 1148              		.section	.debug_loc,"",%progbits
+ 1149              	.Ldebug_loc0:
+ 1150              	.LLST0:
+ 1151 0000 04000000 		.4byte	.LVL0
+ 1152 0004 06000000 		.4byte	.LVL1
+ 1153 0008 0200     		.2byte	0x2
+ 1154 000a 31       		.byte	0x31
+ 1155 000b 9F       		.byte	0x9f
+ 1156 000c 06000000 		.4byte	.LVL1
+ 1157 0010 4A000000 		.4byte	.LVL10
+ 1158 0014 0100     		.2byte	0x1
+ 1159 0016 54       		.byte	0x54
+ 1160 0017 4C000000 		.4byte	.LVL11
+ 1161 001b 58000000 		.4byte	.LFE69
+ 1162 001f 0100     		.2byte	0x1
+ 1163 0021 54       		.byte	0x54
+ 1164 0022 00000000 		.4byte	0
+ 1165 0026 00000000 		.4byte	0
+ 1166              	.LLST1:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 23
+
+
+ 1167 002a 0A000000 		.4byte	.LVL2
+ 1168 002e 0E000000 		.4byte	.LVL3
+ 1169 0032 0500     		.2byte	0x5
+ 1170 0034 70       		.byte	0x70
+ 1171 0035 00       		.sleb128 0
+ 1172 0036 30       		.byte	0x30
+ 1173 0037 29       		.byte	0x29
+ 1174 0038 9F       		.byte	0x9f
+ 1175 0039 00000000 		.4byte	0
+ 1176 003d 00000000 		.4byte	0
+ 1177              	.LLST2:
+ 1178 0041 04000000 		.4byte	.LVL12
+ 1179 0045 06000000 		.4byte	.LVL13
+ 1180 0049 0200     		.2byte	0x2
+ 1181 004b 31       		.byte	0x31
+ 1182 004c 9F       		.byte	0x9f
+ 1183 004d 06000000 		.4byte	.LVL13
+ 1184 0051 34000000 		.4byte	.LVL18
+ 1185 0055 0100     		.2byte	0x1
+ 1186 0057 54       		.byte	0x54
+ 1187 0058 36000000 		.4byte	.LVL19
+ 1188 005c 48000000 		.4byte	.LFE70
+ 1189 0060 0100     		.2byte	0x1
+ 1190 0062 54       		.byte	0x54
+ 1191 0063 00000000 		.4byte	0
+ 1192 0067 00000000 		.4byte	0
+ 1193              		.section	.debug_aranges,"",%progbits
+ 1194 0000 2C000000 		.4byte	0x2c
+ 1195 0004 0200     		.2byte	0x2
+ 1196 0006 00000000 		.4byte	.Ldebug_info0
+ 1197 000a 04       		.byte	0x4
+ 1198 000b 00       		.byte	0
+ 1199 000c 0000     		.2byte	0
+ 1200 000e 0000     		.2byte	0
+ 1201 0010 00000000 		.4byte	.LFB69
+ 1202 0014 58000000 		.4byte	.LFE69-.LFB69
+ 1203 0018 00000000 		.4byte	.LFB70
+ 1204 001c 48000000 		.4byte	.LFE70-.LFB70
+ 1205 0020 00000000 		.4byte	.LFB71
+ 1206 0024 5C000000 		.4byte	.LFE71-.LFB71
+ 1207 0028 00000000 		.4byte	0
+ 1208 002c 00000000 		.4byte	0
+ 1209              		.section	.debug_ranges,"",%progbits
+ 1210              	.Ldebug_ranges0:
+ 1211 0000 00000000 		.4byte	.LFB69
+ 1212 0004 58000000 		.4byte	.LFE69
+ 1213 0008 00000000 		.4byte	.LFB70
+ 1214 000c 48000000 		.4byte	.LFE70
+ 1215 0010 00000000 		.4byte	.LFB71
+ 1216 0014 5C000000 		.4byte	.LFE71
+ 1217 0018 00000000 		.4byte	0
+ 1218 001c 00000000 		.4byte	0
+ 1219              		.section	.debug_line,"",%progbits
+ 1220              	.Ldebug_line0:
+ 1221 0000 93020000 		.section	.debug_str,"MS",%progbits,1
+ 1221      02004502 
+ 1221      00000201 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 24
+
+
+ 1221      FB0E0D00 
+ 1221      01010101 
+ 1222              	.LASF4:
+ 1223 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1223      6E74385F 
+ 1223      7400
+ 1224              	.LASF23:
+ 1225 000a 5469636B 		.ascii	"TickType_t\000"
+ 1225      54797065 
+ 1225      5F7400
+ 1226              	.LASF5:
+ 1227 0015 5F5F696E 		.ascii	"__int32_t\000"
+ 1227      7433325F 
+ 1227      7400
+ 1228              	.LASF24:
+ 1229 001f 51756575 		.ascii	"QueueHandle_t\000"
+ 1229      6548616E 
+ 1229      646C655F 
+ 1229      7400
+ 1230              	.LASF44:
+ 1231 002d 76546173 		.ascii	"vTaskStartScheduler\000"
+ 1231      6B537461 
+ 1231      72745363 
+ 1231      68656475 
+ 1231      6C657200 
+ 1232              	.LASF18:
+ 1233 0041 646F7562 		.ascii	"double\000"
+ 1233      6C6500
+ 1234              	.LASF32:
+ 1235 0048 6C65645F 		.ascii	"led_Read\000"
+ 1235      52656164 
+ 1235      00
+ 1236              	.LASF33:
+ 1237 0051 6C65645F 		.ascii	"led_Write\000"
+ 1237      57726974 
+ 1237      6500
+ 1238              	.LASF19:
+ 1239 005b 666C6F61 		.ascii	"float\000"
+ 1239      7400
+ 1240              	.LASF30:
+ 1241 0061 636F756E 		.ascii	"counter\000"
+ 1241      74657200 
+ 1242              	.LASF29:
+ 1243 0069 75617274 		.ascii	"uart_task\000"
+ 1243      5F746173 
+ 1243      6B00
+ 1244              	.LASF45:
+ 1245 0073 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1245      43313120 
+ 1245      352E342E 
+ 1245      31203230 
+ 1245      31363036 
+ 1246 00a6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1246      20726576 
+ 1246      6973696F 
+ 1246      6E203233 
+ 1246      37373135 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 25
+
+
+ 1247 00d9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1247      66756E63 
+ 1247      74696F6E 
+ 1247      2D736563 
+ 1247      74696F6E 
+ 1248              	.LASF7:
+ 1249 0101 5F5F7569 		.ascii	"__uint32_t\000"
+ 1249      6E743332 
+ 1249      5F7400
+ 1250              	.LASF27:
+ 1251 010c 6C65645F 		.ascii	"led_state\000"
+ 1251      73746174 
+ 1251      6500
+ 1252              	.LASF31:
+ 1253 0116 75617274 		.ascii	"uart_mutex\000"
+ 1253      5F6D7574 
+ 1253      657800
+ 1254              	.LASF3:
+ 1255 0121 73686F72 		.ascii	"short unsigned int\000"
+ 1255      7420756E 
+ 1255      7369676E 
+ 1255      65642069 
+ 1255      6E7400
+ 1256              	.LASF39:
+ 1257 0134 55415254 		.ascii	"UART_Start\000"
+ 1257      5F537461 
+ 1257      727400
+ 1258              	.LASF50:
+ 1259 013f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1259      52784275 
+ 1259      66666572 
+ 1259      00
+ 1260              	.LASF1:
+ 1261 014c 756E7369 		.ascii	"unsigned char\000"
+ 1261      676E6564 
+ 1261      20636861 
+ 1261      7200
+ 1262              	.LASF8:
+ 1263 015a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1263      20756E73 
+ 1263      69676E65 
+ 1263      6420696E 
+ 1263      7400
+ 1264              	.LASF25:
+ 1265 016c 53656D61 		.ascii	"SemaphoreHandle_t\000"
+ 1265      70686F72 
+ 1265      6548616E 
+ 1265      646C655F 
+ 1265      7400
+ 1266              	.LASF2:
+ 1267 017e 73686F72 		.ascii	"short int\000"
+ 1267      7420696E 
+ 1267      7400
+ 1268              	.LASF21:
+ 1269 0188 75696E74 		.ascii	"uint16\000"
+ 1269      313600
+ 1270              	.LASF26:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 26
+
+
+ 1271 018f 6C65645F 		.ascii	"led_count\000"
+ 1271      636F756E 
+ 1271      7400
+ 1272              	.LASF48:
+ 1273 0199 51756575 		.ascii	"QueueDefinition\000"
+ 1273      65446566 
+ 1273      696E6974 
+ 1273      696F6E00 
+ 1274              	.LASF11:
+ 1275 01a9 756E7369 		.ascii	"unsigned int\000"
+ 1275      676E6564 
+ 1275      20696E74 
+ 1275      00
+ 1276              	.LASF28:
+ 1277 01b6 6C65645F 		.ascii	"led_task\000"
+ 1277      7461736B 
+ 1277      00
+ 1278              	.LASF10:
+ 1279 01bf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1279      206C6F6E 
+ 1279      6720756E 
+ 1279      7369676E 
+ 1279      65642069 
+ 1280              	.LASF15:
+ 1281 01d6 75696E74 		.ascii	"uint8_t\000"
+ 1281      385F7400 
+ 1282              	.LASF41:
+ 1283 01de 46726565 		.ascii	"FreeRTOS_Start\000"
+ 1283      52544F53 
+ 1283      5F537461 
+ 1283      727400
+ 1284              	.LASF35:
+ 1285 01ed 73707269 		.ascii	"sprintf\000"
+ 1285      6E746600 
+ 1286              	.LASF49:
+ 1287 01f5 6D61696E 		.ascii	"main\000"
+ 1287      00
+ 1288              	.LASF16:
+ 1289 01fa 696E7433 		.ascii	"int32_t\000"
+ 1289      325F7400 
+ 1290              	.LASF13:
+ 1291 0202 73697A65 		.ascii	"sizetype\000"
+ 1291      74797065 
+ 1291      00
+ 1292              	.LASF9:
+ 1293 020b 6C6F6E67 		.ascii	"long long int\000"
+ 1293      206C6F6E 
+ 1293      6720696E 
+ 1293      7400
+ 1294              	.LASF46:
+ 1295 0219 6D61696E 		.ascii	"main.c\000"
+ 1295      2E6300
+ 1296              	.LASF14:
+ 1297 0220 63686172 		.ascii	"char\000"
+ 1297      00
+ 1298              	.LASF37:
+ 1299 0225 78517565 		.ascii	"xQueueGenericSend\000"
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 27
+
+
+ 1299      75654765 
+ 1299      6E657269 
+ 1299      6353656E 
+ 1299      6400
+ 1300              	.LASF40:
+ 1301 0237 55415254 		.ascii	"UART_ClearTxBuffer\000"
+ 1301      5F436C65 
+ 1301      61725478 
+ 1301      42756666 
+ 1301      657200
+ 1302              	.LASF20:
+ 1303 024a 75696E74 		.ascii	"uint8\000"
+ 1303      3800
+ 1304              	.LASF47:
+ 1305 0250 443A5C6D 		.ascii	"D:\\myFolder\\projects\\Embedded-C-Lab-Book\\FreeRT"
+ 1305      79466F6C 
+ 1305      6465725C 
+ 1305      70726F6A 
+ 1305      65637473 
+ 1306 027f 4F535C66 		.ascii	"OS\\freertos_mutex.cydsn\000"
+ 1306      72656572 
+ 1306      746F735F 
+ 1306      6D757465 
+ 1306      782E6379 
+ 1307              	.LASF17:
+ 1308 0297 75696E74 		.ascii	"uint32_t\000"
+ 1308      33325F74 
+ 1308      00
+ 1309              	.LASF6:
+ 1310 02a0 6C6F6E67 		.ascii	"long int\000"
+ 1310      20696E74 
+ 1310      00
+ 1311              	.LASF38:
+ 1312 02a9 76546173 		.ascii	"vTaskDelay\000"
+ 1312      6B44656C 
+ 1312      617900
+ 1313              	.LASF42:
+ 1314 02b4 78517565 		.ascii	"xQueueCreateMutex\000"
+ 1314      75654372 
+ 1314      65617465 
+ 1314      4D757465 
+ 1314      7800
+ 1315              	.LASF12:
+ 1316 02c6 6C6F6E67 		.ascii	"long double\000"
+ 1316      20646F75 
+ 1316      626C6500 
+ 1317              	.LASF0:
+ 1318 02d2 7369676E 		.ascii	"signed char\000"
+ 1318      65642063 
+ 1318      68617200 
+ 1319              	.LASF34:
+ 1320 02de 78517565 		.ascii	"xQueueSemaphoreTake\000"
+ 1320      75655365 
+ 1320      6D617068 
+ 1320      6F726554 
+ 1320      616B6500 
+ 1321              	.LASF36:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccz9Hudy.s 			page 28
+
+
+ 1322 02f2 55415254 		.ascii	"UART_PutString\000"
+ 1322      5F507574 
+ 1322      53747269 
+ 1322      6E6700
+ 1323              	.LASF22:
+ 1324 0301 42617365 		.ascii	"BaseType_t\000"
+ 1324      54797065 
+ 1324      5F7400
+ 1325              	.LASF43:
+ 1326 030c 78546173 		.ascii	"xTaskCreate\000"
+ 1326      6B437265 
+ 1326      61746500 
+ 1327              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

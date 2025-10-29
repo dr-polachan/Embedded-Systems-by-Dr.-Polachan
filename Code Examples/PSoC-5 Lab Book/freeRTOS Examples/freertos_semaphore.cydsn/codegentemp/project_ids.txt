@@ -1,0 +1,13 @@
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\000Test.cydsn\000Test.cyprj|83ce2d0f-7219-49cc-824f-77e1ee5c40a0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|a61c7316-e07d-4792-907c-f75223e8af76
+C:\Users\kuria\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|45be7256-4da3-478d-ac83-595cd29722b3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|198ce20c-df99-4cca-b78b-39fe4b58f733
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|65e16a5f-2ae3-4177-85da-22bdd96472f2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|676a957a-2b4c-4546-8ddd-27b2023d81ef
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\004Binary_Semaphore.cydsn\004Binary_Semaphore.cyprj|1c71003a-2c1e-42ff-a9ed-5ccd1ee2bb89
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\005Counting_Semaphore.cydsn\005Counting_Semaphore.cyprj|2c395736-f5bd-475b-98df-ea26f42b1634
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\006Mutex_Tasks.cydsn\006Mutex_Tasks.cyprj|b65eb866-2f68-442c-94d3-e3d96440c93a
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\007Queue.cydsn\007Queue.cyprj|89e3b4d2-a056-4a3b-9a10-84e46145a98e
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\008Mailbox.cydsn\008Mailbox.cyprj|d35e9a78-be4c-4935-9c29-99062845cad6
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\freertos_semaphore.cydsn\freertos_semaphore.cyprj|2bdd518f-dec3-46a1-ad5a-c012f9147748
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\freertos_tasks.cydsn\freertos_tasks.cyprj|fb64d31f-e9b0-4085-b0d5-dd1ec446f247

@@ -1,0 +1,14 @@
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\000Test.cydsn\000Test.cyprj|ade2a832-0eb5-43c0-a666-27d9bb2d7b48
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5258aa1d-8222-4954-89fd-fda24fad897a
+C:\Users\kuria\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|7e14656e-4a4e-49bc-8911-80d0b6895975
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|986daf8a-9c5f-408e-aa26-f813359aa718
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|cac22dea-f8e6-4379-8e55-4330060126b0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|84ce801e-9823-4145-be0c-5c70093cd512
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\004Binary_Semaphore.cydsn\004Binary_Semaphore.cyprj|07f22d77-3d6a-4bd7-857e-674665106ed9
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\005Counting_Semaphore.cydsn\005Counting_Semaphore.cyprj|e70752ad-3a6b-4f5f-a888-cf23fb91b7d2
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\006Mutex_Tasks.cydsn\006Mutex_Tasks.cyprj|ed4a45ef-8327-47cb-8c64-41485b079c13
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\007Queue.cydsn\007Queue.cyprj|9c4fc85a-927c-4c21-927f-5630675c1c34
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\008Mailbox.cydsn\008Mailbox.cyprj|0b6aa2f6-cc08-455e-97d6-603d68cee965
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\freertos_tasks.cydsn\freertos_tasks.cyprj|20ce5b97-ee1e-4411-bdff-306e45b69c66
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\freertos_mutex.cydsn\freertos_mutex.cyprj|6a7a138c-e73f-4aaf-b304-bf6b4048ce45
+D:\myFolder\projects\Embedded-C-Lab-Book\FreeRTOS\freertos_semaphore.cydsn\freertos_semaphore.cyprj|8ed09fb0-c006-42c8-960a-689b2c453ed3
