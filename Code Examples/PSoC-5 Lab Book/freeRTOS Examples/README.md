@@ -14,7 +14,6 @@ Example projects (click to navigate on GitHub)
 
 Requirements
 - PSoC Creator 4.4 from Infinon Technologies
-- Target PSoC device or development kit and programmer/debugger
 - PSoC5LP hardware, CY8CKIT-059
 
 License
