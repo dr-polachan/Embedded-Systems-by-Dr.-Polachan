@@ -16,6 +16,10 @@ Requirements
 - PSoC Creator 4.4 from Infinon Technologies
 - PSoC5LP hardware, CY8CKIT-059
 
-License
-- FreeRTOS files included follow their upstream license (see headers in FreeRTOS/Source files).
+ Acknowledgment:
+ This code builds upon and makes use of the structure, conventions, and examples
+ from the open-source project:
+     https://github.com/Karthik23tala/Embedded-C-Lab-Book
+ maintained by Karthik T. and contributors.
 
+ License     : For educational and research use. Attribution required.
