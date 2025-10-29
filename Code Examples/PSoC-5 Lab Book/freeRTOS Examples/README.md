@@ -5,18 +5,12 @@ Overview
 - PSoC Creator 4.4 from Infinon Technologies is required to open, build and program the included .cydsn projects.
 
 Example projects (click to navigate on GitHub)
-- freertos_mutex  
-  - Folder: [./freertos_mutex](./freertos_mutex/)  
-  - Project README: [./freertos_mutex/README.md](./freertos_mutex/README.md)  
-  - Project file: [./freertos_mutex/freertos_mutex.cydsn](./freertos_mutex/freertos_mutex.cydsn)
-- freertos_semaphore  
-  - Folder: [./freertos_semaphore](./freertos_semaphore/)  
-  - Project README: [./freertos_semaphore/README.md](./freertos_semaphore/README.md)  
-  - Project file: [./freertos_semaphore/freertos_semaphore.cydsn](./freertos_semaphore/freertos_semaphore.cydsn)
-- freertos_tasks  
-  - Folder: [./freertos_tasks](./freertos_tasks/)  
-  - Project README: [./freertos_tasks/README.md](./freertos_tasks/README.md)  
-  - Project file: [./freertos_tasks/freertos_tasks.cydsn](./freertos_tasks/freertos_tasks.cydsn)
+- freertos_mutex.cydsn  
+  - Project file: [./freertos_mutex.cydsn](./freertos_mutex.cydsn)
+- freertos_semaphore.cydsn  
+  - Project file: [./freertos_semaphore.cydsn](./freertos_semaphore.cydsn)
+- freertos_tasks.cydsn  
+  - Project file: [./freertos_tasks.cydsn](./freertos_tasks.cydsn)
 
 Requirements
 - PSoC Creator 4.4 from Infinon Technologies
