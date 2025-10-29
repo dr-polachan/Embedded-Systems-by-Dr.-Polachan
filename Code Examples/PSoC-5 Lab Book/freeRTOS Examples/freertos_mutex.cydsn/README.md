@@ -1,7 +1,7 @@
-# freertos_tasks
+# freertos_mutex
 
 Description
-- A PSoC FreeRTOS example that demonstrates running tasks
+- A PSoC FreeRTOS example that demonstrates using a mutex to protect a shared resource between two or more tasks.
 
 What’s included
 - freertos_mutex.cydsn — PSoC Creator workspace/project.
