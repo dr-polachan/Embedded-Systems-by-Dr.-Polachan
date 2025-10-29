@@ -49,6 +49,7 @@ This course covers a range of topics in electronics systems packaging, including
 
 **Lab Materials**
 - [C Refresher](Code%20Examples/C-Refresher/README.md)
+- [PSoC-5 FreeRTOS Examples](Code%20Examples/PSoC-5%20Lab%20Book/freeRTOS%20Examples/README.md)
 - [PSoC-4 Lab Book](Code%20Examples/PSoC-4%20Lab%20Book%20108d051c359e80849bdbc9f96794905d/README.md) *(for reference only; functionality and performance not verified)*
 
 **Course Projects**
