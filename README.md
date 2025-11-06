@@ -46,6 +46,8 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 6: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Digital-Blocks.pdf)
 - [Lecture 7: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Analog-Blocks.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
+- [Lecture 9: Embedded Implementation of Digital Filters](./Lecture%20Slides/Embedded-Systems/digital-filter.pdf)
+
 
 **Lab Materials**
 - [C Refresher](Code%20Examples/C-Refresher/README.md)
