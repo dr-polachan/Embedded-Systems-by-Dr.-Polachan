@@ -1,0 +1,1281 @@
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 748
+  28              	cy_meta_configecc:
+  29 0000 02       		.byte	2
+  30 0001 52       		.byte	82
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 03       		.byte	3
+  34 0005 65       		.byte	101
+  35 0006 00       		.byte	0
+  36 0007 40       		.byte	64
+  37 0008 14       		.byte	20
+  38 0009 18       		.byte	24
+  39 000a 01       		.byte	1
+  40 000b 40       		.byte	64
+  41 000c 3A       		.byte	58
+  42 000d 19       		.byte	25
+  43 000e 01       		.byte	1
+  44 000f 40       		.byte	64
+  45 0010 69       		.byte	105
+  46 0011 1A       		.byte	26
+  47 0012 01       		.byte	1
+  48 0013 40       		.byte	64
+  49 0014 4F       		.byte	79
+  50 0015 1B       		.byte	27
+  51 0016 01       		.byte	1
+  52 0017 40       		.byte	64
+  53 0018 01       		.byte	1
+  54 0019 4C       		.byte	76
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 07       		.byte	7
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 2
+
+
+  58 001d 4D       		.byte	77
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 02       		.byte	2
+  62 0021 50       		.byte	80
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 61       		.byte	97
+  66 0025 80       		.byte	-128
+  67 0026 64       		.byte	100
+  68 0027 40       		.byte	64
+  69 0028 88       		.byte	-120
+  70 0029 72       		.byte	114
+  71 002a 89       		.byte	-119
+  72 002b 38       		.byte	56
+  73 002c 8B       		.byte	-117
+  74 002d 0F       		.byte	15
+  75 002e 80       		.byte	-128
+  76 002f 08       		.byte	8
+  77 0030 86       		.byte	-122
+  78 0031 04       		.byte	4
+  79 0032 88       		.byte	-120
+  80 0033 01       		.byte	1
+  81 0034 A1       		.byte	-95
+  82 0035 01       		.byte	1
+  83 0036 A2       		.byte	-94
+  84 0037 02       		.byte	2
+  85 0038 A4       		.byte	-92
+  86 0039 01       		.byte	1
+  87 003a AA       		.byte	-86
+  88 003b 02       		.byte	2
+  89 003c AC       		.byte	-84
+  90 003d 01       		.byte	1
+  91 003e B0       		.byte	-80
+  92 003f 02       		.byte	2
+  93 0040 B2       		.byte	-78
+  94 0041 04       		.byte	4
+  95 0042 B4       		.byte	-76
+  96 0043 01       		.byte	1
+  97 0044 B5       		.byte	-75
+  98 0045 01       		.byte	1
+  99 0046 B6       		.byte	-74
+ 100 0047 08       		.byte	8
+ 101 0048 BE       		.byte	-66
+ 102 0049 41       		.byte	65
+ 103 004a BF       		.byte	-65
+ 104 004b 10       		.byte	16
+ 105 004c D4       		.byte	-44
+ 106 004d 18       		.byte	24
+ 107 004e D8       		.byte	-40
+ 108 004f 04       		.byte	4
+ 109 0050 D9       		.byte	-39
+ 110 0051 04       		.byte	4
+ 111 0052 DB       		.byte	-37
+ 112 0053 04       		.byte	4
+ 113 0054 DF       		.byte	-33
+ 114 0055 01       		.byte	1
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 3
+
+
+ 115 0056 01       		.byte	1
+ 116 0057 0A       		.byte	10
+ 117 0058 03       		.byte	3
+ 118 0059 08       		.byte	8
+ 119 005a 05       		.byte	5
+ 120 005b 29       		.byte	41
+ 121 005c 06       		.byte	6
+ 122 005d 02       		.byte	2
+ 123 005e 0C       		.byte	12
+ 124 005f 41       		.byte	65
+ 125 0060 0D       		.byte	13
+ 126 0061 02       		.byte	2
+ 127 0062 0E       		.byte	14
+ 128 0063 0A       		.byte	10
+ 129 0064 0F       		.byte	15
+ 130 0065 20       		.byte	32
+ 131 0066 10       		.byte	16
+ 132 0067 22       		.byte	34
+ 133 0068 12       		.byte	18
+ 134 0069 48       		.byte	72
+ 135 006a 16       		.byte	22
+ 136 006b 80       		.byte	-128
+ 137 006c 17       		.byte	23
+ 138 006d 14       		.byte	20
+ 139 006e 1A       		.byte	26
+ 140 006f 01       		.byte	1
+ 141 0070 1B       		.byte	27
+ 142 0071 15       		.byte	21
+ 143 0072 1C       		.byte	28
+ 144 0073 10       		.byte	16
+ 145 0074 1D       		.byte	29
+ 146 0075 21       		.byte	33
+ 147 0076 1E       		.byte	30
+ 148 0077 0A       		.byte	10
+ 149 0078 1F       		.byte	31
+ 150 0079 10       		.byte	16
+ 151 007a 23       		.byte	35
+ 152 007b 08       		.byte	8
+ 153 007c 25       		.byte	37
+ 154 007d 0A       		.byte	10
+ 155 007e 26       		.byte	38
+ 156 007f 08       		.byte	8
+ 157 0080 27       		.byte	39
+ 158 0081 01       		.byte	1
+ 159 0082 2B       		.byte	43
+ 160 0083 40       		.byte	64
+ 161 0084 2C       		.byte	44
+ 162 0085 41       		.byte	65
+ 163 0086 2D       		.byte	45
+ 164 0087 20       		.byte	32
+ 165 0088 2F       		.byte	47
+ 166 0089 10       		.byte	16
+ 167 008a 35       		.byte	53
+ 168 008b 41       		.byte	65
+ 169 008c 37       		.byte	55
+ 170 008d 14       		.byte	20
+ 171 008e 3D       		.byte	61
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 4
+
+
+ 172 008f 80       		.byte	-128
+ 173 0090 3E       		.byte	62
+ 174 0091 82       		.byte	-126
+ 175 0092 3F       		.byte	63
+ 176 0093 28       		.byte	40
+ 177 0094 44       		.byte	68
+ 178 0095 40       		.byte	64
+ 179 0096 45       		.byte	69
+ 180 0097 28       		.byte	40
+ 181 0098 47       		.byte	71
+ 182 0099 40       		.byte	64
+ 183 009a 4F       		.byte	79
+ 184 009b 20       		.byte	32
+ 185 009c 55       		.byte	85
+ 186 009d 01       		.byte	1
+ 187 009e 56       		.byte	86
+ 188 009f 40       		.byte	64
+ 189 00a0 5B       		.byte	91
+ 190 00a1 01       		.byte	1
+ 191 00a2 5C       		.byte	92
+ 192 00a3 10       		.byte	16
+ 193 00a4 60       		.byte	96
+ 194 00a5 04       		.byte	4
+ 195 00a6 63       		.byte	99
+ 196 00a7 02       		.byte	2
+ 197 00a8 6C       		.byte	108
+ 198 00a9 22       		.byte	34
+ 199 00aa 6E       		.byte	110
+ 200 00ab 04       		.byte	4
+ 201 00ac 6F       		.byte	111
+ 202 00ad 08       		.byte	8
+ 203 00ae 76       		.byte	118
+ 204 00af 02       		.byte	2
+ 205 00b0 77       		.byte	119
+ 206 00b1 14       		.byte	20
+ 207 00b2 86       		.byte	-122
+ 208 00b3 01       		.byte	1
+ 209 00b4 C0       		.byte	-64
+ 210 00b5 FE       		.byte	-2
+ 211 00b6 C2       		.byte	-62
+ 212 00b7 F0       		.byte	-16
+ 213 00b8 C4       		.byte	-60
+ 214 00b9 7F       		.byte	127
+ 215 00ba CA       		.byte	-54
+ 216 00bb F1       		.byte	-15
+ 217 00bc CC       		.byte	-52
+ 218 00bd F0       		.byte	-16
+ 219 00be CE       		.byte	-50
+ 220 00bf F0       		.byte	-16
+ 221 00c0 D0       		.byte	-48
+ 222 00c1 F0       		.byte	-16
+ 223 00c2 D2       		.byte	-46
+ 224 00c3 20       		.byte	32
+ 225 00c4 D6       		.byte	-42
+ 226 00c5 21       		.byte	33
+ 227 00c6 D8       		.byte	-40
+ 228 00c7 0C       		.byte	12
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 5
+
+
+ 229 00c8 E0       		.byte	-32
+ 230 00c9 08       		.byte	8
+ 231 00ca 02       		.byte	2
+ 232 00cb 03       		.byte	3
+ 233 00cc 04       		.byte	4
+ 234 00cd 10       		.byte	16
+ 235 00ce 06       		.byte	6
+ 236 00cf 0C       		.byte	12
+ 237 00d0 07       		.byte	7
+ 238 00d1 08       		.byte	8
+ 239 00d2 08       		.byte	8
+ 240 00d3 10       		.byte	16
+ 241 00d4 0C       		.byte	12
+ 242 00d5 09       		.byte	9
+ 243 00d6 0D       		.byte	13
+ 244 00d7 80       		.byte	-128
+ 245 00d8 0E       		.byte	14
+ 246 00d9 10       		.byte	16
+ 247 00da 0F       		.byte	15
+ 248 00db 13       		.byte	19
+ 249 00dc 12       		.byte	18
+ 250 00dd 20       		.byte	32
+ 251 00de 15       		.byte	21
+ 252 00df 2C       		.byte	44
+ 253 00e0 16       		.byte	22
+ 254 00e1 20       		.byte	32
+ 255 00e2 17       		.byte	23
+ 256 00e3 43       		.byte	67
+ 257 00e4 18       		.byte	24
+ 258 00e5 0C       		.byte	12
+ 259 00e6 19       		.byte	25
+ 260 00e7 71       		.byte	113
+ 261 00e8 1A       		.byte	26
+ 262 00e9 11       		.byte	17
+ 263 00ea 1B       		.byte	27
+ 264 00eb 06       		.byte	6
+ 265 00ec 23       		.byte	35
+ 266 00ed 0C       		.byte	12
+ 267 00ee 24       		.byte	36
+ 268 00ef 14       		.byte	20
+ 269 00f0 25       		.byte	37
+ 270 00f1 71       		.byte	113
+ 271 00f2 27       		.byte	39
+ 272 00f3 0E       		.byte	14
+ 273 00f4 28       		.byte	40
+ 274 00f5 1C       		.byte	28
+ 275 00f6 2A       		.byte	42
+ 276 00f7 02       		.byte	2
+ 277 00f8 30       		.byte	48
+ 278 00f9 1F       		.byte	31
+ 279 00fa 31       		.byte	49
+ 280 00fb C0       		.byte	-64
+ 281 00fc 33       		.byte	51
+ 282 00fd 0F       		.byte	15
+ 283 00fe 34       		.byte	52
+ 284 00ff 20       		.byte	32
+ 285 0100 35       		.byte	53
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 6
+
+
+ 286 0101 30       		.byte	48
+ 287 0102 39       		.byte	57
+ 288 0103 22       		.byte	34
+ 289 0104 3B       		.byte	59
+ 290 0105 08       		.byte	8
+ 291 0106 3E       		.byte	62
+ 292 0107 10       		.byte	16
+ 293 0108 3F       		.byte	63
+ 294 0109 10       		.byte	16
+ 295 010a 40       		.byte	64
+ 296 010b 02       		.byte	2
+ 297 010c 45       		.byte	69
+ 298 010d 04       		.byte	4
+ 299 010e 49       		.byte	73
+ 300 010f FF       		.byte	-1
+ 301 0110 4A       		.byte	74
+ 302 0111 07       		.byte	7
+ 303 0112 4B       		.byte	75
+ 304 0113 FF       		.byte	-1
+ 305 0114 4C       		.byte	76
+ 306 0115 40       		.byte	64
+ 307 0116 4D       		.byte	77
+ 308 0117 20       		.byte	32
+ 309 0118 4E       		.byte	78
+ 310 0119 F0       		.byte	-16
+ 311 011a 4F       		.byte	79
+ 312 011b 05       		.byte	5
+ 313 011c 50       		.byte	80
+ 314 011d 08       		.byte	8
+ 315 011e 58       		.byte	88
+ 316 011f 04       		.byte	4
+ 317 0120 59       		.byte	89
+ 318 0121 04       		.byte	4
+ 319 0122 5A       		.byte	90
+ 320 0123 04       		.byte	4
+ 321 0124 5F       		.byte	95
+ 322 0125 01       		.byte	1
+ 323 0126 60       		.byte	96
+ 324 0127 40       		.byte	64
+ 325 0128 61       		.byte	97
+ 326 0129 A8       		.byte	-88
+ 327 012a 62       		.byte	98
+ 328 012b 40       		.byte	64
+ 329 012c 63       		.byte	99
+ 330 012d 20       		.byte	32
+ 331 012e 81       		.byte	-127
+ 332 012f 48       		.byte	72
+ 333 0130 82       		.byte	-126
+ 334 0131 35       		.byte	53
+ 335 0132 83       		.byte	-125
+ 336 0133 34       		.byte	52
+ 337 0134 84       		.byte	-124
+ 338 0135 4A       		.byte	74
+ 339 0136 85       		.byte	-123
+ 340 0137 F8       		.byte	-8
+ 341 0138 86       		.byte	-122
+ 342 0139 34       		.byte	52
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 7
+
+
+ 343 013a 88       		.byte	-120
+ 344 013b 13       		.byte	19
+ 345 013c 8A       		.byte	-118
+ 346 013d 2C       		.byte	44
+ 347 013e 8D       		.byte	-115
+ 348 013f 20       		.byte	32
+ 349 0140 8E       		.byte	-114
+ 350 0141 48       		.byte	72
+ 351 0142 8F       		.byte	-113
+ 352 0143 C2       		.byte	-62
+ 353 0144 93       		.byte	-109
+ 354 0145 01       		.byte	1
+ 355 0146 95       		.byte	-107
+ 356 0147 01       		.byte	1
+ 357 0148 98       		.byte	-104
+ 358 0149 03       		.byte	3
+ 359 014a 99       		.byte	-103
+ 360 014b 90       		.byte	-112
+ 361 014c 9A       		.byte	-102
+ 362 014d 14       		.byte	20
+ 363 014e 9B       		.byte	-101
+ 364 014f 2C       		.byte	44
+ 365 0150 A1       		.byte	-95
+ 366 0151 01       		.byte	1
+ 367 0152 A4       		.byte	-92
+ 368 0153 13       		.byte	19
+ 369 0154 A6       		.byte	-90
+ 370 0155 64       		.byte	100
+ 371 0156 A9       		.byte	-87
+ 372 0157 F8       		.byte	-8
+ 373 0158 AA       		.byte	-86
+ 374 0159 40       		.byte	64
+ 375 015a AF       		.byte	-81
+ 376 015b 01       		.byte	1
+ 377 015c B0       		.byte	-80
+ 378 015d 10       		.byte	16
+ 379 015e B1       		.byte	-79
+ 380 015f 06       		.byte	6
+ 381 0160 B2       		.byte	-78
+ 382 0161 68       		.byte	104
+ 383 0162 B3       		.byte	-77
+ 384 0163 01       		.byte	1
+ 385 0164 B4       		.byte	-76
+ 386 0165 0F       		.byte	15
+ 387 0166 B5       		.byte	-75
+ 388 0167 18       		.byte	24
+ 389 0168 B7       		.byte	-73
+ 390 0169 E0       		.byte	-32
+ 391 016a B9       		.byte	-71
+ 392 016b 08       		.byte	8
+ 393 016c BA       		.byte	-70
+ 394 016d 28       		.byte	40
+ 395 016e BE       		.byte	-66
+ 396 016f 01       		.byte	1
+ 397 0170 BF       		.byte	-65
+ 398 0171 01       		.byte	1
+ 399 0172 C0       		.byte	-64
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 8
+
+
+ 400 0173 24       		.byte	36
+ 401 0174 C1       		.byte	-63
+ 402 0175 03       		.byte	3
+ 403 0176 C5       		.byte	-59
+ 404 0177 0C       		.byte	12
+ 405 0178 C6       		.byte	-58
+ 406 0179 CE       		.byte	-50
+ 407 017a C7       		.byte	-57
+ 408 017b 0B       		.byte	11
+ 409 017c C8       		.byte	-56
+ 410 017d 1D       		.byte	29
+ 411 017e C9       		.byte	-55
+ 412 017f FF       		.byte	-1
+ 413 0180 CA       		.byte	-54
+ 414 0181 FF       		.byte	-1
+ 415 0182 CB       		.byte	-53
+ 416 0183 FF       		.byte	-1
+ 417 0184 CE       		.byte	-50
+ 418 0185 F0       		.byte	-16
+ 419 0186 CF       		.byte	-49
+ 420 0187 44       		.byte	68
+ 421 0188 D0       		.byte	-48
+ 422 0189 0C       		.byte	12
+ 423 018a D4       		.byte	-44
+ 424 018b 01       		.byte	1
+ 425 018c D8       		.byte	-40
+ 426 018d 04       		.byte	4
+ 427 018e D9       		.byte	-39
+ 428 018f 04       		.byte	4
+ 429 0190 DA       		.byte	-38
+ 430 0191 04       		.byte	4
+ 431 0192 DB       		.byte	-37
+ 432 0193 04       		.byte	4
+ 433 0194 DF       		.byte	-33
+ 434 0195 01       		.byte	1
+ 435 0196 E6       		.byte	-26
+ 436 0197 C0       		.byte	-64
+ 437 0198 EA       		.byte	-22
+ 438 0199 40       		.byte	64
+ 439 019a EB       		.byte	-21
+ 440 019b 02       		.byte	2
+ 441 019c 00       		.byte	0
+ 442 019d 60       		.byte	96
+ 443 019e 01       		.byte	1
+ 444 019f 02       		.byte	2
+ 445 01a0 03       		.byte	3
+ 446 01a1 10       		.byte	16
+ 447 01a2 04       		.byte	4
+ 448 01a3 40       		.byte	64
+ 449 01a4 05       		.byte	5
+ 450 01a5 10       		.byte	16
+ 451 01a6 06       		.byte	6
+ 452 01a7 41       		.byte	65
+ 453 01a8 07       		.byte	7
+ 454 01a9 20       		.byte	32
+ 455 01aa 08       		.byte	8
+ 456 01ab 20       		.byte	32
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 9
+
+
+ 457 01ac 09       		.byte	9
+ 458 01ad 09       		.byte	9
+ 459 01ae 0F       		.byte	15
+ 460 01af 08       		.byte	8
+ 461 01b0 11       		.byte	17
+ 462 01b1 08       		.byte	8
+ 463 01b2 13       		.byte	19
+ 464 01b3 20       		.byte	32
+ 465 01b4 14       		.byte	20
+ 466 01b5 20       		.byte	32
+ 467 01b6 16       		.byte	22
+ 468 01b7 04       		.byte	4
+ 469 01b8 18       		.byte	24
+ 470 01b9 04       		.byte	4
+ 471 01ba 19       		.byte	25
+ 472 01bb 02       		.byte	2
+ 473 01bc 1D       		.byte	29
+ 474 01bd 14       		.byte	20
+ 475 01be 1E       		.byte	30
+ 476 01bf 40       		.byte	64
+ 477 01c0 20       		.byte	32
+ 478 01c1 40       		.byte	64
+ 479 01c2 21       		.byte	33
+ 480 01c3 10       		.byte	16
+ 481 01c4 22       		.byte	34
+ 482 01c5 04       		.byte	4
+ 483 01c6 23       		.byte	35
+ 484 01c7 20       		.byte	32
+ 485 01c8 25       		.byte	37
+ 486 01c9 48       		.byte	72
+ 487 01ca 26       		.byte	38
+ 488 01cb 10       		.byte	16
+ 489 01cc 27       		.byte	39
+ 490 01cd 40       		.byte	64
+ 491 01ce 28       		.byte	40
+ 492 01cf 20       		.byte	32
+ 493 01d0 29       		.byte	41
+ 494 01d1 04       		.byte	4
+ 495 01d2 2A       		.byte	42
+ 496 01d3 01       		.byte	1
+ 497 01d4 2C       		.byte	44
+ 498 01d5 41       		.byte	65
+ 499 01d6 2F       		.byte	47
+ 500 01d7 08       		.byte	8
+ 501 01d8 31       		.byte	49
+ 502 01d9 10       		.byte	16
+ 503 01da 32       		.byte	50
+ 504 01db 04       		.byte	4
+ 505 01dc 33       		.byte	51
+ 506 01dd 10       		.byte	16
+ 507 01de 35       		.byte	53
+ 508 01df 21       		.byte	33
+ 509 01e0 36       		.byte	54
+ 510 01e1 14       		.byte	20
+ 511 01e2 38       		.byte	56
+ 512 01e3 80       		.byte	-128
+ 513 01e4 3A       		.byte	58
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 10
+
+
+ 514 01e5 04       		.byte	4
+ 515 01e6 3B       		.byte	59
+ 516 01e7 04       		.byte	4
+ 517 01e8 3D       		.byte	61
+ 518 01e9 80       		.byte	-128
+ 519 01ea 3E       		.byte	62
+ 520 01eb 06       		.byte	6
+ 521 01ec 41       		.byte	65
+ 522 01ed 10       		.byte	16
+ 523 01ee 44       		.byte	68
+ 524 01ef 20       		.byte	32
+ 525 01f0 46       		.byte	70
+ 526 01f1 40       		.byte	64
+ 527 01f2 47       		.byte	71
+ 528 01f3 10       		.byte	16
+ 529 01f4 48       		.byte	72
+ 530 01f5 10       		.byte	16
+ 531 01f6 4B       		.byte	75
+ 532 01f7 04       		.byte	4
+ 533 01f8 4F       		.byte	79
+ 534 01f9 08       		.byte	8
+ 535 01fa 50       		.byte	80
+ 536 01fb 40       		.byte	64
+ 537 01fc 52       		.byte	82
+ 538 01fd 40       		.byte	64
+ 539 01fe 55       		.byte	85
+ 540 01ff 04       		.byte	4
+ 541 0200 57       		.byte	87
+ 542 0201 50       		.byte	80
+ 543 0202 5D       		.byte	93
+ 544 0203 01       		.byte	1
+ 545 0204 5E       		.byte	94
+ 546 0205 40       		.byte	64
+ 547 0206 5F       		.byte	95
+ 548 0207 18       		.byte	24
+ 549 0208 63       		.byte	99
+ 550 0209 30       		.byte	48
+ 551 020a 79       		.byte	121
+ 552 020b 01       		.byte	1
+ 553 020c 7B       		.byte	123
+ 554 020d 40       		.byte	64
+ 555 020e 89       		.byte	-119
+ 556 020f 48       		.byte	72
+ 557 0210 8A       		.byte	-118
+ 558 0211 02       		.byte	2
+ 559 0212 92       		.byte	-110
+ 560 0213 04       		.byte	4
+ 561 0214 94       		.byte	-108
+ 562 0215 04       		.byte	4
+ 563 0216 98       		.byte	-104
+ 564 0217 41       		.byte	65
+ 565 0218 99       		.byte	-103
+ 566 0219 01       		.byte	1
+ 567 021a 9B       		.byte	-101
+ 568 021b 08       		.byte	8
+ 569 021c 9D       		.byte	-99
+ 570 021d 6A       		.byte	106
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 11
+
+
+ 571 021e 9F       		.byte	-97
+ 572 021f 40       		.byte	64
+ 573 0220 A1       		.byte	-95
+ 574 0221 01       		.byte	1
+ 575 0222 A2       		.byte	-94
+ 576 0223 04       		.byte	4
+ 577 0224 A3       		.byte	-93
+ 578 0225 08       		.byte	8
+ 579 0226 A5       		.byte	-91
+ 580 0227 40       		.byte	64
+ 581 0228 A7       		.byte	-89
+ 582 0229 40       		.byte	64
+ 583 022a C0       		.byte	-64
+ 584 022b FF       		.byte	-1
+ 585 022c C2       		.byte	-62
+ 586 022d 4E       		.byte	78
+ 587 022e C4       		.byte	-60
+ 588 022f 66       		.byte	102
+ 589 0230 CA       		.byte	-54
+ 590 0231 B3       		.byte	-77
+ 591 0232 CC       		.byte	-52
+ 592 0233 E6       		.byte	-26
+ 593 0234 CE       		.byte	-50
+ 594 0235 DA       		.byte	-38
+ 595 0236 D0       		.byte	-48
+ 596 0237 E4       		.byte	-28
+ 597 0238 D6       		.byte	-42
+ 598 0239 F0       		.byte	-16
+ 599 023a 87       		.byte	-121
+ 600 023b 10       		.byte	16
+ 601 023c 10       		.byte	16
+ 602 023d 40       		.byte	64
+ 603 023e 73       		.byte	115
+ 604 023f 10       		.byte	16
+ 605 0240 88       		.byte	-120
+ 606 0241 40       		.byte	64
+ 607 0242 93       		.byte	-109
+ 608 0243 10       		.byte	16
+ 609 0244 C4       		.byte	-60
+ 610 0245 08       		.byte	8
+ 611 0246 DC       		.byte	-36
+ 612 0247 01       		.byte	1
+ 613 0248 E2       		.byte	-30
+ 614 0249 01       		.byte	1
+ 615 024a 10       		.byte	16
+ 616 024b 01       		.byte	1
+ 617 024c 1C       		.byte	28
+ 618 024d 01       		.byte	1
+ 619 024e 00       		.byte	0
+ 620 024f 00       		.byte	0
+ 621 0250 1F       		.byte	31
+ 622 0251 10       		.byte	16
+ 623 0252 20       		.byte	32
+ 624 0253 00       		.byte	0
+ 625 0254 01       		.byte	1
+ 626 0255 00       		.byte	0
+ 627 0256 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 12
+
+
+ 628 0257 04       		.byte	4
+ 629 0258 02       		.byte	2
+ 630 0259 00       		.byte	0
+ 631 025a 00       		.byte	0
+ 632 025b E3       		.byte	-29
+ 633 025c 08       		.byte	8
+ 634 025d C0       		.byte	-64
+ 635 025e 00       		.byte	0
+ 636 025f 00       		.byte	0
+ 637 0260 1C       		.byte	28
+ 638 0261 1C       		.byte	28
+ 639 0262 23       		.byte	35
+ 640 0263 E1       		.byte	-31
+ 641 0264 00       		.byte	0
+ 642 0265 08       		.byte	8
+ 643 0266 23       		.byte	35
+ 644 0267 00       		.byte	0
+ 645 0268 33       		.byte	51
+ 646 0269 18       		.byte	24
+ 647 026a 0C       		.byte	12
+ 648 026b 00       		.byte	0
+ 649 026c 3F       		.byte	63
+ 650 026d 44       		.byte	68
+ 651 026e 00       		.byte	0
+ 652 026f 00       		.byte	0
+ 653 0270 03       		.byte	3
+ 654 0271 FF       		.byte	-1
+ 655 0272 00       		.byte	0
+ 656 0273 00       		.byte	0
+ 657 0274 04       		.byte	4
+ 658 0275 E7       		.byte	-25
+ 659 0276 00       		.byte	0
+ 660 0277 18       		.byte	24
+ 661 0278 0C       		.byte	12
+ 662 0279 80       		.byte	-128
+ 663 027a 00       		.byte	0
+ 664 027b 00       		.byte	0
+ 665 027c 00       		.byte	0
+ 666 027d 3C       		.byte	60
+ 667 027e 00       		.byte	0
+ 668 027f C2       		.byte	-62
+ 669 0280 2C       		.byte	44
+ 670 0281 1F       		.byte	31
+ 671 0282 10       		.byte	16
+ 672 0283 38       		.byte	56
+ 673 0284 0F       		.byte	15
+ 674 0285 00       		.byte	0
+ 675 0286 00       		.byte	0
+ 676 0287 C0       		.byte	-64
+ 677 0288 00       		.byte	0
+ 678 0289 00       		.byte	0
+ 679 028a A2       		.byte	-94
+ 680 028b 02       		.byte	2
+ 681 028c 00       		.byte	0
+ 682 028d 00       		.byte	0
+ 683 028e 04       		.byte	4
+ 684 028f 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 13
+
+
+ 685 0290 26       		.byte	38
+ 686 0291 04       		.byte	4
+ 687 0292 03       		.byte	3
+ 688 0293 00       		.byte	0
+ 689 0294 01       		.byte	1
+ 690 0295 00       		.byte	0
+ 691 0296 0C       		.byte	12
+ 692 0297 E0       		.byte	-32
+ 693 0298 24       		.byte	36
+ 694 0299 FF       		.byte	-1
+ 695 029a FF       		.byte	-1
+ 696 029b FF       		.byte	-1
+ 697 029c 62       		.byte	98
+ 698 029d A0       		.byte	-96
+ 699 029e F0       		.byte	-16
+ 700 029f 41       		.byte	65
+ 701 02a0 0C       		.byte	12
+ 702 02a1 00       		.byte	0
+ 703 02a2 00       		.byte	0
+ 704 02a3 00       		.byte	0
+ 705 02a4 00       		.byte	0
+ 706 02a5 00       		.byte	0
+ 707 02a6 02       		.byte	2
+ 708 02a7 11       		.byte	17
+ 709 02a8 04       		.byte	4
+ 710 02a9 04       		.byte	4
+ 711 02aa 04       		.byte	4
+ 712 02ab 04       		.byte	4
+ 713 02ac 00       		.byte	0
+ 714 02ad 00       		.byte	0
+ 715 02ae 00       		.byte	0
+ 716 02af 01       		.byte	1
+ 717 02b0 00       		.byte	0
+ 718 02b1 00       		.byte	0
+ 719 02b2 00       		.byte	0
+ 720 02b3 00       		.byte	0
+ 721 02b4 00       		.byte	0
+ 722 02b5 00       		.byte	0
+ 723 02b6 40       		.byte	64
+ 724 02b7 02       		.byte	2
+ 725 02b8 00       		.byte	0
+ 726 02b9 10       		.byte	16
+ 727 02ba 30       		.byte	48
+ 728 02bb 10       		.byte	16
+ 729 02bc 00       		.byte	0
+ 730 02bd 10       		.byte	16
+ 731 02be 10       		.byte	16
+ 732 02bf 12       		.byte	18
+ 733 02c0 00       		.byte	0
+ 734 02c1 00       		.byte	0
+ 735 02c2 00       		.byte	0
+ 736 02c3 00       		.byte	0
+ 737 02c4 00       		.byte	0
+ 738 02c5 00       		.byte	0
+ 739 02c6 00       		.byte	0
+ 740 02c7 00       		.byte	0
+ 741 02c8 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 14
+
+
+ 742 02c9 00       		.byte	0
+ 743 02ca 00       		.byte	0
+ 744 02cb 00       		.byte	0
+ 745 02cc 00       		.byte	0
+ 746 02cd 00       		.byte	0
+ 747 02ce 00       		.byte	0
+ 748 02cf 00       		.byte	0
+ 749 02d0 80       		.byte	-128
+ 750 02d1 00       		.byte	0
+ 751 02d2 40       		.byte	64
+ 752 02d3 80       		.byte	-128
+ 753 02d4 80       		.byte	-128
+ 754 02d5 00       		.byte	0
+ 755 02d6 80       		.byte	-128
+ 756 02d7 00       		.byte	0
+ 757 02d8 00       		.byte	0
+ 758 02d9 00       		.byte	0
+ 759 02da 00       		.byte	0
+ 760 02db 00       		.byte	0
+ 761 02dc 00       		.byte	0
+ 762 02dd 0B       		.byte	11
+ 763 02de 0B       		.byte	11
+ 764 02df 00       		.byte	0
+ 765 02e0 00       		.byte	0
+ 766 02e1 00       		.byte	0
+ 767 02e2 00       		.byte	0
+ 768 02e3 00       		.byte	0
+ 769 02e4 00       		.byte	0
+ 770 02e5 02       		.byte	2
+ 771 02e6 02       		.byte	2
+ 772 02e7 00       		.byte	0
+ 773 02e8 00       		.byte	0
+ 774 02e9 00       		.byte	0
+ 775 02ea 00       		.byte	0
+ 776 02eb 00       		.byte	0
+ 777              		.section	.cywolatch,"a",%progbits
+ 778              		.align	2
+ 779              		.type	cy_meta_wonvl, %object
+ 780              		.size	cy_meta_wonvl, 4
+ 781              	cy_meta_wonvl:
+ 782 0000 BC       		.byte	-68
+ 783 0001 90       		.byte	-112
+ 784 0002 AC       		.byte	-84
+ 785 0003 AF       		.byte	-81
+ 786              		.section	.cycustnvl,"a",%progbits
+ 787              		.align	2
+ 788              		.type	cy_meta_custnvl, %object
+ 789              		.size	cy_meta_custnvl, 4
+ 790              	cy_meta_custnvl:
+ 791 0000 00       		.byte	0
+ 792 0001 00       		.byte	0
+ 793 0002 40       		.byte	64
+ 794 0003 05       		.byte	5
+ 795              		.section	.cymeta,"a",%progbits
+ 796              		.align	2
+ 797              		.type	cy_metadata, %object
+ 798              		.size	cy_metadata, 12
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 15
+
+
+ 799              	cy_metadata:
+ 800 0000 00       		.byte	0
+ 801 0001 01       		.byte	1
+ 802 0002 2E       		.byte	46
+ 803 0003 16       		.byte	22
+ 804 0004 10       		.byte	16
+ 805 0005 69       		.byte	105
+ 806 0006 00       		.byte	0
+ 807 0007 01       		.byte	1
+ 808 0008 00       		.byte	0
+ 809 0009 00       		.byte	0
+ 810 000a 00       		.byte	0
+ 811 000b 00       		.byte	0
+ 812              		.section	.cyflashprotect,"a",%progbits
+ 813              		.align	2
+ 814              		.type	cy_meta_flashprotect, %object
+ 815              		.size	cy_meta_flashprotect, 256
+ 816              	cy_meta_flashprotect:
+ 817 0000 00000000 		.space	256
+ 817      00000000 
+ 817      00000000 
+ 817      00000000 
+ 817      00000000 
+ 818              		.text
+ 819              	.Letext0:
+ 820              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 821              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 822              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 823              		.section	.debug_info,"",%progbits
+ 824              	.Ldebug_info0:
+ 825 0000 31010000 		.4byte	0x131
+ 826 0004 0400     		.2byte	0x4
+ 827 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 828 000a 04       		.byte	0x4
+ 829 000b 01       		.uleb128 0x1
+ 830 000c 24000000 		.4byte	.LASF17
+ 831 0010 0C       		.byte	0xc
+ 832 0011 F9010000 		.4byte	.LASF18
+ 833 0015 F9000000 		.4byte	.LASF19
+ 834 0019 00000000 		.4byte	.Ldebug_line0
+ 835 001d 02       		.uleb128 0x2
+ 836 001e 01       		.byte	0x1
+ 837 001f 06       		.byte	0x6
+ 838 0020 ED010000 		.4byte	.LASF0
+ 839 0024 03       		.uleb128 0x3
+ 840 0025 00000000 		.4byte	.LASF9
+ 841 0029 01       		.byte	0x1
+ 842 002a 1D       		.byte	0x1d
+ 843 002b 2F000000 		.4byte	0x2f
+ 844 002f 02       		.uleb128 0x2
+ 845 0030 01       		.byte	0x1
+ 846 0031 08       		.byte	0x8
+ 847 0032 16000000 		.4byte	.LASF1
+ 848 0036 02       		.uleb128 0x2
+ 849 0037 02       		.byte	0x2
+ 850 0038 05       		.byte	0x5
+ 851 0039 DA010000 		.4byte	.LASF2
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 16
+
+
+ 852 003d 02       		.uleb128 0x2
+ 853 003e 02       		.byte	0x2
+ 854 003f 07       		.byte	0x7
+ 855 0040 C4000000 		.4byte	.LASF3
+ 856 0044 02       		.uleb128 0x2
+ 857 0045 04       		.byte	0x4
+ 858 0046 05       		.byte	0x5
+ 859 0047 E4010000 		.4byte	.LASF4
+ 860 004b 02       		.uleb128 0x2
+ 861 004c 04       		.byte	0x4
+ 862 004d 07       		.byte	0x7
+ 863 004e B2000000 		.4byte	.LASF5
+ 864 0052 02       		.uleb128 0x2
+ 865 0053 08       		.byte	0x8
+ 866 0054 05       		.byte	0x5
+ 867 0055 CC010000 		.4byte	.LASF6
+ 868 0059 02       		.uleb128 0x2
+ 869 005a 08       		.byte	0x8
+ 870 005b 07       		.byte	0x7
+ 871 005c 81010000 		.4byte	.LASF7
+ 872 0060 04       		.uleb128 0x4
+ 873 0061 04       		.byte	0x4
+ 874 0062 05       		.byte	0x5
+ 875 0063 696E7400 		.ascii	"int\000"
+ 876 0067 02       		.uleb128 0x2
+ 877 0068 04       		.byte	0x4
+ 878 0069 07       		.byte	0x7
+ 879 006a 74010000 		.4byte	.LASF8
+ 880 006e 03       		.uleb128 0x3
+ 881 006f 98010000 		.4byte	.LASF10
+ 882 0073 02       		.byte	0x2
+ 883 0074 18       		.byte	0x18
+ 884 0075 24000000 		.4byte	0x24
+ 885 0079 05       		.uleb128 0x5
+ 886 007a 91000000 		.4byte	0x91
+ 887 007e 8A000000 		.4byte	0x8a
+ 888 0082 06       		.uleb128 0x6
+ 889 0083 8A000000 		.4byte	0x8a
+ 890 0087 EB02     		.2byte	0x2eb
+ 891 0089 00       		.byte	0
+ 892 008a 02       		.uleb128 0x2
+ 893 008b 04       		.byte	0x4
+ 894 008c 07       		.byte	0x7
+ 895 008d C3010000 		.4byte	.LASF11
+ 896 0091 07       		.uleb128 0x7
+ 897 0092 6E000000 		.4byte	0x6e
+ 898 0096 08       		.uleb128 0x8
+ 899 0097 E7000000 		.4byte	.LASF12
+ 900 009b 03       		.byte	0x3
+ 901 009c 1F       		.byte	0x1f
+ 902 009d A7000000 		.4byte	0xa7
+ 903 00a1 05       		.uleb128 0x5
+ 904 00a2 03       		.byte	0x3
+ 905 00a3 00000000 		.4byte	cy_meta_configecc
+ 906 00a7 07       		.uleb128 0x7
+ 907 00a8 79000000 		.4byte	0x79
+ 908 00ac 05       		.uleb128 0x5
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 17
+
+
+ 909 00ad 91000000 		.4byte	0x91
+ 910 00b1 BC000000 		.4byte	0xbc
+ 911 00b5 09       		.uleb128 0x9
+ 912 00b6 8A000000 		.4byte	0x8a
+ 913 00ba 03       		.byte	0x3
+ 914 00bb 00       		.byte	0
+ 915 00bc 08       		.uleb128 0x8
+ 916 00bd D7000000 		.4byte	.LASF13
+ 917 00c1 03       		.byte	0x3
+ 918 00c2 8A       		.byte	0x8a
+ 919 00c3 CD000000 		.4byte	0xcd
+ 920 00c7 05       		.uleb128 0x5
+ 921 00c8 03       		.byte	0x3
+ 922 00c9 00000000 		.4byte	cy_meta_custnvl
+ 923 00cd 07       		.uleb128 0x7
+ 924 00ce AC000000 		.4byte	0xac
+ 925 00d2 08       		.uleb128 0x8
+ 926 00d3 B5010000 		.4byte	.LASF14
+ 927 00d7 03       		.byte	0x3
+ 928 00d8 98       		.byte	0x98
+ 929 00d9 E3000000 		.4byte	0xe3
+ 930 00dd 05       		.uleb128 0x5
+ 931 00de 03       		.byte	0x3
+ 932 00df 00000000 		.4byte	cy_meta_wonvl
+ 933 00e3 07       		.uleb128 0x7
+ 934 00e4 AC000000 		.4byte	0xac
+ 935 00e8 05       		.uleb128 0x5
+ 936 00e9 91000000 		.4byte	0x91
+ 937 00ed F8000000 		.4byte	0xf8
+ 938 00f1 09       		.uleb128 0x9
+ 939 00f2 8A000000 		.4byte	0x8a
+ 940 00f6 FF       		.byte	0xff
+ 941 00f7 00       		.byte	0
+ 942 00f8 08       		.uleb128 0x8
+ 943 00f9 A0010000 		.4byte	.LASF15
+ 944 00fd 03       		.byte	0x3
+ 945 00fe A6       		.byte	0xa6
+ 946 00ff 09010000 		.4byte	0x109
+ 947 0103 05       		.uleb128 0x5
+ 948 0104 03       		.byte	0x3
+ 949 0105 00000000 		.4byte	cy_meta_flashprotect
+ 950 0109 07       		.uleb128 0x7
+ 951 010a E8000000 		.4byte	0xe8
+ 952 010e 05       		.uleb128 0x5
+ 953 010f 91000000 		.4byte	0x91
+ 954 0113 1E010000 		.4byte	0x11e
+ 955 0117 09       		.uleb128 0x9
+ 956 0118 8A000000 		.4byte	0x8a
+ 957 011c 0B       		.byte	0xb
+ 958 011d 00       		.byte	0
+ 959 011e 08       		.uleb128 0x8
+ 960 011f 0A000000 		.4byte	.LASF16
+ 961 0123 03       		.byte	0x3
+ 962 0124 D3       		.byte	0xd3
+ 963 0125 2F010000 		.4byte	0x12f
+ 964 0129 05       		.uleb128 0x5
+ 965 012a 03       		.byte	0x3
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 18
+
+
+ 966 012b 00000000 		.4byte	cy_metadata
+ 967 012f 07       		.uleb128 0x7
+ 968 0130 0E010000 		.4byte	0x10e
+ 969 0134 00       		.byte	0
+ 970              		.section	.debug_abbrev,"",%progbits
+ 971              	.Ldebug_abbrev0:
+ 972 0000 01       		.uleb128 0x1
+ 973 0001 11       		.uleb128 0x11
+ 974 0002 01       		.byte	0x1
+ 975 0003 25       		.uleb128 0x25
+ 976 0004 0E       		.uleb128 0xe
+ 977 0005 13       		.uleb128 0x13
+ 978 0006 0B       		.uleb128 0xb
+ 979 0007 03       		.uleb128 0x3
+ 980 0008 0E       		.uleb128 0xe
+ 981 0009 1B       		.uleb128 0x1b
+ 982 000a 0E       		.uleb128 0xe
+ 983 000b 10       		.uleb128 0x10
+ 984 000c 17       		.uleb128 0x17
+ 985 000d 00       		.byte	0
+ 986 000e 00       		.byte	0
+ 987 000f 02       		.uleb128 0x2
+ 988 0010 24       		.uleb128 0x24
+ 989 0011 00       		.byte	0
+ 990 0012 0B       		.uleb128 0xb
+ 991 0013 0B       		.uleb128 0xb
+ 992 0014 3E       		.uleb128 0x3e
+ 993 0015 0B       		.uleb128 0xb
+ 994 0016 03       		.uleb128 0x3
+ 995 0017 0E       		.uleb128 0xe
+ 996 0018 00       		.byte	0
+ 997 0019 00       		.byte	0
+ 998 001a 03       		.uleb128 0x3
+ 999 001b 16       		.uleb128 0x16
+ 1000 001c 00       		.byte	0
+ 1001 001d 03       		.uleb128 0x3
+ 1002 001e 0E       		.uleb128 0xe
+ 1003 001f 3A       		.uleb128 0x3a
+ 1004 0020 0B       		.uleb128 0xb
+ 1005 0021 3B       		.uleb128 0x3b
+ 1006 0022 0B       		.uleb128 0xb
+ 1007 0023 49       		.uleb128 0x49
+ 1008 0024 13       		.uleb128 0x13
+ 1009 0025 00       		.byte	0
+ 1010 0026 00       		.byte	0
+ 1011 0027 04       		.uleb128 0x4
+ 1012 0028 24       		.uleb128 0x24
+ 1013 0029 00       		.byte	0
+ 1014 002a 0B       		.uleb128 0xb
+ 1015 002b 0B       		.uleb128 0xb
+ 1016 002c 3E       		.uleb128 0x3e
+ 1017 002d 0B       		.uleb128 0xb
+ 1018 002e 03       		.uleb128 0x3
+ 1019 002f 08       		.uleb128 0x8
+ 1020 0030 00       		.byte	0
+ 1021 0031 00       		.byte	0
+ 1022 0032 05       		.uleb128 0x5
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 19
+
+
+ 1023 0033 01       		.uleb128 0x1
+ 1024 0034 01       		.byte	0x1
+ 1025 0035 49       		.uleb128 0x49
+ 1026 0036 13       		.uleb128 0x13
+ 1027 0037 01       		.uleb128 0x1
+ 1028 0038 13       		.uleb128 0x13
+ 1029 0039 00       		.byte	0
+ 1030 003a 00       		.byte	0
+ 1031 003b 06       		.uleb128 0x6
+ 1032 003c 21       		.uleb128 0x21
+ 1033 003d 00       		.byte	0
+ 1034 003e 49       		.uleb128 0x49
+ 1035 003f 13       		.uleb128 0x13
+ 1036 0040 2F       		.uleb128 0x2f
+ 1037 0041 05       		.uleb128 0x5
+ 1038 0042 00       		.byte	0
+ 1039 0043 00       		.byte	0
+ 1040 0044 07       		.uleb128 0x7
+ 1041 0045 26       		.uleb128 0x26
+ 1042 0046 00       		.byte	0
+ 1043 0047 49       		.uleb128 0x49
+ 1044 0048 13       		.uleb128 0x13
+ 1045 0049 00       		.byte	0
+ 1046 004a 00       		.byte	0
+ 1047 004b 08       		.uleb128 0x8
+ 1048 004c 34       		.uleb128 0x34
+ 1049 004d 00       		.byte	0
+ 1050 004e 03       		.uleb128 0x3
+ 1051 004f 0E       		.uleb128 0xe
+ 1052 0050 3A       		.uleb128 0x3a
+ 1053 0051 0B       		.uleb128 0xb
+ 1054 0052 3B       		.uleb128 0x3b
+ 1055 0053 0B       		.uleb128 0xb
+ 1056 0054 49       		.uleb128 0x49
+ 1057 0055 13       		.uleb128 0x13
+ 1058 0056 3F       		.uleb128 0x3f
+ 1059 0057 19       		.uleb128 0x19
+ 1060 0058 02       		.uleb128 0x2
+ 1061 0059 18       		.uleb128 0x18
+ 1062 005a 00       		.byte	0
+ 1063 005b 00       		.byte	0
+ 1064 005c 09       		.uleb128 0x9
+ 1065 005d 21       		.uleb128 0x21
+ 1066 005e 00       		.byte	0
+ 1067 005f 49       		.uleb128 0x49
+ 1068 0060 13       		.uleb128 0x13
+ 1069 0061 2F       		.uleb128 0x2f
+ 1070 0062 0B       		.uleb128 0xb
+ 1071 0063 00       		.byte	0
+ 1072 0064 00       		.byte	0
+ 1073 0065 00       		.byte	0
+ 1074              		.section	.debug_aranges,"",%progbits
+ 1075 0000 14000000 		.4byte	0x14
+ 1076 0004 0200     		.2byte	0x2
+ 1077 0006 00000000 		.4byte	.Ldebug_info0
+ 1078 000a 04       		.byte	0x4
+ 1079 000b 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 20
+
+
+ 1080 000c 0000     		.2byte	0
+ 1081 000e 0000     		.2byte	0
+ 1082 0010 00000000 		.4byte	0
+ 1083 0014 00000000 		.4byte	0
+ 1084              		.section	.debug_line,"",%progbits
+ 1085              	.Ldebug_line0:
+ 1086 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 1086      02003701 
+ 1086      00000201 
+ 1086      FB0E0D00 
+ 1086      01010101 
+ 1087              	.LASF9:
+ 1088 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1088      6E74385F 
+ 1088      7400
+ 1089              	.LASF16:
+ 1090 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 1090      65746164 
+ 1090      61746100 
+ 1091              	.LASF1:
+ 1092 0016 756E7369 		.ascii	"unsigned char\000"
+ 1092      676E6564 
+ 1092      20636861 
+ 1092      7200
+ 1093              	.LASF17:
+ 1094 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1094      43313120 
+ 1094      352E342E 
+ 1094      31203230 
+ 1094      31363036 
+ 1095 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1095      20726576 
+ 1095      6973696F 
+ 1095      6E203233 
+ 1095      37373135 
+ 1096 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1096      66756E63 
+ 1096      74696F6E 
+ 1096      2D736563 
+ 1096      74696F6E 
+ 1097              	.LASF5:
+ 1098 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1098      20756E73 
+ 1098      69676E65 
+ 1098      6420696E 
+ 1098      7400
+ 1099              	.LASF3:
+ 1100 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 1100      7420756E 
+ 1100      7369676E 
+ 1100      65642069 
+ 1100      6E7400
+ 1101              	.LASF13:
+ 1102 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 1102      6574615F 
+ 1102      63757374 
+ 1102      6E766C00 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 21
+
+
+ 1103              	.LASF12:
+ 1104 00e7 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 1104      6574615F 
+ 1104      636F6E66 
+ 1104      69676563 
+ 1104      6300
+ 1105              	.LASF19:
+ 1106 00f9 443A5C6D 		.ascii	"D:\\myFolder\\projects\\Embedded-Systems-by-Dr.-Pol"
+ 1106      79466F6C 
+ 1106      6465725C 
+ 1106      70726F6A 
+ 1106      65637473 
+ 1107 0129 61636861 		.ascii	"achan\\Code Examples\\PSoC-5 Lab Book\\freeRTOS Exa"
+ 1107      6E5C436F 
+ 1107      64652045 
+ 1107      78616D70 
+ 1107      6C65735C 
+ 1108 0159 6D706C65 		.ascii	"mples\\freertos_queue.cydsn\000"
+ 1108      735C6672 
+ 1108      65657274 
+ 1108      6F735F71 
+ 1108      75657565 
+ 1109              	.LASF8:
+ 1110 0174 756E7369 		.ascii	"unsigned int\000"
+ 1110      676E6564 
+ 1110      20696E74 
+ 1110      00
+ 1111              	.LASF7:
+ 1112 0181 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1112      206C6F6E 
+ 1112      6720756E 
+ 1112      7369676E 
+ 1112      65642069 
+ 1113              	.LASF10:
+ 1114 0198 75696E74 		.ascii	"uint8_t\000"
+ 1114      385F7400 
+ 1115              	.LASF15:
+ 1116 01a0 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 1116      6574615F 
+ 1116      666C6173 
+ 1116      6870726F 
+ 1116      74656374 
+ 1117              	.LASF14:
+ 1118 01b5 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 1118      6574615F 
+ 1118      776F6E76 
+ 1118      6C00
+ 1119              	.LASF11:
+ 1120 01c3 73697A65 		.ascii	"sizetype\000"
+ 1120      74797065 
+ 1120      00
+ 1121              	.LASF6:
+ 1122 01cc 6C6F6E67 		.ascii	"long long int\000"
+ 1122      206C6F6E 
+ 1122      6720696E 
+ 1122      7400
+ 1123              	.LASF2:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccoNnPZU.s 			page 22
+
+
+ 1124 01da 73686F72 		.ascii	"short int\000"
+ 1124      7420696E 
+ 1124      7400
+ 1125              	.LASF4:
+ 1126 01e4 6C6F6E67 		.ascii	"long int\000"
+ 1126      20696E74 
+ 1126      00
+ 1127              	.LASF0:
+ 1128 01ed 7369676E 		.ascii	"signed char\000"
+ 1128      65642063 
+ 1128      68617200 
+ 1129              	.LASF18:
+ 1130 01f9 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 1130      72617465 
+ 1130      645F536F 
+ 1130      75726365 
+ 1130      5C50536F 
+ 1131              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

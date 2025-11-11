@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="freertos_examples\freertos_semaphore_isr\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="freertos_examples\freertos_queue\Source Files\main.c">
 <ExpandedNodeIds>
 <v>freertos_examples</v>
 <v>freertos_examples\freertos_mutex\TopDesign</v>
@@ -66,6 +66,57 @@
 <v>freertos_examples\freertos_mutex\Source Files\main.c</v>
 <v>freertos_examples\freertos_mutex\Generated_Source</v>
 <v>freertos_examples\freertos_mutex\Generated_Source\PSoC5</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\TopDesign</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Pins</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Analog</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Clocks</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Interrupts</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\DMA</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\System</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Directives</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\Flash Security</v>
+<v>freertos_examples\freertos_queue\freertos_queue.cydwr\EEPROM</v>
+<v>freertos_examples\freertos_queue\freertos</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3\port.c</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3\portmacro.h</v>
+<v>freertos_examples\freertos_queue\freertos\include</v>
+<v>freertos_examples\freertos_queue\freertos\include\croutine.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\deprecated_definitions.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\event_groups.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\FreeRTOS.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\list.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\message_buffer.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\mpu_prototypes.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\mpu_wrappers.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\portable.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\projdefs.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\queue.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\semphr.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\stack_macros.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\StackMacros.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\stream_buffer.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\task.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\timers.h</v>
+<v>freertos_examples\freertos_queue\freertos\memang</v>
+<v>freertos_examples\freertos_queue\freertos\memang\heap_1.c</v>
+<v>freertos_examples\freertos_queue\freertos\croutine.c</v>
+<v>freertos_examples\freertos_queue\freertos\event_groups.c</v>
+<v>freertos_examples\freertos_queue\freertos\FreeRTOSConfig.h</v>
+<v>freertos_examples\freertos_queue\freertos\list.c</v>
+<v>freertos_examples\freertos_queue\freertos\queue.c</v>
+<v>freertos_examples\freertos_queue\freertos\stream_buffer.c</v>
+<v>freertos_examples\freertos_queue\freertos\tasks.c</v>
+<v>freertos_examples\freertos_queue\freertos\timers.c</v>
+<v>freertos_examples\freertos_queue\Header Files</v>
+<v>freertos_examples\freertos_queue\Header Files\cyapicallbacks.h</v>
+<v>freertos_examples\freertos_queue\Source Files</v>
+<v>freertos_examples\freertos_queue\Source Files\FreeRTOS.c</v>
+<v>freertos_examples\freertos_queue\Source Files\main.c</v>
+<v>freertos_examples\freertos_queue\Generated_Source</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5</v>
 <v>freertos_examples\freertos_semaphore\TopDesign</v>
 <v>freertos_examples\freertos_semaphore\freertos_semaphore.cydwr</v>
 <v>freertos_examples\freertos_semaphore\freertos_semaphore.cydwr\Pins</v>
@@ -116,7 +167,6 @@
 <v>freertos_examples\freertos_semaphore\Source Files\main.c</v>
 <v>freertos_examples\freertos_semaphore\Generated_Source</v>
 <v>freertos_examples\freertos_semaphore\Generated_Source\PSoC5</v>
-<v>freertos_examples\freertos_semaphore_isr</v>
 <v>freertos_examples\freertos_semaphore_isr\TopDesign</v>
 <v>freertos_examples\freertos_semaphore_isr\freertos_semaphore_isr.cydwr</v>
 <v>freertos_examples\freertos_semaphore_isr\freertos_semaphore_isr.cydwr\Pins</v>
@@ -219,54 +269,54 @@
 <v>freertos_examples\freertos_tasks\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>freertos_examples\freertos_semaphore_isr\freertos\arm_cm3\portmacro.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\croutine.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\deprecated_definitions.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\event_groups.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\FreeRTOS.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\list.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\message_buffer.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\mpu_prototypes.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\mpu_wrappers.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\portable.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\projdefs.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\queue.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\semphr.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\stack_macros.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\StackMacros.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\stream_buffer.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\task.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\include\timers.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\memang</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\memang\heap_1.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\croutine.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\event_groups.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\FreeRTOSConfig.h</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\list.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\queue.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\stream_buffer.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\tasks.c</v>
-<v>freertos_examples\freertos_semaphore_isr\freertos\timers.c</v>
-<v>freertos_examples\freertos_semaphore_isr\Header Files</v>
-<v>freertos_examples\freertos_semaphore_isr\Header Files\cyapicallbacks.h</v>
-<v>freertos_examples\freertos_semaphore_isr\Source Files</v>
-<v>freertos_examples\freertos_semaphore_isr\Source Files\FreeRTOS.c</v>
-<v>freertos_examples\freertos_semaphore_isr\Source Files\main.c</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cy_boot</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\isr_1</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\led</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\Pin_SW</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cycodeshareexport.ld</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cycodeshareimport.ld</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cycodeshareimport.scat</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cydevice.h</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cydevice_trm.h</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cydevicegnu.inc</v>
-<v>freertos_examples\freertos_semaphore_isr\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3\port.c</v>
+<v>freertos_examples\freertos_queue\freertos\arm_cm3\portmacro.h</v>
+<v>freertos_examples\freertos_queue\freertos\include</v>
+<v>freertos_examples\freertos_queue\freertos\include\croutine.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\deprecated_definitions.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\event_groups.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\FreeRTOS.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\list.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\message_buffer.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\mpu_prototypes.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\mpu_wrappers.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\portable.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\projdefs.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\queue.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\semphr.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\stack_macros.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\StackMacros.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\stream_buffer.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\task.h</v>
+<v>freertos_examples\freertos_queue\freertos\include\timers.h</v>
+<v>freertos_examples\freertos_queue\freertos\memang</v>
+<v>freertos_examples\freertos_queue\freertos\memang\heap_1.c</v>
+<v>freertos_examples\freertos_queue\freertos\croutine.c</v>
+<v>freertos_examples\freertos_queue\freertos\event_groups.c</v>
+<v>freertos_examples\freertos_queue\freertos\FreeRTOSConfig.h</v>
+<v>freertos_examples\freertos_queue\freertos\list.c</v>
+<v>freertos_examples\freertos_queue\freertos\queue.c</v>
+<v>freertos_examples\freertos_queue\freertos\stream_buffer.c</v>
+<v>freertos_examples\freertos_queue\freertos\tasks.c</v>
+<v>freertos_examples\freertos_queue\freertos\timers.c</v>
+<v>freertos_examples\freertos_queue\Header Files</v>
+<v>freertos_examples\freertos_queue\Header Files\cyapicallbacks.h</v>
+<v>freertos_examples\freertos_queue\Source Files</v>
+<v>freertos_examples\freertos_queue\Source Files\FreeRTOS.c</v>
+<v>freertos_examples\freertos_queue\Source Files\main.c</v>
+<v>freertos_examples\freertos_queue\Generated_Source</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cy_boot</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\led</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\UART</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\UART_IntClock</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cydevice.h</v>
+<v>freertos_examples\freertos_queue\Generated_Source\PSoC5\cydevice_trm.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -275,6 +325,9 @@
 <v>freertos_examples\freertos_mutex</v>
 <v>freertos_examples\freertos_mutex\TopDesign</v>
 <v>freertos_examples\freertos_mutex\TopDesign\TopDesign.cysch</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\TopDesign</v>
+<v>freertos_examples\freertos_queue\TopDesign\TopDesign.cysch</v>
 <v>freertos_examples\freertos_semaphore</v>
 <v>freertos_examples\freertos_semaphore\TopDesign</v>
 <v>freertos_examples\freertos_semaphore\TopDesign\TopDesign.cysch</v>
@@ -290,6 +343,9 @@
 <v>freertos_examples\freertos_mutex</v>
 <v>freertos_examples\freertos_mutex\TopDesign</v>
 <v>freertos_examples\freertos_mutex\TopDesign\TopDesign.cysch</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\TopDesign</v>
+<v>freertos_examples\freertos_queue\TopDesign\TopDesign.cysch</v>
 <v>freertos_examples\freertos_semaphore</v>
 <v>freertos_examples\freertos_semaphore\TopDesign</v>
 <v>freertos_examples\freertos_semaphore\TopDesign\TopDesign.cysch</v>
@@ -347,6 +403,45 @@
 <v>freertos_examples\freertos_mutex\freertos_mutex.gpdsc</v>
 <v>freertos_examples\freertos_mutex\freertos_mutex.rpt</v>
 <v>freertos_examples\freertos_mutex\freertos_mutex_timing.html</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\CortexM3</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\event_groups.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\FreeRTOS.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_1.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\led.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\freertos_queue.elf</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\freertos_queue.hex</v>
+<v>freertos_examples\freertos_queue\CortexM3\ARM_GCC_541\Debug\freertos_queue.map</v>
+<v>freertos_examples\freertos_queue\freertos_queue.gpdsc</v>
+<v>freertos_examples\freertos_queue\freertos_queue.rpt</v>
+<v>freertos_examples\freertos_queue\freertos_queue_timing.html</v>
 <v>freertos_examples\freertos_semaphore</v>
 <v>freertos_examples\freertos_semaphore\CortexM3</v>
 <v>freertos_examples\freertos_semaphore\CortexM3\ARM_GCC_541</v>
@@ -467,7 +562,7 @@
 <v>freertos_examples\freertos_mutex</v>
 <v>freertos_examples\freertos_mutex\freertos_mutex.rpt</v>
 <v>freertos_examples\freertos_mutex\freertos_mutex_timing.html</v>
-<v>freertos_examples\freertos_semaphore</v>
+<v>freertos_examples\freertos_queue</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -487,6 +582,15 @@
 <v>freertos_examples\freertos_mutex\cy_pins_v2_20</v>
 <v>freertos_examples\freertos_mutex\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>freertos_examples\freertos_mutex\UART_v2_50.pdf</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\PSoC 5LP Architecture TRM</v>
+<v>freertos_examples\freertos_queue\CY8C58LP Family Datasheet</v>
+<v>freertos_examples\freertos_queue\System Reference Guides</v>
+<v>freertos_examples\freertos_queue\System Reference Guides\cy_boot_v5_80</v>
+<v>freertos_examples\freertos_queue\cy_constant_v1_0.pdf</v>
+<v>freertos_examples\freertos_queue\cy_pins_v2_20</v>
+<v>freertos_examples\freertos_queue\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>freertos_examples\freertos_queue\UART_v2_50.pdf</v>
 <v>freertos_examples\freertos_semaphore</v>
 <v>freertos_examples\freertos_semaphore\PSoC 5LP Architecture TRM</v>
 <v>freertos_examples\freertos_semaphore\CY8C58LP Family Datasheet</v>
@@ -525,6 +629,15 @@
 <v>freertos_examples\freertos_mutex\cy_pins_v2_20</v>
 <v>freertos_examples\freertos_mutex\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>freertos_examples\freertos_mutex\UART_v2_50.pdf</v>
+<v>freertos_examples\freertos_queue</v>
+<v>freertos_examples\freertos_queue\PSoC 5LP Architecture TRM</v>
+<v>freertos_examples\freertos_queue\CY8C58LP Family Datasheet</v>
+<v>freertos_examples\freertos_queue\System Reference Guides</v>
+<v>freertos_examples\freertos_queue\System Reference Guides\cy_boot_v5_80</v>
+<v>freertos_examples\freertos_queue\cy_constant_v1_0.pdf</v>
+<v>freertos_examples\freertos_queue\cy_pins_v2_20</v>
+<v>freertos_examples\freertos_queue\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>freertos_examples\freertos_queue\UART_v2_50.pdf</v>
 <v>freertos_examples\freertos_semaphore</v>
 <v>freertos_examples\freertos_semaphore\PSoC 5LP Architecture TRM</v>
 <v>freertos_examples\freertos_semaphore\CY8C58LP Family Datasheet</v>

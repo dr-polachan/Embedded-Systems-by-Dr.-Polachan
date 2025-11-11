@@ -1,0 +1,1570 @@
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.adc_task,"ax",%progbits
+  20              		.align	2
+  21              		.global	adc_task
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	adc_task, %function
+  25              	adc_task:
+  26              	.LFB69:
+  27              		.file 1 "main.c"
+   1:main.c        **** /*
+   2:main.c        ****  ============================================================================
+   3:main.c        ****  Name        : FreeRTOS Project
+   4:main.c        ****  Author      : Dr. Kurian Polachan
+   5:main.c        ****  Description : Example project demonstrating mutual exclusion (mutex) in FreeRTOS.
+   6:main.c        ****                Two concurrent tasks (UART and LED) share access to the UART port.
+   7:main.c        ****                A mutex ensures that only one task can write to UART at a time,
+   8:main.c        ****                preventing interleaved or corrupted output.
+   9:main.c        **** 
+  10:main.c        ****  Acknowledgment:
+  11:main.c        ****  This code builds upon and makes use of the structure, conventions, and examples
+  12:main.c        ****  from the open-source project:
+  13:main.c        ****      https://github.com/Karthik23tala/Embedded-C-Lab-Book
+  14:main.c        ****  maintained by Karthik T. and contributors.
+  15:main.c        **** 
+  16:main.c        ****  License     : For educational and research use. Attribution required.
+  17:main.c        ****  ============================================================================
+  18:main.c        **** */
+  19:main.c        **** 
+  20:main.c        **** #include <stdio.h>
+  21:main.c        **** #include <stdlib.h>
+  22:main.c        **** #include <math.h>
+  23:main.c        **** #include <string.h>
+  24:main.c        **** #include "project.h"
+  25:main.c        **** #include "FreeRTOS.h"
+  26:main.c        **** #include "task.h"
+  27:main.c        **** #include "timers.h"
+  28:main.c        **** #include "queue.h"
+  29:main.c        **** #include "semphr.h"
+  30:main.c        **** 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 2
+
+
+  31:main.c        **** extern void FreeRTOS_Start();
+  32:main.c        **** 
+  33:main.c        **** static QueueHandle_t adcQueue;
+  34:main.c        **** 
+  35:main.c        **** typedef struct {
+  36:main.c        ****     uint16 index;     // sample index
+  37:main.c        ****     uint16 sample;    // 12-bit ADC sample (dummy)
+  38:main.c        **** } adc_msg_t;
+  39:main.c        **** 
+  40:main.c        **** 
+  41:main.c        **** void adc_task()
+  42:main.c        **** {
+  28              		.loc 1 42 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              		.cfi_def_cfa_offset 16
+  38              	.LVL0:
+  43:main.c        ****     adc_msg_t msg_adc;
+  44:main.c        ****     uint16 counter=0;
+  39              		.loc 1 44 0
+  40 0004 0024     		movs	r4, #0
+  41              	.LVL1:
+  42              	.L2:
+  45:main.c        ****     
+  46:main.c        ****     while(1)
+  47:main.c        ****     {
+  48:main.c        ****         msg_adc.index = counter; counter++;
+  43              		.loc 1 48 0 discriminator 1
+  44 0006 ADF80440 		strh	r4, [sp, #4]	@ movhi
+  45 000a 0134     		adds	r4, r4, #1
+  46              	.LVL2:
+  47 000c A4B2     		uxth	r4, r4
+  48              	.LVL3:
+  49:main.c        ****         msg_adc.sample = (uint16_t)(rand() & 0x0FFF);
+  49              		.loc 1 49 0 discriminator 1
+  50 000e FFF7FEFF 		bl	rand
+  51              	.LVL4:
+  52 0012 C0F30B00 		ubfx	r0, r0, #0, #12
+  53 0016 ADF80600 		strh	r0, [sp, #6]	@ movhi
+  50:main.c        **** 
+  51:main.c        ****                 
+  52:main.c        ****         xQueueSend(adcQueue, &msg_adc, portMAX_DELAY);
+  54              		.loc 1 52 0 discriminator 1
+  55 001a 0023     		movs	r3, #0
+  56 001c 4FF0FF32 		mov	r2, #-1
+  57 0020 01A9     		add	r1, sp, #4
+  58 0022 0448     		ldr	r0, .L4
+  59 0024 0068     		ldr	r0, [r0]
+  60 0026 FFF7FEFF 		bl	xQueueGenericSend
+  61              	.LVL5:
+  53:main.c        ****         
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 3
+
+
+  54:main.c        ****         vTaskDelay(pdMS_TO_TICKS(100));     
+  62              		.loc 1 54 0 discriminator 1
+  63 002a 6420     		movs	r0, #100
+  64 002c FFF7FEFF 		bl	vTaskDelay
+  65              	.LVL6:
+  66 0030 E9E7     		b	.L2
+  67              	.L5:
+  68 0032 00BF     		.align	2
+  69              	.L4:
+  70 0034 00000000 		.word	.LANCHOR0
+  71              		.cfi_endproc
+  72              	.LFE69:
+  73              		.size	adc_task, .-adc_task
+  74              		.section	.text.uart_task,"ax",%progbits
+  75              		.align	2
+  76              		.global	uart_task
+  77              		.thumb
+  78              		.thumb_func
+  79              		.type	uart_task, %function
+  80              	uart_task:
+  81              	.LFB70:
+  55:main.c        ****     }
+  56:main.c        **** }
+  57:main.c        **** 
+  58:main.c        **** void uart_task()
+  59:main.c        **** {
+  82              		.loc 1 59 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 104
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 00B5     		push	{lr}
+  87              		.cfi_def_cfa_offset 4
+  88              		.cfi_offset 14, -4
+  89 0002 9BB0     		sub	sp, sp, #108
+  90              		.cfi_def_cfa_offset 112
+  91              	.L8:
+  92              	.LBB2:
+  60:main.c        ****     while(1)
+  61:main.c        ****     {
+  62:main.c        ****         adc_msg_t msg_rcv;
+  63:main.c        ****         char str[100];
+  64:main.c        **** 
+  65:main.c        ****         if (xQueueReceive(adcQueue, &msg_rcv, portMAX_DELAY) == pdTRUE)
+  93              		.loc 1 65 0
+  94 0004 4FF0FF32 		mov	r2, #-1
+  95 0008 6946     		mov	r1, sp
+  96 000a 0A4B     		ldr	r3, .L10
+  97 000c 1868     		ldr	r0, [r3]
+  98 000e FFF7FEFF 		bl	xQueueReceive
+  99              	.LVL7:
+ 100 0012 0128     		cmp	r0, #1
+ 101 0014 0AD1     		bne	.L7
+  66:main.c        ****         {
+  67:main.c        ****             sprintf(str, "ADC %d %d\r\n", msg_rcv.index, msg_rcv.sample);
+ 102              		.loc 1 67 0
+ 103 0016 BDF80230 		ldrh	r3, [sp, #2]
+ 104 001a BDF80020 		ldrh	r2, [sp]
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 4
+
+
+ 105 001e 0649     		ldr	r1, .L10+4
+ 106 0020 01A8     		add	r0, sp, #4
+ 107 0022 FFF7FEFF 		bl	sprintf
+ 108              	.LVL8:
+  68:main.c        ****             UART_PutString(str);  
+ 109              		.loc 1 68 0
+ 110 0026 01A8     		add	r0, sp, #4
+ 111 0028 FFF7FEFF 		bl	UART_PutString
+ 112              	.LVL9:
+ 113              	.L7:
+  69:main.c        ****         }         
+  70:main.c        ****         
+  71:main.c        ****         vTaskDelay(pdMS_TO_TICKS(100)); 
+ 114              		.loc 1 71 0
+ 115 002c 6420     		movs	r0, #100
+ 116 002e FFF7FEFF 		bl	vTaskDelay
+ 117              	.LVL10:
+ 118              	.LBE2:
+  72:main.c        ****     }    
+ 119              		.loc 1 72 0
+ 120 0032 E7E7     		b	.L8
+ 121              	.L11:
+ 122              		.align	2
+ 123              	.L10:
+ 124 0034 00000000 		.word	.LANCHOR0
+ 125 0038 00000000 		.word	.LC0
+ 126              		.cfi_endproc
+ 127              	.LFE70:
+ 128              		.size	uart_task, .-uart_task
+ 129              		.section	.text.main,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	main
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.type	main, %function
+ 135              	main:
+ 136              	.LFB71:
+  73:main.c        **** }
+  74:main.c        **** 
+  75:main.c        **** 
+  76:main.c        **** int main(void)
+  77:main.c        **** {
+ 137              		.loc 1 77 0
+ 138              		.cfi_startproc
+ 139              		@ Volatile: function does not return.
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142 0000 00B5     		push	{lr}
+ 143              		.cfi_def_cfa_offset 4
+ 144              		.cfi_offset 14, -4
+ 145 0002 83B0     		sub	sp, sp, #12
+ 146              		.cfi_def_cfa_offset 16
+  78:main.c        ****     CyGlobalIntEnable;
+ 147              		.loc 1 78 0
+ 148              		.syntax unified
+ 149              	@ 78 "main.c" 1
+ 150 0004 62B6     		CPSIE   i
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 5
+
+
+ 151              	@ 0 "" 2
+  79:main.c        ****         
+  80:main.c        ****     UART_Start();
+ 152              		.loc 1 80 0
+ 153              		.thumb
+ 154              		.syntax unified
+ 155 0006 FFF7FEFF 		bl	UART_Start
+ 156              	.LVL11:
+  81:main.c        ****     UART_ClearTxBuffer();
+ 157              		.loc 1 81 0
+ 158 000a FFF7FEFF 		bl	UART_ClearTxBuffer
+ 159              	.LVL12:
+  82:main.c        ****     
+  83:main.c        ****     FreeRTOS_Start();
+ 160              		.loc 1 83 0
+ 161 000e FFF7FEFF 		bl	FreeRTOS_Start
+ 162              	.LVL13:
+  84:main.c        ****     
+  85:main.c        ****     /* Create queue to hold up to 32 adc_msg_t items */
+  86:main.c        ****     adcQueue = xQueueCreate(32, sizeof(adc_msg_t));
+ 163              		.loc 1 86 0
+ 164 0012 0022     		movs	r2, #0
+ 165 0014 0421     		movs	r1, #4
+ 166 0016 2020     		movs	r0, #32
+ 167 0018 FFF7FEFF 		bl	xQueueGenericCreate
+ 168              	.LVL14:
+ 169 001c 0B4B     		ldr	r3, .L15
+ 170 001e 1860     		str	r0, [r3]
+  87:main.c        ****     
+  88:main.c        ****     xTaskCreate(adc_task, "ADC Task", 200, NULL, 5, NULL);
+ 171              		.loc 1 88 0
+ 172 0020 0024     		movs	r4, #0
+ 173 0022 0194     		str	r4, [sp, #4]
+ 174 0024 0525     		movs	r5, #5
+ 175 0026 0095     		str	r5, [sp]
+ 176 0028 2346     		mov	r3, r4
+ 177 002a C822     		movs	r2, #200
+ 178 002c 0849     		ldr	r1, .L15+4
+ 179 002e 0948     		ldr	r0, .L15+8
+ 180 0030 FFF7FEFF 		bl	xTaskCreate
+ 181              	.LVL15:
+  89:main.c        ****     xTaskCreate(uart_task, "UART_Task", 200, NULL, 5, NULL);
+ 182              		.loc 1 89 0
+ 183 0034 0194     		str	r4, [sp, #4]
+ 184 0036 0095     		str	r5, [sp]
+ 185 0038 2346     		mov	r3, r4
+ 186 003a C822     		movs	r2, #200
+ 187 003c 0649     		ldr	r1, .L15+12
+ 188 003e 0748     		ldr	r0, .L15+16
+ 189 0040 FFF7FEFF 		bl	xTaskCreate
+ 190              	.LVL16:
+  90:main.c        ****     
+  91:main.c        ****     vTaskStartScheduler();
+ 191              		.loc 1 91 0
+ 192 0044 FFF7FEFF 		bl	vTaskStartScheduler
+ 193              	.LVL17:
+ 194              	.L13:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 6
+
+
+ 195 0048 FEE7     		b	.L13
+ 196              	.L16:
+ 197 004a 00BF     		.align	2
+ 198              	.L15:
+ 199 004c 00000000 		.word	.LANCHOR0
+ 200 0050 0C000000 		.word	.LC1
+ 201 0054 00000000 		.word	adc_task
+ 202 0058 18000000 		.word	.LC2
+ 203 005c 00000000 		.word	uart_task
+ 204              		.cfi_endproc
+ 205              	.LFE71:
+ 206              		.size	main, .-main
+ 207              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 208              		.align	2
+ 209              	.LC0:
+ 210 0000 41444320 		.ascii	"ADC %d %d\015\012\000"
+ 210      25642025 
+ 210      640D0A00 
+ 211              	.LC1:
+ 212 000c 41444320 		.ascii	"ADC Task\000"
+ 212      5461736B 
+ 212      00
+ 213 0015 000000   		.space	3
+ 214              	.LC2:
+ 215 0018 55415254 		.ascii	"UART_Task\000"
+ 215      5F546173 
+ 215      6B00
+ 216              		.bss
+ 217              		.align	2
+ 218              		.set	.LANCHOR0,. + 0
+ 219              		.type	adcQueue, %object
+ 220              		.size	adcQueue, 4
+ 221              	adcQueue:
+ 222 0000 00000000 		.space	4
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 226              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 227              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 228              		.file 5 "..\\FreeRTOS\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 229              		.file 6 "..\\FreeRTOS\\Source\\include/queue.h"
+ 230              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 231              		.file 8 "..\\FreeRTOS\\Source\\include/task.h"
+ 232              		.file 9 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 233              		.file 10 "Generated_Source\\PSoC5/UART.h"
+ 234              		.file 11 "Generated_Source\\PSoC5/core_cm3.h"
+ 235              		.section	.debug_info,"",%progbits
+ 236              	.Ldebug_info0:
+ 237 0000 D9030000 		.4byte	0x3d9
+ 238 0004 0400     		.2byte	0x4
+ 239 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 240 000a 04       		.byte	0x4
+ 241 000b 01       		.uleb128 0x1
+ 242 000c 9A000000 		.4byte	.LASF47
+ 243 0010 0C       		.byte	0xc
+ 244 0011 9F020000 		.4byte	.LASF48
+ 245 0015 AD010000 		.4byte	.LASF49
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 7
+
+
+ 246 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 247 001d 00000000 		.4byte	0
+ 248 0021 00000000 		.4byte	.Ldebug_line0
+ 249 0025 02       		.uleb128 0x2
+ 250 0026 01       		.byte	0x1
+ 251 0027 06       		.byte	0x6
+ 252 0028 08030000 		.4byte	.LASF0
+ 253 002c 03       		.uleb128 0x3
+ 254 002d 11000000 		.4byte	.LASF3
+ 255 0031 02       		.byte	0x2
+ 256 0032 1D       		.byte	0x1d
+ 257 0033 37000000 		.4byte	0x37
+ 258 0037 02       		.uleb128 0x2
+ 259 0038 01       		.byte	0x1
+ 260 0039 08       		.byte	0x8
+ 261 003a 70010000 		.4byte	.LASF1
+ 262 003e 02       		.uleb128 0x2
+ 263 003f 02       		.byte	0x2
+ 264 0040 05       		.byte	0x5
+ 265 0041 5A000000 		.4byte	.LASF2
+ 266 0045 03       		.uleb128 0x3
+ 267 0046 7E010000 		.4byte	.LASF4
+ 268 004a 02       		.byte	0x2
+ 269 004b 2B       		.byte	0x2b
+ 270 004c 50000000 		.4byte	0x50
+ 271 0050 02       		.uleb128 0x2
+ 272 0051 02       		.byte	0x2
+ 273 0052 07       		.byte	0x7
+ 274 0053 45010000 		.4byte	.LASF5
+ 275 0057 03       		.uleb128 0x3
+ 276 0058 2E000000 		.4byte	.LASF6
+ 277 005c 02       		.byte	0x2
+ 278 005d 3F       		.byte	0x3f
+ 279 005e 62000000 		.4byte	0x62
+ 280 0062 02       		.uleb128 0x2
+ 281 0063 04       		.byte	0x4
+ 282 0064 05       		.byte	0x5
+ 283 0065 E8020000 		.4byte	.LASF7
+ 284 0069 03       		.uleb128 0x3
+ 285 006a 28010000 		.4byte	.LASF8
+ 286 006e 02       		.byte	0x2
+ 287 006f 41       		.byte	0x41
+ 288 0070 74000000 		.4byte	0x74
+ 289 0074 02       		.uleb128 0x2
+ 290 0075 04       		.byte	0x4
+ 291 0076 07       		.byte	0x7
+ 292 0077 33010000 		.4byte	.LASF9
+ 293 007b 02       		.uleb128 0x2
+ 294 007c 08       		.byte	0x8
+ 295 007d 05       		.byte	0x5
+ 296 007e 91020000 		.4byte	.LASF10
+ 297 0082 02       		.uleb128 0x2
+ 298 0083 08       		.byte	0x8
+ 299 0084 07       		.byte	0x7
+ 300 0085 4D020000 		.4byte	.LASF11
+ 301 0089 04       		.uleb128 0x4
+ 302 008a 04       		.byte	0x4
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 8
+
+
+ 303 008b 05       		.byte	0x5
+ 304 008c 696E7400 		.ascii	"int\000"
+ 305 0090 02       		.uleb128 0x2
+ 306 0091 04       		.byte	0x4
+ 307 0092 07       		.byte	0x7
+ 308 0093 40020000 		.4byte	.LASF12
+ 309 0097 02       		.uleb128 0x2
+ 310 0098 08       		.byte	0x8
+ 311 0099 04       		.byte	0x4
+ 312 009a FC020000 		.4byte	.LASF13
+ 313 009e 02       		.uleb128 0x2
+ 314 009f 04       		.byte	0x4
+ 315 00a0 07       		.byte	0x7
+ 316 00a1 88020000 		.4byte	.LASF14
+ 317 00a5 02       		.uleb128 0x2
+ 318 00a6 01       		.byte	0x1
+ 319 00a7 08       		.byte	0x8
+ 320 00a8 A6020000 		.4byte	.LASF15
+ 321 00ac 03       		.uleb128 0x3
+ 322 00ad 64020000 		.4byte	.LASF16
+ 323 00b1 03       		.byte	0x3
+ 324 00b2 18       		.byte	0x18
+ 325 00b3 2C000000 		.4byte	0x2c
+ 326 00b7 03       		.uleb128 0x3
+ 327 00b8 D6020000 		.4byte	.LASF17
+ 328 00bc 03       		.byte	0x3
+ 329 00bd 24       		.byte	0x24
+ 330 00be 45000000 		.4byte	0x45
+ 331 00c2 03       		.uleb128 0x3
+ 332 00c3 80020000 		.4byte	.LASF18
+ 333 00c7 03       		.byte	0x3
+ 334 00c8 2C       		.byte	0x2c
+ 335 00c9 57000000 		.4byte	0x57
+ 336 00cd 03       		.uleb128 0x3
+ 337 00ce DF020000 		.4byte	.LASF19
+ 338 00d2 03       		.byte	0x3
+ 339 00d3 30       		.byte	0x30
+ 340 00d4 69000000 		.4byte	0x69
+ 341 00d8 02       		.uleb128 0x2
+ 342 00d9 08       		.byte	0x8
+ 343 00da 04       		.byte	0x4
+ 344 00db 72000000 		.4byte	.LASF20
+ 345 00df 02       		.uleb128 0x2
+ 346 00e0 04       		.byte	0x4
+ 347 00e1 04       		.byte	0x4
+ 348 00e2 79000000 		.4byte	.LASF21
+ 349 00e6 05       		.uleb128 0x5
+ 350 00e7 A6010000 		.4byte	.LASF22
+ 351 00eb 04       		.byte	0x4
+ 352 00ec E501     		.2byte	0x1e5
+ 353 00ee 50000000 		.4byte	0x50
+ 354 00f2 03       		.uleb128 0x3
+ 355 00f3 2B030000 		.4byte	.LASF23
+ 356 00f7 05       		.byte	0x5
+ 357 00f8 38       		.byte	0x38
+ 358 00f9 62000000 		.4byte	0x62
+ 359 00fd 03       		.uleb128 0x3
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 9
+
+
+ 360 00fe 23000000 		.4byte	.LASF24
+ 361 0102 05       		.byte	0x5
+ 362 0103 3F       		.byte	0x3f
+ 363 0104 CD000000 		.4byte	0xcd
+ 364 0108 03       		.uleb128 0x3
+ 365 0109 38000000 		.4byte	.LASF25
+ 366 010d 06       		.byte	0x6
+ 367 010e 30       		.byte	0x30
+ 368 010f 13010000 		.4byte	0x113
+ 369 0113 06       		.uleb128 0x6
+ 370 0114 04       		.byte	0x4
+ 371 0115 19010000 		.4byte	0x119
+ 372 0119 07       		.uleb128 0x7
+ 373 011a 28020000 		.4byte	.LASF50
+ 374 011e 08       		.uleb128 0x8
+ 375 011f 04       		.byte	0x4
+ 376 0120 01       		.byte	0x1
+ 377 0121 23       		.byte	0x23
+ 378 0122 3F010000 		.4byte	0x13f
+ 379 0126 09       		.uleb128 0x9
+ 380 0127 AB020000 		.4byte	.LASF26
+ 381 012b 01       		.byte	0x1
+ 382 012c 24       		.byte	0x24
+ 383 012d E6000000 		.4byte	0xe6
+ 384 0131 00       		.byte	0
+ 385 0132 09       		.uleb128 0x9
+ 386 0133 00000000 		.4byte	.LASF27
+ 387 0137 01       		.byte	0x1
+ 388 0138 25       		.byte	0x25
+ 389 0139 E6000000 		.4byte	0xe6
+ 390 013d 02       		.byte	0x2
+ 391 013e 00       		.byte	0
+ 392 013f 03       		.uleb128 0x3
+ 393 0140 07000000 		.4byte	.LASF28
+ 394 0144 01       		.byte	0x1
+ 395 0145 26       		.byte	0x26
+ 396 0146 1E010000 		.4byte	0x11e
+ 397 014a 0A       		.uleb128 0xa
+ 398 014b 87000000 		.4byte	.LASF31
+ 399 014f 01       		.byte	0x1
+ 400 0150 29       		.byte	0x29
+ 401 0151 00000000 		.4byte	.LFB69
+ 402 0155 38000000 		.4byte	.LFE69-.LFB69
+ 403 0159 01       		.uleb128 0x1
+ 404 015a 9C       		.byte	0x9c
+ 405 015b B5010000 		.4byte	0x1b5
+ 406 015f 0B       		.uleb128 0xb
+ 407 0160 38020000 		.4byte	.LASF29
+ 408 0164 01       		.byte	0x1
+ 409 0165 2B       		.byte	0x2b
+ 410 0166 3F010000 		.4byte	0x13f
+ 411 016a 02       		.uleb128 0x2
+ 412 016b 91       		.byte	0x91
+ 413 016c 74       		.sleb128 -12
+ 414 016d 0C       		.uleb128 0xc
+ 415 016e 7F000000 		.4byte	.LASF30
+ 416 0172 01       		.byte	0x1
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 10
+
+
+ 417 0173 2C       		.byte	0x2c
+ 418 0174 E6000000 		.4byte	0xe6
+ 419 0178 00000000 		.4byte	.LLST0
+ 420 017c 0D       		.uleb128 0xd
+ 421 017d 12000000 		.4byte	.LVL4
+ 422 0181 52030000 		.4byte	0x352
+ 423 0185 0E       		.uleb128 0xe
+ 424 0186 2A000000 		.4byte	.LVL5
+ 425 018a 5D030000 		.4byte	0x35d
+ 426 018e A4010000 		.4byte	0x1a4
+ 427 0192 0F       		.uleb128 0xf
+ 428 0193 01       		.uleb128 0x1
+ 429 0194 51       		.byte	0x51
+ 430 0195 02       		.uleb128 0x2
+ 431 0196 91       		.byte	0x91
+ 432 0197 74       		.sleb128 -12
+ 433 0198 0F       		.uleb128 0xf
+ 434 0199 01       		.uleb128 0x1
+ 435 019a 52       		.byte	0x52
+ 436 019b 02       		.uleb128 0x2
+ 437 019c 09       		.byte	0x9
+ 438 019d FF       		.byte	0xff
+ 439 019e 0F       		.uleb128 0xf
+ 440 019f 01       		.uleb128 0x1
+ 441 01a0 53       		.byte	0x53
+ 442 01a1 01       		.uleb128 0x1
+ 443 01a2 30       		.byte	0x30
+ 444 01a3 00       		.byte	0
+ 445 01a4 10       		.uleb128 0x10
+ 446 01a5 30000000 		.4byte	.LVL6
+ 447 01a9 69030000 		.4byte	0x369
+ 448 01ad 0F       		.uleb128 0xf
+ 449 01ae 01       		.uleb128 0x1
+ 450 01af 50       		.byte	0x50
+ 451 01b0 02       		.uleb128 0x2
+ 452 01b1 08       		.byte	0x8
+ 453 01b2 64       		.byte	0x64
+ 454 01b3 00       		.byte	0
+ 455 01b4 00       		.byte	0
+ 456 01b5 0A       		.uleb128 0xa
+ 457 01b6 90000000 		.4byte	.LASF32
+ 458 01ba 01       		.byte	0x1
+ 459 01bb 3A       		.byte	0x3a
+ 460 01bc 00000000 		.4byte	.LFB70
+ 461 01c0 3C000000 		.4byte	.LFE70-.LFB70
+ 462 01c4 01       		.uleb128 0x1
+ 463 01c5 9C       		.byte	0x9c
+ 464 01c6 50020000 		.4byte	0x250
+ 465 01ca 11       		.uleb128 0x11
+ 466 01cb 04000000 		.4byte	.LBB2
+ 467 01cf 2E000000 		.4byte	.LBE2-.LBB2
+ 468 01d3 0B       		.uleb128 0xb
+ 469 01d4 1B000000 		.4byte	.LASF33
+ 470 01d8 01       		.byte	0x1
+ 471 01d9 3E       		.byte	0x3e
+ 472 01da 3F010000 		.4byte	0x13f
+ 473 01de 03       		.uleb128 0x3
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 11
+
+
+ 474 01df 91       		.byte	0x91
+ 475 01e0 907F     		.sleb128 -112
+ 476 01e2 12       		.uleb128 0x12
+ 477 01e3 73747200 		.ascii	"str\000"
+ 478 01e7 01       		.byte	0x1
+ 479 01e8 3F       		.byte	0x3f
+ 480 01e9 50020000 		.4byte	0x250
+ 481 01ed 03       		.uleb128 0x3
+ 482 01ee 91       		.byte	0x91
+ 483 01ef 947F     		.sleb128 -108
+ 484 01f1 0E       		.uleb128 0xe
+ 485 01f2 12000000 		.4byte	.LVL7
+ 486 01f6 75030000 		.4byte	0x375
+ 487 01fa 0B020000 		.4byte	0x20b
+ 488 01fe 0F       		.uleb128 0xf
+ 489 01ff 01       		.uleb128 0x1
+ 490 0200 51       		.byte	0x51
+ 491 0201 02       		.uleb128 0x2
+ 492 0202 7D       		.byte	0x7d
+ 493 0203 00       		.sleb128 0
+ 494 0204 0F       		.uleb128 0xf
+ 495 0205 01       		.uleb128 0x1
+ 496 0206 52       		.byte	0x52
+ 497 0207 02       		.uleb128 0x2
+ 498 0208 09       		.byte	0x9
+ 499 0209 FF       		.byte	0xff
+ 500 020a 00       		.byte	0
+ 501 020b 0E       		.uleb128 0xe
+ 502 020c 26000000 		.4byte	.LVL8
+ 503 0210 81030000 		.4byte	0x381
+ 504 0214 29020000 		.4byte	0x229
+ 505 0218 0F       		.uleb128 0xf
+ 506 0219 01       		.uleb128 0x1
+ 507 021a 50       		.byte	0x50
+ 508 021b 03       		.uleb128 0x3
+ 509 021c 91       		.byte	0x91
+ 510 021d 947F     		.sleb128 -108
+ 511 021f 0F       		.uleb128 0xf
+ 512 0220 01       		.uleb128 0x1
+ 513 0221 51       		.byte	0x51
+ 514 0222 05       		.uleb128 0x5
+ 515 0223 03       		.byte	0x3
+ 516 0224 00000000 		.4byte	.LC0
+ 517 0228 00       		.byte	0
+ 518 0229 0E       		.uleb128 0xe
+ 519 022a 2C000000 		.4byte	.LVL9
+ 520 022e 8C030000 		.4byte	0x38c
+ 521 0232 3E020000 		.4byte	0x23e
+ 522 0236 0F       		.uleb128 0xf
+ 523 0237 01       		.uleb128 0x1
+ 524 0238 50       		.byte	0x50
+ 525 0239 03       		.uleb128 0x3
+ 526 023a 91       		.byte	0x91
+ 527 023b 947F     		.sleb128 -108
+ 528 023d 00       		.byte	0
+ 529 023e 10       		.uleb128 0x10
+ 530 023f 32000000 		.4byte	.LVL10
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 12
+
+
+ 531 0243 69030000 		.4byte	0x369
+ 532 0247 0F       		.uleb128 0xf
+ 533 0248 01       		.uleb128 0x1
+ 534 0249 50       		.byte	0x50
+ 535 024a 02       		.uleb128 0x2
+ 536 024b 08       		.byte	0x8
+ 537 024c 64       		.byte	0x64
+ 538 024d 00       		.byte	0
+ 539 024e 00       		.byte	0
+ 540 024f 00       		.byte	0
+ 541 0250 13       		.uleb128 0x13
+ 542 0251 A5000000 		.4byte	0xa5
+ 543 0255 60020000 		.4byte	0x260
+ 544 0259 14       		.uleb128 0x14
+ 545 025a 9E000000 		.4byte	0x9e
+ 546 025e 63       		.byte	0x63
+ 547 025f 00       		.byte	0
+ 548 0260 15       		.uleb128 0x15
+ 549 0261 7B020000 		.4byte	.LASF51
+ 550 0265 01       		.byte	0x1
+ 551 0266 4C       		.byte	0x4c
+ 552 0267 89000000 		.4byte	0x89
+ 553 026b 00000000 		.4byte	.LFB71
+ 554 026f 60000000 		.4byte	.LFE71-.LFB71
+ 555 0273 01       		.uleb128 0x1
+ 556 0274 9C       		.byte	0x9c
+ 557 0275 30030000 		.4byte	0x330
+ 558 0279 0D       		.uleb128 0xd
+ 559 027a 0A000000 		.4byte	.LVL11
+ 560 027e 97030000 		.4byte	0x397
+ 561 0282 0D       		.uleb128 0xd
+ 562 0283 0E000000 		.4byte	.LVL12
+ 563 0287 A2030000 		.4byte	0x3a2
+ 564 028b 0D       		.uleb128 0xd
+ 565 028c 12000000 		.4byte	.LVL13
+ 566 0290 AD030000 		.4byte	0x3ad
+ 567 0294 0E       		.uleb128 0xe
+ 568 0295 1C000000 		.4byte	.LVL14
+ 569 0299 B8030000 		.4byte	0x3b8
+ 570 029d B2020000 		.4byte	0x2b2
+ 571 02a1 0F       		.uleb128 0xf
+ 572 02a2 01       		.uleb128 0x1
+ 573 02a3 50       		.byte	0x50
+ 574 02a4 02       		.uleb128 0x2
+ 575 02a5 08       		.byte	0x8
+ 576 02a6 20       		.byte	0x20
+ 577 02a7 0F       		.uleb128 0xf
+ 578 02a8 01       		.uleb128 0x1
+ 579 02a9 51       		.byte	0x51
+ 580 02aa 01       		.uleb128 0x1
+ 581 02ab 34       		.byte	0x34
+ 582 02ac 0F       		.uleb128 0xf
+ 583 02ad 01       		.uleb128 0x1
+ 584 02ae 52       		.byte	0x52
+ 585 02af 01       		.uleb128 0x1
+ 586 02b0 30       		.byte	0x30
+ 587 02b1 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 13
+
+
+ 588 02b2 0E       		.uleb128 0xe
+ 589 02b3 34000000 		.4byte	.LVL15
+ 590 02b7 C4030000 		.4byte	0x3c4
+ 591 02bb EC020000 		.4byte	0x2ec
+ 592 02bf 0F       		.uleb128 0xf
+ 593 02c0 01       		.uleb128 0x1
+ 594 02c1 50       		.byte	0x50
+ 595 02c2 05       		.uleb128 0x5
+ 596 02c3 03       		.byte	0x3
+ 597 02c4 00000000 		.4byte	adc_task
+ 598 02c8 0F       		.uleb128 0xf
+ 599 02c9 01       		.uleb128 0x1
+ 600 02ca 51       		.byte	0x51
+ 601 02cb 05       		.uleb128 0x5
+ 602 02cc 03       		.byte	0x3
+ 603 02cd 0C000000 		.4byte	.LC1
+ 604 02d1 0F       		.uleb128 0xf
+ 605 02d2 01       		.uleb128 0x1
+ 606 02d3 52       		.byte	0x52
+ 607 02d4 02       		.uleb128 0x2
+ 608 02d5 08       		.byte	0x8
+ 609 02d6 C8       		.byte	0xc8
+ 610 02d7 0F       		.uleb128 0xf
+ 611 02d8 01       		.uleb128 0x1
+ 612 02d9 53       		.byte	0x53
+ 613 02da 02       		.uleb128 0x2
+ 614 02db 74       		.byte	0x74
+ 615 02dc 00       		.sleb128 0
+ 616 02dd 0F       		.uleb128 0xf
+ 617 02de 02       		.uleb128 0x2
+ 618 02df 7D       		.byte	0x7d
+ 619 02e0 00       		.sleb128 0
+ 620 02e1 02       		.uleb128 0x2
+ 621 02e2 75       		.byte	0x75
+ 622 02e3 00       		.sleb128 0
+ 623 02e4 0F       		.uleb128 0xf
+ 624 02e5 02       		.uleb128 0x2
+ 625 02e6 7D       		.byte	0x7d
+ 626 02e7 04       		.sleb128 4
+ 627 02e8 02       		.uleb128 0x2
+ 628 02e9 74       		.byte	0x74
+ 629 02ea 00       		.sleb128 0
+ 630 02eb 00       		.byte	0
+ 631 02ec 0E       		.uleb128 0xe
+ 632 02ed 44000000 		.4byte	.LVL16
+ 633 02f1 C4030000 		.4byte	0x3c4
+ 634 02f5 26030000 		.4byte	0x326
+ 635 02f9 0F       		.uleb128 0xf
+ 636 02fa 01       		.uleb128 0x1
+ 637 02fb 50       		.byte	0x50
+ 638 02fc 05       		.uleb128 0x5
+ 639 02fd 03       		.byte	0x3
+ 640 02fe 00000000 		.4byte	uart_task
+ 641 0302 0F       		.uleb128 0xf
+ 642 0303 01       		.uleb128 0x1
+ 643 0304 51       		.byte	0x51
+ 644 0305 05       		.uleb128 0x5
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 14
+
+
+ 645 0306 03       		.byte	0x3
+ 646 0307 18000000 		.4byte	.LC2
+ 647 030b 0F       		.uleb128 0xf
+ 648 030c 01       		.uleb128 0x1
+ 649 030d 52       		.byte	0x52
+ 650 030e 02       		.uleb128 0x2
+ 651 030f 08       		.byte	0x8
+ 652 0310 C8       		.byte	0xc8
+ 653 0311 0F       		.uleb128 0xf
+ 654 0312 01       		.uleb128 0x1
+ 655 0313 53       		.byte	0x53
+ 656 0314 02       		.uleb128 0x2
+ 657 0315 74       		.byte	0x74
+ 658 0316 00       		.sleb128 0
+ 659 0317 0F       		.uleb128 0xf
+ 660 0318 02       		.uleb128 0x2
+ 661 0319 7D       		.byte	0x7d
+ 662 031a 00       		.sleb128 0
+ 663 031b 02       		.uleb128 0x2
+ 664 031c 75       		.byte	0x75
+ 665 031d 00       		.sleb128 0
+ 666 031e 0F       		.uleb128 0xf
+ 667 031f 02       		.uleb128 0x2
+ 668 0320 7D       		.byte	0x7d
+ 669 0321 04       		.sleb128 4
+ 670 0322 02       		.uleb128 0x2
+ 671 0323 74       		.byte	0x74
+ 672 0324 00       		.sleb128 0
+ 673 0325 00       		.byte	0
+ 674 0326 0D       		.uleb128 0xd
+ 675 0327 48000000 		.4byte	.LVL17
+ 676 032b D0030000 		.4byte	0x3d0
+ 677 032f 00       		.byte	0
+ 678 0330 0B       		.uleb128 0xb
+ 679 0331 9D010000 		.4byte	.LASF34
+ 680 0335 01       		.byte	0x1
+ 681 0336 21       		.byte	0x21
+ 682 0337 08010000 		.4byte	0x108
+ 683 033b 05       		.uleb128 0x5
+ 684 033c 03       		.byte	0x3
+ 685 033d 00000000 		.4byte	adcQueue
+ 686 0341 16       		.uleb128 0x16
+ 687 0342 63010000 		.4byte	.LASF52
+ 688 0346 0B       		.byte	0xb
+ 689 0347 1207     		.2byte	0x712
+ 690 0349 4D030000 		.4byte	0x34d
+ 691 034d 17       		.uleb128 0x17
+ 692 034e C2000000 		.4byte	0xc2
+ 693 0352 18       		.uleb128 0x18
+ 694 0353 42030000 		.4byte	.LASF35
+ 695 0357 42030000 		.4byte	.LASF35
+ 696 035b 07       		.byte	0x7
+ 697 035c 88       		.byte	0x88
+ 698 035d 19       		.uleb128 0x19
+ 699 035e B1020000 		.4byte	.LASF36
+ 700 0362 B1020000 		.4byte	.LASF36
+ 701 0366 06       		.byte	0x6
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 15
+
+
+ 702 0367 8A02     		.2byte	0x28a
+ 703 0369 19       		.uleb128 0x19
+ 704 036a F1020000 		.4byte	.LASF37
+ 705 036e F1020000 		.4byte	.LASF37
+ 706 0372 08       		.byte	0x8
+ 707 0373 F602     		.2byte	0x2f6
+ 708 0375 19       		.uleb128 0x19
+ 709 0376 64000000 		.4byte	.LASF38
+ 710 037a 64000000 		.4byte	.LASF38
+ 711 037e 06       		.byte	0x6
+ 712 037f 6403     		.2byte	0x364
+ 713 0381 18       		.uleb128 0x18
+ 714 0382 23030000 		.4byte	.LASF39
+ 715 0386 23030000 		.4byte	.LASF39
+ 716 038a 09       		.byte	0x9
+ 717 038b E7       		.byte	0xe7
+ 718 038c 18       		.uleb128 0x18
+ 719 038d 14030000 		.4byte	.LASF40
+ 720 0391 14030000 		.4byte	.LASF40
+ 721 0395 0A       		.byte	0xa
+ 722 0396 8B       		.byte	0x8b
+ 723 0397 18       		.uleb128 0x18
+ 724 0398 58010000 		.4byte	.LASF41
+ 725 039c 58010000 		.4byte	.LASF41
+ 726 03a0 0A       		.byte	0xa
+ 727 03a1 54       		.byte	0x54
+ 728 03a2 18       		.uleb128 0x18
+ 729 03a3 C3020000 		.4byte	.LASF42
+ 730 03a7 C3020000 		.4byte	.LASF42
+ 731 03ab 0A       		.byte	0xa
+ 732 03ac 8F       		.byte	0x8f
+ 733 03ad 18       		.uleb128 0x18
+ 734 03ae 6C020000 		.4byte	.LASF43
+ 735 03b2 6C020000 		.4byte	.LASF43
+ 736 03b6 01       		.byte	0x1
+ 737 03b7 1F       		.byte	0x1f
+ 738 03b8 19       		.uleb128 0x19
+ 739 03b9 89010000 		.4byte	.LASF44
+ 740 03bd 89010000 		.4byte	.LASF44
+ 741 03c1 06       		.byte	0x6
+ 742 03c2 D805     		.2byte	0x5d8
+ 743 03c4 19       		.uleb128 0x19
+ 744 03c5 36030000 		.4byte	.LASF45
+ 745 03c9 36030000 		.4byte	.LASF45
+ 746 03cd 08       		.byte	0x8
+ 747 03ce 4A01     		.2byte	0x14a
+ 748 03d0 19       		.uleb128 0x19
+ 749 03d1 46000000 		.4byte	.LASF46
+ 750 03d5 46000000 		.4byte	.LASF46
+ 751 03d9 08       		.byte	0x8
+ 752 03da 9704     		.2byte	0x497
+ 753 03dc 00       		.byte	0
+ 754              		.section	.debug_abbrev,"",%progbits
+ 755              	.Ldebug_abbrev0:
+ 756 0000 01       		.uleb128 0x1
+ 757 0001 11       		.uleb128 0x11
+ 758 0002 01       		.byte	0x1
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 16
+
+
+ 759 0003 25       		.uleb128 0x25
+ 760 0004 0E       		.uleb128 0xe
+ 761 0005 13       		.uleb128 0x13
+ 762 0006 0B       		.uleb128 0xb
+ 763 0007 03       		.uleb128 0x3
+ 764 0008 0E       		.uleb128 0xe
+ 765 0009 1B       		.uleb128 0x1b
+ 766 000a 0E       		.uleb128 0xe
+ 767 000b 55       		.uleb128 0x55
+ 768 000c 17       		.uleb128 0x17
+ 769 000d 11       		.uleb128 0x11
+ 770 000e 01       		.uleb128 0x1
+ 771 000f 10       		.uleb128 0x10
+ 772 0010 17       		.uleb128 0x17
+ 773 0011 00       		.byte	0
+ 774 0012 00       		.byte	0
+ 775 0013 02       		.uleb128 0x2
+ 776 0014 24       		.uleb128 0x24
+ 777 0015 00       		.byte	0
+ 778 0016 0B       		.uleb128 0xb
+ 779 0017 0B       		.uleb128 0xb
+ 780 0018 3E       		.uleb128 0x3e
+ 781 0019 0B       		.uleb128 0xb
+ 782 001a 03       		.uleb128 0x3
+ 783 001b 0E       		.uleb128 0xe
+ 784 001c 00       		.byte	0
+ 785 001d 00       		.byte	0
+ 786 001e 03       		.uleb128 0x3
+ 787 001f 16       		.uleb128 0x16
+ 788 0020 00       		.byte	0
+ 789 0021 03       		.uleb128 0x3
+ 790 0022 0E       		.uleb128 0xe
+ 791 0023 3A       		.uleb128 0x3a
+ 792 0024 0B       		.uleb128 0xb
+ 793 0025 3B       		.uleb128 0x3b
+ 794 0026 0B       		.uleb128 0xb
+ 795 0027 49       		.uleb128 0x49
+ 796 0028 13       		.uleb128 0x13
+ 797 0029 00       		.byte	0
+ 798 002a 00       		.byte	0
+ 799 002b 04       		.uleb128 0x4
+ 800 002c 24       		.uleb128 0x24
+ 801 002d 00       		.byte	0
+ 802 002e 0B       		.uleb128 0xb
+ 803 002f 0B       		.uleb128 0xb
+ 804 0030 3E       		.uleb128 0x3e
+ 805 0031 0B       		.uleb128 0xb
+ 806 0032 03       		.uleb128 0x3
+ 807 0033 08       		.uleb128 0x8
+ 808 0034 00       		.byte	0
+ 809 0035 00       		.byte	0
+ 810 0036 05       		.uleb128 0x5
+ 811 0037 16       		.uleb128 0x16
+ 812 0038 00       		.byte	0
+ 813 0039 03       		.uleb128 0x3
+ 814 003a 0E       		.uleb128 0xe
+ 815 003b 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 17
+
+
+ 816 003c 0B       		.uleb128 0xb
+ 817 003d 3B       		.uleb128 0x3b
+ 818 003e 05       		.uleb128 0x5
+ 819 003f 49       		.uleb128 0x49
+ 820 0040 13       		.uleb128 0x13
+ 821 0041 00       		.byte	0
+ 822 0042 00       		.byte	0
+ 823 0043 06       		.uleb128 0x6
+ 824 0044 0F       		.uleb128 0xf
+ 825 0045 00       		.byte	0
+ 826 0046 0B       		.uleb128 0xb
+ 827 0047 0B       		.uleb128 0xb
+ 828 0048 49       		.uleb128 0x49
+ 829 0049 13       		.uleb128 0x13
+ 830 004a 00       		.byte	0
+ 831 004b 00       		.byte	0
+ 832 004c 07       		.uleb128 0x7
+ 833 004d 13       		.uleb128 0x13
+ 834 004e 00       		.byte	0
+ 835 004f 03       		.uleb128 0x3
+ 836 0050 0E       		.uleb128 0xe
+ 837 0051 3C       		.uleb128 0x3c
+ 838 0052 19       		.uleb128 0x19
+ 839 0053 00       		.byte	0
+ 840 0054 00       		.byte	0
+ 841 0055 08       		.uleb128 0x8
+ 842 0056 13       		.uleb128 0x13
+ 843 0057 01       		.byte	0x1
+ 844 0058 0B       		.uleb128 0xb
+ 845 0059 0B       		.uleb128 0xb
+ 846 005a 3A       		.uleb128 0x3a
+ 847 005b 0B       		.uleb128 0xb
+ 848 005c 3B       		.uleb128 0x3b
+ 849 005d 0B       		.uleb128 0xb
+ 850 005e 01       		.uleb128 0x1
+ 851 005f 13       		.uleb128 0x13
+ 852 0060 00       		.byte	0
+ 853 0061 00       		.byte	0
+ 854 0062 09       		.uleb128 0x9
+ 855 0063 0D       		.uleb128 0xd
+ 856 0064 00       		.byte	0
+ 857 0065 03       		.uleb128 0x3
+ 858 0066 0E       		.uleb128 0xe
+ 859 0067 3A       		.uleb128 0x3a
+ 860 0068 0B       		.uleb128 0xb
+ 861 0069 3B       		.uleb128 0x3b
+ 862 006a 0B       		.uleb128 0xb
+ 863 006b 49       		.uleb128 0x49
+ 864 006c 13       		.uleb128 0x13
+ 865 006d 38       		.uleb128 0x38
+ 866 006e 0B       		.uleb128 0xb
+ 867 006f 00       		.byte	0
+ 868 0070 00       		.byte	0
+ 869 0071 0A       		.uleb128 0xa
+ 870 0072 2E       		.uleb128 0x2e
+ 871 0073 01       		.byte	0x1
+ 872 0074 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 18
+
+
+ 873 0075 19       		.uleb128 0x19
+ 874 0076 03       		.uleb128 0x3
+ 875 0077 0E       		.uleb128 0xe
+ 876 0078 3A       		.uleb128 0x3a
+ 877 0079 0B       		.uleb128 0xb
+ 878 007a 3B       		.uleb128 0x3b
+ 879 007b 0B       		.uleb128 0xb
+ 880 007c 8701     		.uleb128 0x87
+ 881 007e 19       		.uleb128 0x19
+ 882 007f 11       		.uleb128 0x11
+ 883 0080 01       		.uleb128 0x1
+ 884 0081 12       		.uleb128 0x12
+ 885 0082 06       		.uleb128 0x6
+ 886 0083 40       		.uleb128 0x40
+ 887 0084 18       		.uleb128 0x18
+ 888 0085 9742     		.uleb128 0x2117
+ 889 0087 19       		.uleb128 0x19
+ 890 0088 01       		.uleb128 0x1
+ 891 0089 13       		.uleb128 0x13
+ 892 008a 00       		.byte	0
+ 893 008b 00       		.byte	0
+ 894 008c 0B       		.uleb128 0xb
+ 895 008d 34       		.uleb128 0x34
+ 896 008e 00       		.byte	0
+ 897 008f 03       		.uleb128 0x3
+ 898 0090 0E       		.uleb128 0xe
+ 899 0091 3A       		.uleb128 0x3a
+ 900 0092 0B       		.uleb128 0xb
+ 901 0093 3B       		.uleb128 0x3b
+ 902 0094 0B       		.uleb128 0xb
+ 903 0095 49       		.uleb128 0x49
+ 904 0096 13       		.uleb128 0x13
+ 905 0097 02       		.uleb128 0x2
+ 906 0098 18       		.uleb128 0x18
+ 907 0099 00       		.byte	0
+ 908 009a 00       		.byte	0
+ 909 009b 0C       		.uleb128 0xc
+ 910 009c 34       		.uleb128 0x34
+ 911 009d 00       		.byte	0
+ 912 009e 03       		.uleb128 0x3
+ 913 009f 0E       		.uleb128 0xe
+ 914 00a0 3A       		.uleb128 0x3a
+ 915 00a1 0B       		.uleb128 0xb
+ 916 00a2 3B       		.uleb128 0x3b
+ 917 00a3 0B       		.uleb128 0xb
+ 918 00a4 49       		.uleb128 0x49
+ 919 00a5 13       		.uleb128 0x13
+ 920 00a6 02       		.uleb128 0x2
+ 921 00a7 17       		.uleb128 0x17
+ 922 00a8 00       		.byte	0
+ 923 00a9 00       		.byte	0
+ 924 00aa 0D       		.uleb128 0xd
+ 925 00ab 898201   		.uleb128 0x4109
+ 926 00ae 00       		.byte	0
+ 927 00af 11       		.uleb128 0x11
+ 928 00b0 01       		.uleb128 0x1
+ 929 00b1 31       		.uleb128 0x31
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 19
+
+
+ 930 00b2 13       		.uleb128 0x13
+ 931 00b3 00       		.byte	0
+ 932 00b4 00       		.byte	0
+ 933 00b5 0E       		.uleb128 0xe
+ 934 00b6 898201   		.uleb128 0x4109
+ 935 00b9 01       		.byte	0x1
+ 936 00ba 11       		.uleb128 0x11
+ 937 00bb 01       		.uleb128 0x1
+ 938 00bc 31       		.uleb128 0x31
+ 939 00bd 13       		.uleb128 0x13
+ 940 00be 01       		.uleb128 0x1
+ 941 00bf 13       		.uleb128 0x13
+ 942 00c0 00       		.byte	0
+ 943 00c1 00       		.byte	0
+ 944 00c2 0F       		.uleb128 0xf
+ 945 00c3 8A8201   		.uleb128 0x410a
+ 946 00c6 00       		.byte	0
+ 947 00c7 02       		.uleb128 0x2
+ 948 00c8 18       		.uleb128 0x18
+ 949 00c9 9142     		.uleb128 0x2111
+ 950 00cb 18       		.uleb128 0x18
+ 951 00cc 00       		.byte	0
+ 952 00cd 00       		.byte	0
+ 953 00ce 10       		.uleb128 0x10
+ 954 00cf 898201   		.uleb128 0x4109
+ 955 00d2 01       		.byte	0x1
+ 956 00d3 11       		.uleb128 0x11
+ 957 00d4 01       		.uleb128 0x1
+ 958 00d5 31       		.uleb128 0x31
+ 959 00d6 13       		.uleb128 0x13
+ 960 00d7 00       		.byte	0
+ 961 00d8 00       		.byte	0
+ 962 00d9 11       		.uleb128 0x11
+ 963 00da 0B       		.uleb128 0xb
+ 964 00db 01       		.byte	0x1
+ 965 00dc 11       		.uleb128 0x11
+ 966 00dd 01       		.uleb128 0x1
+ 967 00de 12       		.uleb128 0x12
+ 968 00df 06       		.uleb128 0x6
+ 969 00e0 00       		.byte	0
+ 970 00e1 00       		.byte	0
+ 971 00e2 12       		.uleb128 0x12
+ 972 00e3 34       		.uleb128 0x34
+ 973 00e4 00       		.byte	0
+ 974 00e5 03       		.uleb128 0x3
+ 975 00e6 08       		.uleb128 0x8
+ 976 00e7 3A       		.uleb128 0x3a
+ 977 00e8 0B       		.uleb128 0xb
+ 978 00e9 3B       		.uleb128 0x3b
+ 979 00ea 0B       		.uleb128 0xb
+ 980 00eb 49       		.uleb128 0x49
+ 981 00ec 13       		.uleb128 0x13
+ 982 00ed 02       		.uleb128 0x2
+ 983 00ee 18       		.uleb128 0x18
+ 984 00ef 00       		.byte	0
+ 985 00f0 00       		.byte	0
+ 986 00f1 13       		.uleb128 0x13
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 20
+
+
+ 987 00f2 01       		.uleb128 0x1
+ 988 00f3 01       		.byte	0x1
+ 989 00f4 49       		.uleb128 0x49
+ 990 00f5 13       		.uleb128 0x13
+ 991 00f6 01       		.uleb128 0x1
+ 992 00f7 13       		.uleb128 0x13
+ 993 00f8 00       		.byte	0
+ 994 00f9 00       		.byte	0
+ 995 00fa 14       		.uleb128 0x14
+ 996 00fb 21       		.uleb128 0x21
+ 997 00fc 00       		.byte	0
+ 998 00fd 49       		.uleb128 0x49
+ 999 00fe 13       		.uleb128 0x13
+ 1000 00ff 2F       		.uleb128 0x2f
+ 1001 0100 0B       		.uleb128 0xb
+ 1002 0101 00       		.byte	0
+ 1003 0102 00       		.byte	0
+ 1004 0103 15       		.uleb128 0x15
+ 1005 0104 2E       		.uleb128 0x2e
+ 1006 0105 01       		.byte	0x1
+ 1007 0106 3F       		.uleb128 0x3f
+ 1008 0107 19       		.uleb128 0x19
+ 1009 0108 03       		.uleb128 0x3
+ 1010 0109 0E       		.uleb128 0xe
+ 1011 010a 3A       		.uleb128 0x3a
+ 1012 010b 0B       		.uleb128 0xb
+ 1013 010c 3B       		.uleb128 0x3b
+ 1014 010d 0B       		.uleb128 0xb
+ 1015 010e 27       		.uleb128 0x27
+ 1016 010f 19       		.uleb128 0x19
+ 1017 0110 49       		.uleb128 0x49
+ 1018 0111 13       		.uleb128 0x13
+ 1019 0112 8701     		.uleb128 0x87
+ 1020 0114 19       		.uleb128 0x19
+ 1021 0115 11       		.uleb128 0x11
+ 1022 0116 01       		.uleb128 0x1
+ 1023 0117 12       		.uleb128 0x12
+ 1024 0118 06       		.uleb128 0x6
+ 1025 0119 40       		.uleb128 0x40
+ 1026 011a 18       		.uleb128 0x18
+ 1027 011b 9742     		.uleb128 0x2117
+ 1028 011d 19       		.uleb128 0x19
+ 1029 011e 01       		.uleb128 0x1
+ 1030 011f 13       		.uleb128 0x13
+ 1031 0120 00       		.byte	0
+ 1032 0121 00       		.byte	0
+ 1033 0122 16       		.uleb128 0x16
+ 1034 0123 34       		.uleb128 0x34
+ 1035 0124 00       		.byte	0
+ 1036 0125 03       		.uleb128 0x3
+ 1037 0126 0E       		.uleb128 0xe
+ 1038 0127 3A       		.uleb128 0x3a
+ 1039 0128 0B       		.uleb128 0xb
+ 1040 0129 3B       		.uleb128 0x3b
+ 1041 012a 05       		.uleb128 0x5
+ 1042 012b 49       		.uleb128 0x49
+ 1043 012c 13       		.uleb128 0x13
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 21
+
+
+ 1044 012d 3F       		.uleb128 0x3f
+ 1045 012e 19       		.uleb128 0x19
+ 1046 012f 3C       		.uleb128 0x3c
+ 1047 0130 19       		.uleb128 0x19
+ 1048 0131 00       		.byte	0
+ 1049 0132 00       		.byte	0
+ 1050 0133 17       		.uleb128 0x17
+ 1051 0134 35       		.uleb128 0x35
+ 1052 0135 00       		.byte	0
+ 1053 0136 49       		.uleb128 0x49
+ 1054 0137 13       		.uleb128 0x13
+ 1055 0138 00       		.byte	0
+ 1056 0139 00       		.byte	0
+ 1057 013a 18       		.uleb128 0x18
+ 1058 013b 2E       		.uleb128 0x2e
+ 1059 013c 00       		.byte	0
+ 1060 013d 3F       		.uleb128 0x3f
+ 1061 013e 19       		.uleb128 0x19
+ 1062 013f 3C       		.uleb128 0x3c
+ 1063 0140 19       		.uleb128 0x19
+ 1064 0141 6E       		.uleb128 0x6e
+ 1065 0142 0E       		.uleb128 0xe
+ 1066 0143 03       		.uleb128 0x3
+ 1067 0144 0E       		.uleb128 0xe
+ 1068 0145 3A       		.uleb128 0x3a
+ 1069 0146 0B       		.uleb128 0xb
+ 1070 0147 3B       		.uleb128 0x3b
+ 1071 0148 0B       		.uleb128 0xb
+ 1072 0149 00       		.byte	0
+ 1073 014a 00       		.byte	0
+ 1074 014b 19       		.uleb128 0x19
+ 1075 014c 2E       		.uleb128 0x2e
+ 1076 014d 00       		.byte	0
+ 1077 014e 3F       		.uleb128 0x3f
+ 1078 014f 19       		.uleb128 0x19
+ 1079 0150 3C       		.uleb128 0x3c
+ 1080 0151 19       		.uleb128 0x19
+ 1081 0152 6E       		.uleb128 0x6e
+ 1082 0153 0E       		.uleb128 0xe
+ 1083 0154 03       		.uleb128 0x3
+ 1084 0155 0E       		.uleb128 0xe
+ 1085 0156 3A       		.uleb128 0x3a
+ 1086 0157 0B       		.uleb128 0xb
+ 1087 0158 3B       		.uleb128 0x3b
+ 1088 0159 05       		.uleb128 0x5
+ 1089 015a 00       		.byte	0
+ 1090 015b 00       		.byte	0
+ 1091 015c 00       		.byte	0
+ 1092              		.section	.debug_loc,"",%progbits
+ 1093              	.Ldebug_loc0:
+ 1094              	.LLST0:
+ 1095 0000 04000000 		.4byte	.LVL0
+ 1096 0004 06000000 		.4byte	.LVL1
+ 1097 0008 0200     		.2byte	0x2
+ 1098 000a 30       		.byte	0x30
+ 1099 000b 9F       		.byte	0x9f
+ 1100 000c 06000000 		.4byte	.LVL1
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 22
+
+
+ 1101 0010 0C000000 		.4byte	.LVL2
+ 1102 0014 0100     		.2byte	0x1
+ 1103 0016 54       		.byte	0x54
+ 1104 0017 0C000000 		.4byte	.LVL2
+ 1105 001b 0E000000 		.4byte	.LVL3
+ 1106 001f 0200     		.2byte	0x2
+ 1107 0021 91       		.byte	0x91
+ 1108 0022 74       		.sleb128 -12
+ 1109 0023 0E000000 		.4byte	.LVL3
+ 1110 0027 38000000 		.4byte	.LFE69
+ 1111 002b 0100     		.2byte	0x1
+ 1112 002d 54       		.byte	0x54
+ 1113 002e 00000000 		.4byte	0
+ 1114 0032 00000000 		.4byte	0
+ 1115              		.section	.debug_aranges,"",%progbits
+ 1116 0000 2C000000 		.4byte	0x2c
+ 1117 0004 0200     		.2byte	0x2
+ 1118 0006 00000000 		.4byte	.Ldebug_info0
+ 1119 000a 04       		.byte	0x4
+ 1120 000b 00       		.byte	0
+ 1121 000c 0000     		.2byte	0
+ 1122 000e 0000     		.2byte	0
+ 1123 0010 00000000 		.4byte	.LFB69
+ 1124 0014 38000000 		.4byte	.LFE69-.LFB69
+ 1125 0018 00000000 		.4byte	.LFB70
+ 1126 001c 3C000000 		.4byte	.LFE70-.LFB70
+ 1127 0020 00000000 		.4byte	.LFB71
+ 1128 0024 60000000 		.4byte	.LFE71-.LFB71
+ 1129 0028 00000000 		.4byte	0
+ 1130 002c 00000000 		.4byte	0
+ 1131              		.section	.debug_ranges,"",%progbits
+ 1132              	.Ldebug_ranges0:
+ 1133 0000 00000000 		.4byte	.LFB69
+ 1134 0004 38000000 		.4byte	.LFE69
+ 1135 0008 00000000 		.4byte	.LFB70
+ 1136 000c 3C000000 		.4byte	.LFE70
+ 1137 0010 00000000 		.4byte	.LFB71
+ 1138 0014 60000000 		.4byte	.LFE71
+ 1139 0018 00000000 		.4byte	0
+ 1140 001c 00000000 		.4byte	0
+ 1141              		.section	.debug_line,"",%progbits
+ 1142              	.Ldebug_line0:
+ 1143 0000 92020000 		.section	.debug_str,"MS",%progbits,1
+ 1143      02003C02 
+ 1143      00000201 
+ 1143      FB0E0D00 
+ 1143      01010101 
+ 1144              	.LASF27:
+ 1145 0000 73616D70 		.ascii	"sample\000"
+ 1145      6C6500
+ 1146              	.LASF28:
+ 1147 0007 6164635F 		.ascii	"adc_msg_t\000"
+ 1147      6D73675F 
+ 1147      7400
+ 1148              	.LASF3:
+ 1149 0011 5F5F7569 		.ascii	"__uint8_t\000"
+ 1149      6E74385F 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 23
+
+
+ 1149      7400
+ 1150              	.LASF33:
+ 1151 001b 6D73675F 		.ascii	"msg_rcv\000"
+ 1151      72637600 
+ 1152              	.LASF24:
+ 1153 0023 5469636B 		.ascii	"TickType_t\000"
+ 1153      54797065 
+ 1153      5F7400
+ 1154              	.LASF6:
+ 1155 002e 5F5F696E 		.ascii	"__int32_t\000"
+ 1155      7433325F 
+ 1155      7400
+ 1156              	.LASF25:
+ 1157 0038 51756575 		.ascii	"QueueHandle_t\000"
+ 1157      6548616E 
+ 1157      646C655F 
+ 1157      7400
+ 1158              	.LASF46:
+ 1159 0046 76546173 		.ascii	"vTaskStartScheduler\000"
+ 1159      6B537461 
+ 1159      72745363 
+ 1159      68656475 
+ 1159      6C657200 
+ 1160              	.LASF2:
+ 1161 005a 73686F72 		.ascii	"short int\000"
+ 1161      7420696E 
+ 1161      7400
+ 1162              	.LASF38:
+ 1163 0064 78517565 		.ascii	"xQueueReceive\000"
+ 1163      75655265 
+ 1163      63656976 
+ 1163      6500
+ 1164              	.LASF20:
+ 1165 0072 646F7562 		.ascii	"double\000"
+ 1165      6C6500
+ 1166              	.LASF21:
+ 1167 0079 666C6F61 		.ascii	"float\000"
+ 1167      7400
+ 1168              	.LASF30:
+ 1169 007f 636F756E 		.ascii	"counter\000"
+ 1169      74657200 
+ 1170              	.LASF31:
+ 1171 0087 6164635F 		.ascii	"adc_task\000"
+ 1171      7461736B 
+ 1171      00
+ 1172              	.LASF32:
+ 1173 0090 75617274 		.ascii	"uart_task\000"
+ 1173      5F746173 
+ 1173      6B00
+ 1174              	.LASF47:
+ 1175 009a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1175      43313120 
+ 1175      352E342E 
+ 1175      31203230 
+ 1175      31363036 
+ 1176 00cd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1176      20726576 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 24
+
+
+ 1176      6973696F 
+ 1176      6E203233 
+ 1176      37373135 
+ 1177 0100 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1177      66756E63 
+ 1177      74696F6E 
+ 1177      2D736563 
+ 1177      74696F6E 
+ 1178              	.LASF8:
+ 1179 0128 5F5F7569 		.ascii	"__uint32_t\000"
+ 1179      6E743332 
+ 1179      5F7400
+ 1180              	.LASF9:
+ 1181 0133 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1181      20756E73 
+ 1181      69676E65 
+ 1181      6420696E 
+ 1181      7400
+ 1182              	.LASF5:
+ 1183 0145 73686F72 		.ascii	"short unsigned int\000"
+ 1183      7420756E 
+ 1183      7369676E 
+ 1183      65642069 
+ 1183      6E7400
+ 1184              	.LASF41:
+ 1185 0158 55415254 		.ascii	"UART_Start\000"
+ 1185      5F537461 
+ 1185      727400
+ 1186              	.LASF52:
+ 1187 0163 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1187      52784275 
+ 1187      66666572 
+ 1187      00
+ 1188              	.LASF1:
+ 1189 0170 756E7369 		.ascii	"unsigned char\000"
+ 1189      676E6564 
+ 1189      20636861 
+ 1189      7200
+ 1190              	.LASF4:
+ 1191 017e 5F5F7569 		.ascii	"__uint16_t\000"
+ 1191      6E743136 
+ 1191      5F7400
+ 1192              	.LASF44:
+ 1193 0189 78517565 		.ascii	"xQueueGenericCreate\000"
+ 1193      75654765 
+ 1193      6E657269 
+ 1193      63437265 
+ 1193      61746500 
+ 1194              	.LASF34:
+ 1195 019d 61646351 		.ascii	"adcQueue\000"
+ 1195      75657565 
+ 1195      00
+ 1196              	.LASF22:
+ 1197 01a6 75696E74 		.ascii	"uint16\000"
+ 1197      313600
+ 1198              	.LASF49:
+ 1199 01ad 443A5C6D 		.ascii	"D:\\myFolder\\projects\\Embedded-Systems-by-Dr.-Pol"
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 25
+
+
+ 1199      79466F6C 
+ 1199      6465725C 
+ 1199      70726F6A 
+ 1199      65637473 
+ 1200 01dd 61636861 		.ascii	"achan\\Code Examples\\PSoC-5 Lab Book\\freeRTOS Exa"
+ 1200      6E5C436F 
+ 1200      64652045 
+ 1200      78616D70 
+ 1200      6C65735C 
+ 1201 020d 6D706C65 		.ascii	"mples\\freertos_queue.cydsn\000"
+ 1201      735C6672 
+ 1201      65657274 
+ 1201      6F735F71 
+ 1201      75657565 
+ 1202              	.LASF50:
+ 1203 0228 51756575 		.ascii	"QueueDefinition\000"
+ 1203      65446566 
+ 1203      696E6974 
+ 1203      696F6E00 
+ 1204              	.LASF29:
+ 1205 0238 6D73675F 		.ascii	"msg_adc\000"
+ 1205      61646300 
+ 1206              	.LASF12:
+ 1207 0240 756E7369 		.ascii	"unsigned int\000"
+ 1207      676E6564 
+ 1207      20696E74 
+ 1207      00
+ 1208              	.LASF11:
+ 1209 024d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1209      206C6F6E 
+ 1209      6720756E 
+ 1209      7369676E 
+ 1209      65642069 
+ 1210              	.LASF16:
+ 1211 0264 75696E74 		.ascii	"uint8_t\000"
+ 1211      385F7400 
+ 1212              	.LASF43:
+ 1213 026c 46726565 		.ascii	"FreeRTOS_Start\000"
+ 1213      52544F53 
+ 1213      5F537461 
+ 1213      727400
+ 1214              	.LASF51:
+ 1215 027b 6D61696E 		.ascii	"main\000"
+ 1215      00
+ 1216              	.LASF18:
+ 1217 0280 696E7433 		.ascii	"int32_t\000"
+ 1217      325F7400 
+ 1218              	.LASF14:
+ 1219 0288 73697A65 		.ascii	"sizetype\000"
+ 1219      74797065 
+ 1219      00
+ 1220              	.LASF10:
+ 1221 0291 6C6F6E67 		.ascii	"long long int\000"
+ 1221      206C6F6E 
+ 1221      6720696E 
+ 1221      7400
+ 1222              	.LASF48:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 26
+
+
+ 1223 029f 6D61696E 		.ascii	"main.c\000"
+ 1223      2E6300
+ 1224              	.LASF15:
+ 1225 02a6 63686172 		.ascii	"char\000"
+ 1225      00
+ 1226              	.LASF26:
+ 1227 02ab 696E6465 		.ascii	"index\000"
+ 1227      7800
+ 1228              	.LASF36:
+ 1229 02b1 78517565 		.ascii	"xQueueGenericSend\000"
+ 1229      75654765 
+ 1229      6E657269 
+ 1229      6353656E 
+ 1229      6400
+ 1230              	.LASF42:
+ 1231 02c3 55415254 		.ascii	"UART_ClearTxBuffer\000"
+ 1231      5F436C65 
+ 1231      61725478 
+ 1231      42756666 
+ 1231      657200
+ 1232              	.LASF17:
+ 1233 02d6 75696E74 		.ascii	"uint16_t\000"
+ 1233      31365F74 
+ 1233      00
+ 1234              	.LASF19:
+ 1235 02df 75696E74 		.ascii	"uint32_t\000"
+ 1235      33325F74 
+ 1235      00
+ 1236              	.LASF7:
+ 1237 02e8 6C6F6E67 		.ascii	"long int\000"
+ 1237      20696E74 
+ 1237      00
+ 1238              	.LASF37:
+ 1239 02f1 76546173 		.ascii	"vTaskDelay\000"
+ 1239      6B44656C 
+ 1239      617900
+ 1240              	.LASF13:
+ 1241 02fc 6C6F6E67 		.ascii	"long double\000"
+ 1241      20646F75 
+ 1241      626C6500 
+ 1242              	.LASF0:
+ 1243 0308 7369676E 		.ascii	"signed char\000"
+ 1243      65642063 
+ 1243      68617200 
+ 1244              	.LASF40:
+ 1245 0314 55415254 		.ascii	"UART_PutString\000"
+ 1245      5F507574 
+ 1245      53747269 
+ 1245      6E6700
+ 1246              	.LASF39:
+ 1247 0323 73707269 		.ascii	"sprintf\000"
+ 1247      6E746600 
+ 1248              	.LASF23:
+ 1249 032b 42617365 		.ascii	"BaseType_t\000"
+ 1249      54797065 
+ 1249      5F7400
+ 1250              	.LASF45:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccaKePAj.s 			page 27
+
+
+ 1251 0336 78546173 		.ascii	"xTaskCreate\000"
+ 1251      6B437265 
+ 1251      61746500 
+ 1252              	.LASF35:
+ 1253 0342 72616E64 		.ascii	"rand\000"
+ 1253      00
+ 1254              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
