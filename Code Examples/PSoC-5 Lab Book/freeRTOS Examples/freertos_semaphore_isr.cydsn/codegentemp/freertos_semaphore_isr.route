@@ -1,0 +1,12 @@
+net ClockBlock_BUS_CLK
+	term   ":clockblockcell.clk_bus_glb"
+	switch ":clockblockcell.clk_bus_glb==>:interrupt_6.clock"
+	term   ":interrupt_6.clock"
+end ClockBlock_BUS_CLK
+net Net_34
+	term   ":logicalport_2.interrupt"
+	switch ":logicalport_2.interrupt==>Stub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v20+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v22"
+	switch "Stub-:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v20+:dsiswitch_top@[DSI=(0,4)][side=top]:dsihc_top:v22==>:interrupt_idmux_6.in_0"
+	switch ":interrupt_idmux_6.interrupt_idmux_6__out==>:interrupt_6.interrupt"
+	term   ":interrupt_6.interrupt"
+end Net_34

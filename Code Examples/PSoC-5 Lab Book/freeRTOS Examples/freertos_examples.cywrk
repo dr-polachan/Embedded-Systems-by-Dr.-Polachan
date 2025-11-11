@@ -3,13 +3,14 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="freertos_examples" persistent="freertos_examples.cywrk" platform="NOT_USED">
-<current_project name=".\freertos_mutex.cydsn\freertos_mutex.cyprj" />
+<current_project name=".\freertos_semaphore_isr.cydsn\freertos_semaphore_isr.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
 <v>.\freertos_tasks.cydsn\freertos_tasks.cyprj</v>
 <v>.\freertos_mutex.cydsn\freertos_mutex.cyprj</v>
 <v>.\freertos_semaphore.cydsn\freertos_semaphore.cyprj</v>
+<v>.\freertos_semaphore_isr.cydsn\freertos_semaphore_isr.cyprj</v>
 </projects>
 <workspace_id v="f5d0b020-7402-48ee-aeca-6d902ddbe0bc" />
 <WriteAppVersionLastSavedWith v="4.4.0.80" />

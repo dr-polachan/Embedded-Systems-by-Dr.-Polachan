@@ -1,0 +1,9 @@
+D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_tasks.cydsn\freertos_tasks.cyprj|286845f6-e433-428a-8542-d4c9157e23cc
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|44432ac5-a6b4-494b-b39d-4e17f13cf5a7
+C:\Users\kuria\OneDrive\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|2472de62-0fd1-43b6-9e71-307ca4a1d337
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|942f4628-f559-458f-b344-2853d6763912
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|fbe92917-9d4c-42f7-a017-611afd0ff351
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8128841d-40db-46e4-8cb2-c5c411b1c00a
+D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_mutex.cydsn\freertos_mutex.cyprj|a2942fdb-e966-402e-8d7a-0e35922a3e94
+D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore.cydsn\freertos_semaphore.cyprj|0ff0178f-b61e-4fef-b65b-62269559127b
+D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\freertos_semaphore_isr.cyprj|17fe402b-18cc-44c9-8832-45b254dd5684

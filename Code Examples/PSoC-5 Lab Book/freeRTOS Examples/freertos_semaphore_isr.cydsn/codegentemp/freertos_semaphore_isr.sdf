@@ -1,0 +1,22 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2025-11-11T09:02:58Z")
+ (DESIGN "freertos_semaphore_isr")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.4")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "freertos_semaphore_isr")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.clk_bus_glb isr_1.clock (0.000:0.000:0.000))
+    (INTERCONNECT Pin_SW.interrupt isr_1.interrupt (1.000:1.000:1.000))
+    (INTERCONNECT led\(0\)_PAD led\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT Pin_SW\(0\)_PAD Pin_SW\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)

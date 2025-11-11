@@ -1,0 +1,711 @@
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"FreeRTOS.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.FreeRTOS_Start,"ax",%progbits
+  20              		.align	2
+  21              		.global	FreeRTOS_Start
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	FreeRTOS_Start, %function
+  25              	FreeRTOS_Start:
+  26              	.LFB68:
+  27              		.file 1 "FreeRTOS.c"
+   1:FreeRTOS.c    **** #include <project.h>
+   2:FreeRTOS.c    **** #include "FreeRTOS.h"
+   3:FreeRTOS.c    **** 
+   4:FreeRTOS.c    **** extern void xPortPendSVHandler(void);
+   5:FreeRTOS.c    **** extern void xPortSysTickHandler(void);
+   6:FreeRTOS.c    **** extern void vPortSVCHandler(void);
+   7:FreeRTOS.c    **** 
+   8:FreeRTOS.c    **** #define CORTEX_INTERRUPT_BASE          (16)
+   9:FreeRTOS.c    **** 
+  10:FreeRTOS.c    **** void FreeRTOS_Start(){
+  28              		.loc 1 10 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  11:FreeRTOS.c    ****     
+  12:FreeRTOS.c    ****     /* Handler for Cortex Supervisor Call (SVC, formerly SWI) - address 11 */
+  13:FreeRTOS.c    ****     CyIntSetSysVector( CORTEX_INTERRUPT_BASE + SVCall_IRQn,
+  36              		.loc 1 13 0
+  37 0002 0649     		ldr	r1, .L3
+  38 0004 0B20     		movs	r0, #11
+  39 0006 FFF7FEFF 		bl	CyIntSetSysVector
+  40              	.LVL0:
+  14:FreeRTOS.c    ****         (cyisraddress)vPortSVCHandler );
+  15:FreeRTOS.c    ****     
+  16:FreeRTOS.c    ****     /* Handler for Cortex PendSV Call - address 14 */
+  17:FreeRTOS.c    **** 	CyIntSetSysVector( CORTEX_INTERRUPT_BASE + PendSV_IRQn,
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 2
+
+
+  41              		.loc 1 17 0
+  42 000a 0549     		ldr	r1, .L3+4
+  43 000c 0E20     		movs	r0, #14
+  44 000e FFF7FEFF 		bl	CyIntSetSysVector
+  45              	.LVL1:
+  18:FreeRTOS.c    ****         (cyisraddress)xPortPendSVHandler );    
+  19:FreeRTOS.c    ****     
+  20:FreeRTOS.c    ****     /* Handler for Cortex SYSTICK - address 15 */
+  21:FreeRTOS.c    **** 	CyIntSetSysVector( CORTEX_INTERRUPT_BASE + SysTick_IRQn,
+  46              		.loc 1 21 0
+  47 0012 0449     		ldr	r1, .L3+8
+  48 0014 0F20     		movs	r0, #15
+  49 0016 FFF7FEFF 		bl	CyIntSetSysVector
+  50              	.LVL2:
+  51 001a 08BD     		pop	{r3, pc}
+  52              	.L4:
+  53              		.align	2
+  54              	.L3:
+  55 001c 00000000 		.word	vPortSVCHandler
+  56 0020 00000000 		.word	xPortPendSVHandler
+  57 0024 00000000 		.word	xPortSysTickHandler
+  58              		.cfi_endproc
+  59              	.LFE68:
+  60              		.size	FreeRTOS_Start, .-FreeRTOS_Start
+  61              		.text
+  62              	.Letext0:
+  63              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  64              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  65              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  66              		.file 5 "Generated_Source\\PSoC5/core_cm3_psoc5.h"
+  67              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+  68              		.file 7 "Generated_Source\\PSoC5/CyLib.h"
+  69              		.section	.debug_info,"",%progbits
+  70              	.Ldebug_info0:
+  71 0000 62010000 		.4byte	0x162
+  72 0004 0400     		.2byte	0x4
+  73 0006 00000000 		.4byte	.Ldebug_abbrev0
+  74 000a 04       		.byte	0x4
+  75 000b 01       		.uleb128 0x1
+  76 000c A8010000 		.4byte	.LASF26
+  77 0010 0C       		.byte	0xc
+  78 0011 5A020000 		.4byte	.LASF27
+  79 0015 3F000000 		.4byte	.LASF28
+  80 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  81 001d 00000000 		.4byte	0
+  82 0021 00000000 		.4byte	.Ldebug_line0
+  83 0025 02       		.uleb128 0x2
+  84 0026 01       		.byte	0x1
+  85 0027 06       		.byte	0x6
+  86 0028 96020000 		.4byte	.LASF0
+  87 002c 02       		.uleb128 0x2
+  88 002d 01       		.byte	0x1
+  89 002e 08       		.byte	0x8
+  90 002f 31000000 		.4byte	.LASF1
+  91 0033 02       		.uleb128 0x2
+  92 0034 02       		.byte	0x2
+  93 0035 05       		.byte	0x5
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 3
+
+
+  94 0036 65020000 		.4byte	.LASF2
+  95 003a 02       		.uleb128 0x2
+  96 003b 02       		.byte	0x2
+  97 003c 07       		.byte	0x7
+  98 003d E2000000 		.4byte	.LASF3
+  99 0041 03       		.uleb128 0x3
+ 100 0042 14000000 		.4byte	.LASF9
+ 101 0046 02       		.byte	0x2
+ 102 0047 3F       		.byte	0x3f
+ 103 0048 4C000000 		.4byte	0x4c
+ 104 004c 02       		.uleb128 0x2
+ 105 004d 04       		.byte	0x4
+ 106 004e 05       		.byte	0x5
+ 107 004f 81020000 		.4byte	.LASF4
+ 108 0053 02       		.uleb128 0x2
+ 109 0054 04       		.byte	0x4
+ 110 0055 07       		.byte	0x7
+ 111 0056 D0000000 		.4byte	.LASF5
+ 112 005a 02       		.uleb128 0x2
+ 113 005b 08       		.byte	0x8
+ 114 005c 05       		.byte	0x5
+ 115 005d 47020000 		.4byte	.LASF6
+ 116 0061 02       		.uleb128 0x2
+ 117 0062 08       		.byte	0x8
+ 118 0063 07       		.byte	0x7
+ 119 0064 75010000 		.4byte	.LASF7
+ 120 0068 04       		.uleb128 0x4
+ 121 0069 04       		.byte	0x4
+ 122 006a 05       		.byte	0x5
+ 123 006b 696E7400 		.ascii	"int\000"
+ 124 006f 02       		.uleb128 0x2
+ 125 0070 04       		.byte	0x4
+ 126 0071 07       		.byte	0x7
+ 127 0072 68010000 		.4byte	.LASF8
+ 128 0076 03       		.uleb128 0x3
+ 129 0077 36020000 		.4byte	.LASF10
+ 130 007b 03       		.byte	0x3
+ 131 007c 2C       		.byte	0x2c
+ 132 007d 41000000 		.4byte	0x41
+ 133 0081 02       		.uleb128 0x2
+ 134 0082 04       		.byte	0x4
+ 135 0083 04       		.byte	0x4
+ 136 0084 2B000000 		.4byte	.LASF11
+ 137 0088 02       		.uleb128 0x2
+ 138 0089 08       		.byte	0x8
+ 139 008a 04       		.byte	0x4
+ 140 008b 3A010000 		.4byte	.LASF12
+ 141 008f 02       		.uleb128 0x2
+ 142 0090 01       		.byte	0x1
+ 143 0091 08       		.byte	0x8
+ 144 0092 55020000 		.4byte	.LASF13
+ 145 0096 05       		.uleb128 0x5
+ 146 0097 9B010000 		.4byte	.LASF14
+ 147 009b 04       		.byte	0x4
+ 148 009c A002     		.2byte	0x2a0
+ 149 009e A2000000 		.4byte	0xa2
+ 150 00a2 06       		.uleb128 0x6
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 4
+
+
+ 151 00a3 04       		.byte	0x4
+ 152 00a4 A8000000 		.4byte	0xa8
+ 153 00a8 07       		.uleb128 0x7
+ 154 00a9 08       		.uleb128 0x8
+ 155 00aa A2020000 		.4byte	.LASF29
+ 156 00ae 01       		.byte	0x1
+ 157 00af 25000000 		.4byte	0x25
+ 158 00b3 05       		.byte	0x5
+ 159 00b4 17       		.byte	0x17
+ 160 00b5 F0000000 		.4byte	0xf0
+ 161 00b9 09       		.uleb128 0x9
+ 162 00ba 00000000 		.4byte	.LASF15
+ 163 00be 72       		.sleb128 -14
+ 164 00bf 09       		.uleb128 0x9
+ 165 00c0 59010000 		.4byte	.LASF16
+ 166 00c4 73       		.sleb128 -13
+ 167 00c5 09       		.uleb128 0x9
+ 168 00c6 07010000 		.4byte	.LASF17
+ 169 00ca 74       		.sleb128 -12
+ 170 00cb 09       		.uleb128 0x9
+ 171 00cc C2000000 		.4byte	.LASF18
+ 172 00d0 75       		.sleb128 -11
+ 173 00d1 09       		.uleb128 0x9
+ 174 00d2 2A010000 		.4byte	.LASF19
+ 175 00d6 76       		.sleb128 -10
+ 176 00d7 09       		.uleb128 0x9
+ 177 00d8 41010000 		.4byte	.LASF20
+ 178 00dc 7B       		.sleb128 -5
+ 179 00dd 09       		.uleb128 0x9
+ 180 00de 6F020000 		.4byte	.LASF21
+ 181 00e2 7C       		.sleb128 -4
+ 182 00e3 09       		.uleb128 0x9
+ 183 00e4 4D010000 		.4byte	.LASF22
+ 184 00e8 7E       		.sleb128 -2
+ 185 00e9 09       		.uleb128 0x9
+ 186 00ea 1E000000 		.4byte	.LASF23
+ 187 00ee 7F       		.sleb128 -1
+ 188 00ef 00       		.byte	0
+ 189 00f0 02       		.uleb128 0x2
+ 190 00f1 04       		.byte	0x4
+ 191 00f2 07       		.byte	0x7
+ 192 00f3 3E020000 		.4byte	.LASF24
+ 193 00f7 02       		.uleb128 0x2
+ 194 00f8 08       		.byte	0x8
+ 195 00f9 04       		.byte	0x4
+ 196 00fa 8A020000 		.4byte	.LASF25
+ 197 00fe 0A       		.uleb128 0xa
+ 198 00ff 8C010000 		.4byte	.LASF30
+ 199 0103 01       		.byte	0x1
+ 200 0104 0A       		.byte	0xa
+ 201 0105 00000000 		.4byte	.LFB68
+ 202 0109 28000000 		.4byte	.LFE68-.LFB68
+ 203 010d 01       		.uleb128 0x1
+ 204 010e 9C       		.byte	0x9c
+ 205 010f 49010000 		.4byte	0x149
+ 206 0113 0B       		.uleb128 0xb
+ 207 0114 0A000000 		.4byte	.LVL0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 5
+
+
+ 208 0118 5A010000 		.4byte	0x15a
+ 209 011c 26010000 		.4byte	0x126
+ 210 0120 0C       		.uleb128 0xc
+ 211 0121 01       		.uleb128 0x1
+ 212 0122 50       		.byte	0x50
+ 213 0123 01       		.uleb128 0x1
+ 214 0124 3B       		.byte	0x3b
+ 215 0125 00       		.byte	0
+ 216 0126 0B       		.uleb128 0xb
+ 217 0127 12000000 		.4byte	.LVL1
+ 218 012b 5A010000 		.4byte	0x15a
+ 219 012f 39010000 		.4byte	0x139
+ 220 0133 0C       		.uleb128 0xc
+ 221 0134 01       		.uleb128 0x1
+ 222 0135 50       		.byte	0x50
+ 223 0136 01       		.uleb128 0x1
+ 224 0137 3E       		.byte	0x3e
+ 225 0138 00       		.byte	0
+ 226 0139 0D       		.uleb128 0xd
+ 227 013a 1A000000 		.4byte	.LVL2
+ 228 013e 5A010000 		.4byte	0x15a
+ 229 0142 0C       		.uleb128 0xc
+ 230 0143 01       		.uleb128 0x1
+ 231 0144 50       		.byte	0x50
+ 232 0145 01       		.uleb128 0x1
+ 233 0146 3F       		.byte	0x3f
+ 234 0147 00       		.byte	0
+ 235 0148 00       		.byte	0
+ 236 0149 0E       		.uleb128 0xe
+ 237 014a 1D010000 		.4byte	.LASF31
+ 238 014e 06       		.byte	0x6
+ 239 014f 1207     		.2byte	0x712
+ 240 0151 55010000 		.4byte	0x155
+ 241 0155 0F       		.uleb128 0xf
+ 242 0156 76000000 		.4byte	0x76
+ 243 015a 10       		.uleb128 0x10
+ 244 015b F5000000 		.4byte	.LASF32
+ 245 015f F5000000 		.4byte	.LASF32
+ 246 0163 07       		.byte	0x7
+ 247 0164 84       		.byte	0x84
+ 248 0165 00       		.byte	0
+ 249              		.section	.debug_abbrev,"",%progbits
+ 250              	.Ldebug_abbrev0:
+ 251 0000 01       		.uleb128 0x1
+ 252 0001 11       		.uleb128 0x11
+ 253 0002 01       		.byte	0x1
+ 254 0003 25       		.uleb128 0x25
+ 255 0004 0E       		.uleb128 0xe
+ 256 0005 13       		.uleb128 0x13
+ 257 0006 0B       		.uleb128 0xb
+ 258 0007 03       		.uleb128 0x3
+ 259 0008 0E       		.uleb128 0xe
+ 260 0009 1B       		.uleb128 0x1b
+ 261 000a 0E       		.uleb128 0xe
+ 262 000b 55       		.uleb128 0x55
+ 263 000c 17       		.uleb128 0x17
+ 264 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 6
+
+
+ 265 000e 01       		.uleb128 0x1
+ 266 000f 10       		.uleb128 0x10
+ 267 0010 17       		.uleb128 0x17
+ 268 0011 00       		.byte	0
+ 269 0012 00       		.byte	0
+ 270 0013 02       		.uleb128 0x2
+ 271 0014 24       		.uleb128 0x24
+ 272 0015 00       		.byte	0
+ 273 0016 0B       		.uleb128 0xb
+ 274 0017 0B       		.uleb128 0xb
+ 275 0018 3E       		.uleb128 0x3e
+ 276 0019 0B       		.uleb128 0xb
+ 277 001a 03       		.uleb128 0x3
+ 278 001b 0E       		.uleb128 0xe
+ 279 001c 00       		.byte	0
+ 280 001d 00       		.byte	0
+ 281 001e 03       		.uleb128 0x3
+ 282 001f 16       		.uleb128 0x16
+ 283 0020 00       		.byte	0
+ 284 0021 03       		.uleb128 0x3
+ 285 0022 0E       		.uleb128 0xe
+ 286 0023 3A       		.uleb128 0x3a
+ 287 0024 0B       		.uleb128 0xb
+ 288 0025 3B       		.uleb128 0x3b
+ 289 0026 0B       		.uleb128 0xb
+ 290 0027 49       		.uleb128 0x49
+ 291 0028 13       		.uleb128 0x13
+ 292 0029 00       		.byte	0
+ 293 002a 00       		.byte	0
+ 294 002b 04       		.uleb128 0x4
+ 295 002c 24       		.uleb128 0x24
+ 296 002d 00       		.byte	0
+ 297 002e 0B       		.uleb128 0xb
+ 298 002f 0B       		.uleb128 0xb
+ 299 0030 3E       		.uleb128 0x3e
+ 300 0031 0B       		.uleb128 0xb
+ 301 0032 03       		.uleb128 0x3
+ 302 0033 08       		.uleb128 0x8
+ 303 0034 00       		.byte	0
+ 304 0035 00       		.byte	0
+ 305 0036 05       		.uleb128 0x5
+ 306 0037 16       		.uleb128 0x16
+ 307 0038 00       		.byte	0
+ 308 0039 03       		.uleb128 0x3
+ 309 003a 0E       		.uleb128 0xe
+ 310 003b 3A       		.uleb128 0x3a
+ 311 003c 0B       		.uleb128 0xb
+ 312 003d 3B       		.uleb128 0x3b
+ 313 003e 05       		.uleb128 0x5
+ 314 003f 49       		.uleb128 0x49
+ 315 0040 13       		.uleb128 0x13
+ 316 0041 00       		.byte	0
+ 317 0042 00       		.byte	0
+ 318 0043 06       		.uleb128 0x6
+ 319 0044 0F       		.uleb128 0xf
+ 320 0045 00       		.byte	0
+ 321 0046 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 7
+
+
+ 322 0047 0B       		.uleb128 0xb
+ 323 0048 49       		.uleb128 0x49
+ 324 0049 13       		.uleb128 0x13
+ 325 004a 00       		.byte	0
+ 326 004b 00       		.byte	0
+ 327 004c 07       		.uleb128 0x7
+ 328 004d 15       		.uleb128 0x15
+ 329 004e 00       		.byte	0
+ 330 004f 27       		.uleb128 0x27
+ 331 0050 19       		.uleb128 0x19
+ 332 0051 00       		.byte	0
+ 333 0052 00       		.byte	0
+ 334 0053 08       		.uleb128 0x8
+ 335 0054 04       		.uleb128 0x4
+ 336 0055 01       		.byte	0x1
+ 337 0056 03       		.uleb128 0x3
+ 338 0057 0E       		.uleb128 0xe
+ 339 0058 0B       		.uleb128 0xb
+ 340 0059 0B       		.uleb128 0xb
+ 341 005a 49       		.uleb128 0x49
+ 342 005b 13       		.uleb128 0x13
+ 343 005c 3A       		.uleb128 0x3a
+ 344 005d 0B       		.uleb128 0xb
+ 345 005e 3B       		.uleb128 0x3b
+ 346 005f 0B       		.uleb128 0xb
+ 347 0060 01       		.uleb128 0x1
+ 348 0061 13       		.uleb128 0x13
+ 349 0062 00       		.byte	0
+ 350 0063 00       		.byte	0
+ 351 0064 09       		.uleb128 0x9
+ 352 0065 28       		.uleb128 0x28
+ 353 0066 00       		.byte	0
+ 354 0067 03       		.uleb128 0x3
+ 355 0068 0E       		.uleb128 0xe
+ 356 0069 1C       		.uleb128 0x1c
+ 357 006a 0D       		.uleb128 0xd
+ 358 006b 00       		.byte	0
+ 359 006c 00       		.byte	0
+ 360 006d 0A       		.uleb128 0xa
+ 361 006e 2E       		.uleb128 0x2e
+ 362 006f 01       		.byte	0x1
+ 363 0070 3F       		.uleb128 0x3f
+ 364 0071 19       		.uleb128 0x19
+ 365 0072 03       		.uleb128 0x3
+ 366 0073 0E       		.uleb128 0xe
+ 367 0074 3A       		.uleb128 0x3a
+ 368 0075 0B       		.uleb128 0xb
+ 369 0076 3B       		.uleb128 0x3b
+ 370 0077 0B       		.uleb128 0xb
+ 371 0078 11       		.uleb128 0x11
+ 372 0079 01       		.uleb128 0x1
+ 373 007a 12       		.uleb128 0x12
+ 374 007b 06       		.uleb128 0x6
+ 375 007c 40       		.uleb128 0x40
+ 376 007d 18       		.uleb128 0x18
+ 377 007e 9742     		.uleb128 0x2117
+ 378 0080 19       		.uleb128 0x19
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 8
+
+
+ 379 0081 01       		.uleb128 0x1
+ 380 0082 13       		.uleb128 0x13
+ 381 0083 00       		.byte	0
+ 382 0084 00       		.byte	0
+ 383 0085 0B       		.uleb128 0xb
+ 384 0086 898201   		.uleb128 0x4109
+ 385 0089 01       		.byte	0x1
+ 386 008a 11       		.uleb128 0x11
+ 387 008b 01       		.uleb128 0x1
+ 388 008c 31       		.uleb128 0x31
+ 389 008d 13       		.uleb128 0x13
+ 390 008e 01       		.uleb128 0x1
+ 391 008f 13       		.uleb128 0x13
+ 392 0090 00       		.byte	0
+ 393 0091 00       		.byte	0
+ 394 0092 0C       		.uleb128 0xc
+ 395 0093 8A8201   		.uleb128 0x410a
+ 396 0096 00       		.byte	0
+ 397 0097 02       		.uleb128 0x2
+ 398 0098 18       		.uleb128 0x18
+ 399 0099 9142     		.uleb128 0x2111
+ 400 009b 18       		.uleb128 0x18
+ 401 009c 00       		.byte	0
+ 402 009d 00       		.byte	0
+ 403 009e 0D       		.uleb128 0xd
+ 404 009f 898201   		.uleb128 0x4109
+ 405 00a2 01       		.byte	0x1
+ 406 00a3 11       		.uleb128 0x11
+ 407 00a4 01       		.uleb128 0x1
+ 408 00a5 31       		.uleb128 0x31
+ 409 00a6 13       		.uleb128 0x13
+ 410 00a7 00       		.byte	0
+ 411 00a8 00       		.byte	0
+ 412 00a9 0E       		.uleb128 0xe
+ 413 00aa 34       		.uleb128 0x34
+ 414 00ab 00       		.byte	0
+ 415 00ac 03       		.uleb128 0x3
+ 416 00ad 0E       		.uleb128 0xe
+ 417 00ae 3A       		.uleb128 0x3a
+ 418 00af 0B       		.uleb128 0xb
+ 419 00b0 3B       		.uleb128 0x3b
+ 420 00b1 05       		.uleb128 0x5
+ 421 00b2 49       		.uleb128 0x49
+ 422 00b3 13       		.uleb128 0x13
+ 423 00b4 3F       		.uleb128 0x3f
+ 424 00b5 19       		.uleb128 0x19
+ 425 00b6 3C       		.uleb128 0x3c
+ 426 00b7 19       		.uleb128 0x19
+ 427 00b8 00       		.byte	0
+ 428 00b9 00       		.byte	0
+ 429 00ba 0F       		.uleb128 0xf
+ 430 00bb 35       		.uleb128 0x35
+ 431 00bc 00       		.byte	0
+ 432 00bd 49       		.uleb128 0x49
+ 433 00be 13       		.uleb128 0x13
+ 434 00bf 00       		.byte	0
+ 435 00c0 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 9
+
+
+ 436 00c1 10       		.uleb128 0x10
+ 437 00c2 2E       		.uleb128 0x2e
+ 438 00c3 00       		.byte	0
+ 439 00c4 3F       		.uleb128 0x3f
+ 440 00c5 19       		.uleb128 0x19
+ 441 00c6 3C       		.uleb128 0x3c
+ 442 00c7 19       		.uleb128 0x19
+ 443 00c8 6E       		.uleb128 0x6e
+ 444 00c9 0E       		.uleb128 0xe
+ 445 00ca 03       		.uleb128 0x3
+ 446 00cb 0E       		.uleb128 0xe
+ 447 00cc 3A       		.uleb128 0x3a
+ 448 00cd 0B       		.uleb128 0xb
+ 449 00ce 3B       		.uleb128 0x3b
+ 450 00cf 0B       		.uleb128 0xb
+ 451 00d0 00       		.byte	0
+ 452 00d1 00       		.byte	0
+ 453 00d2 00       		.byte	0
+ 454              		.section	.debug_aranges,"",%progbits
+ 455 0000 1C000000 		.4byte	0x1c
+ 456 0004 0200     		.2byte	0x2
+ 457 0006 00000000 		.4byte	.Ldebug_info0
+ 458 000a 04       		.byte	0x4
+ 459 000b 00       		.byte	0
+ 460 000c 0000     		.2byte	0
+ 461 000e 0000     		.2byte	0
+ 462 0010 00000000 		.4byte	.LFB68
+ 463 0014 28000000 		.4byte	.LFE68-.LFB68
+ 464 0018 00000000 		.4byte	0
+ 465 001c 00000000 		.4byte	0
+ 466              		.section	.debug_ranges,"",%progbits
+ 467              	.Ldebug_ranges0:
+ 468 0000 00000000 		.4byte	.LFB68
+ 469 0004 28000000 		.4byte	.LFE68
+ 470 0008 00000000 		.4byte	0
+ 471 000c 00000000 		.4byte	0
+ 472              		.section	.debug_line,"",%progbits
+ 473              	.Ldebug_line0:
+ 474 0000 87010000 		.section	.debug_str,"MS",%progbits,1
+ 474      02006F01 
+ 474      00000201 
+ 474      FB0E0D00 
+ 474      01010101 
+ 475              	.LASF15:
+ 476 0000 4E6F6E4D 		.ascii	"NonMaskableInt_IRQn\000"
+ 476      61736B61 
+ 476      626C6549 
+ 476      6E745F49 
+ 476      52516E00 
+ 477              	.LASF9:
+ 478 0014 5F5F696E 		.ascii	"__int32_t\000"
+ 478      7433325F 
+ 478      7400
+ 479              	.LASF23:
+ 480 001e 53797354 		.ascii	"SysTick_IRQn\000"
+ 480      69636B5F 
+ 480      4952516E 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 10
+
+
+ 480      00
+ 481              	.LASF11:
+ 482 002b 666C6F61 		.ascii	"float\000"
+ 482      7400
+ 483              	.LASF1:
+ 484 0031 756E7369 		.ascii	"unsigned char\000"
+ 484      676E6564 
+ 484      20636861 
+ 484      7200
+ 485              	.LASF28:
+ 486 003f 443A5C6D 		.ascii	"D:\\myFolder\\projects\\Embedded-Systems-by-Dr.-Pol"
+ 486      79466F6C 
+ 486      6465725C 
+ 486      70726F6A 
+ 486      65637473 
+ 487 006f 61636861 		.ascii	"achan\\Code Examples\\PSoC-5 Lab Book\\freeRTOS Exa"
+ 487      6E5C436F 
+ 487      64652045 
+ 487      78616D70 
+ 487      6C65735C 
+ 488 009f 6D706C65 		.ascii	"mples\\freertos_semaphore_isr.cydsn\000"
+ 488      735C6672 
+ 488      65657274 
+ 488      6F735F73 
+ 488      656D6170 
+ 489              	.LASF18:
+ 490 00c2 42757346 		.ascii	"BusFault_IRQn\000"
+ 490      61756C74 
+ 490      5F495251 
+ 490      6E00
+ 491              	.LASF5:
+ 492 00d0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 492      20756E73 
+ 492      69676E65 
+ 492      6420696E 
+ 492      7400
+ 493              	.LASF3:
+ 494 00e2 73686F72 		.ascii	"short unsigned int\000"
+ 494      7420756E 
+ 494      7369676E 
+ 494      65642069 
+ 494      6E7400
+ 495              	.LASF32:
+ 496 00f5 4379496E 		.ascii	"CyIntSetSysVector\000"
+ 496      74536574 
+ 496      53797356 
+ 496      6563746F 
+ 496      7200
+ 497              	.LASF17:
+ 498 0107 4D656D6F 		.ascii	"MemoryManagement_IRQn\000"
+ 498      72794D61 
+ 498      6E616765 
+ 498      6D656E74 
+ 498      5F495251 
+ 499              	.LASF31:
+ 500 011d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 500      52784275 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 11
+
+
+ 500      66666572 
+ 500      00
+ 501              	.LASF19:
+ 502 012a 55736167 		.ascii	"UsageFault_IRQn\000"
+ 502      65466175 
+ 502      6C745F49 
+ 502      52516E00 
+ 503              	.LASF12:
+ 504 013a 646F7562 		.ascii	"double\000"
+ 504      6C6500
+ 505              	.LASF20:
+ 506 0141 53564361 		.ascii	"SVCall_IRQn\000"
+ 506      6C6C5F49 
+ 506      52516E00 
+ 507              	.LASF22:
+ 508 014d 50656E64 		.ascii	"PendSV_IRQn\000"
+ 508      53565F49 
+ 508      52516E00 
+ 509              	.LASF16:
+ 510 0159 48617264 		.ascii	"HardFault_IRQn\000"
+ 510      4661756C 
+ 510      745F4952 
+ 510      516E00
+ 511              	.LASF8:
+ 512 0168 756E7369 		.ascii	"unsigned int\000"
+ 512      676E6564 
+ 512      20696E74 
+ 512      00
+ 513              	.LASF7:
+ 514 0175 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 514      206C6F6E 
+ 514      6720756E 
+ 514      7369676E 
+ 514      65642069 
+ 515              	.LASF30:
+ 516 018c 46726565 		.ascii	"FreeRTOS_Start\000"
+ 516      52544F53 
+ 516      5F537461 
+ 516      727400
+ 517              	.LASF14:
+ 518 019b 63796973 		.ascii	"cyisraddress\000"
+ 518      72616464 
+ 518      72657373 
+ 518      00
+ 519              	.LASF26:
+ 520 01a8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 520      43313120 
+ 520      352E342E 
+ 520      31203230 
+ 520      31363036 
+ 521 01db 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 521      20726576 
+ 521      6973696F 
+ 521      6E203233 
+ 521      37373135 
+ 522 020e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 522      66756E63 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\cc6GXZCA.s 			page 12
+
+
+ 522      74696F6E 
+ 522      2D736563 
+ 522      74696F6E 
+ 523              	.LASF10:
+ 524 0236 696E7433 		.ascii	"int32_t\000"
+ 524      325F7400 
+ 525              	.LASF24:
+ 526 023e 73697A65 		.ascii	"sizetype\000"
+ 526      74797065 
+ 526      00
+ 527              	.LASF6:
+ 528 0247 6C6F6E67 		.ascii	"long long int\000"
+ 528      206C6F6E 
+ 528      6720696E 
+ 528      7400
+ 529              	.LASF13:
+ 530 0255 63686172 		.ascii	"char\000"
+ 530      00
+ 531              	.LASF27:
+ 532 025a 46726565 		.ascii	"FreeRTOS.c\000"
+ 532      52544F53 
+ 532      2E6300
+ 533              	.LASF2:
+ 534 0265 73686F72 		.ascii	"short int\000"
+ 534      7420696E 
+ 534      7400
+ 535              	.LASF21:
+ 536 026f 44656275 		.ascii	"DebugMonitor_IRQn\000"
+ 536      674D6F6E 
+ 536      69746F72 
+ 536      5F495251 
+ 536      6E00
+ 537              	.LASF4:
+ 538 0281 6C6F6E67 		.ascii	"long int\000"
+ 538      20696E74 
+ 538      00
+ 539              	.LASF25:
+ 540 028a 6C6F6E67 		.ascii	"long double\000"
+ 540      20646F75 
+ 540      626C6500 
+ 541              	.LASF0:
+ 542 0296 7369676E 		.ascii	"signed char\000"
+ 542      65642063 
+ 542      68617200 
+ 543              	.LASF29:
+ 544 02a2 4952516E 		.ascii	"IRQn\000"
+ 544      00
+ 545              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

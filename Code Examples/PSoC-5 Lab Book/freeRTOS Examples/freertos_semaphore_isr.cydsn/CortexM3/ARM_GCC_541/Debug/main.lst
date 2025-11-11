@@ -1,0 +1,1304 @@
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.switch_isr_code,"ax",%progbits
+  20              		.align	2
+  21              		.global	switch_isr_code
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	switch_isr_code, %function
+  25              	switch_isr_code:
+  26              	.LFB69:
+  27              		.file 1 "main.c"
+   1:main.c        **** /*
+   2:main.c        ****  ============================================================================
+   3:main.c        ****  Name        : FreeRTOS Project
+   4:main.c        ****  Author      : Dr. Kurian Polachan
+   5:main.c        ****  Description : Example project demonstrating task synchronization using a binary
+   6:main.c        ****                semaphore in FreeRTOS. The UART task produces a signal once every
+   7:main.c        ****                second by giving a semaphore, while the LED task waits (takes)
+   8:main.c        ****                that semaphore to toggle an LED. This ensures one LED toggle per
+   9:main.c        ****                "Live n" message, illustrating task-to-task synchronization.
+  10:main.c        **** 
+  11:main.c        ****  Acknowledgment:
+  12:main.c        ****  This code builds upon and makes use of the structure, conventions, and examples
+  13:main.c        ****  from the open-source project:
+  14:main.c        ****      https://github.com/Karthik23tala/Embedded-C-Lab-Book
+  15:main.c        ****  maintained by Karthik T. and contributors.
+  16:main.c        **** 
+  17:main.c        ****  License     : For educational and research use. Attribution required.
+  18:main.c        ****  ============================================================================
+  19:main.c        **** */
+  20:main.c        **** 
+  21:main.c        **** #include <stdio.h>
+  22:main.c        **** #include <stdlib.h>
+  23:main.c        **** #include <math.h>
+  24:main.c        **** #include <string.h>
+  25:main.c        **** #include "project.h"
+  26:main.c        **** #include "FreeRTOS.h"
+  27:main.c        **** #include "task.h"
+  28:main.c        **** #include "timers.h"
+  29:main.c        **** #include "queue.h"
+  30:main.c        **** #include "semphr.h"
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 2
+
+
+  31:main.c        **** 
+  32:main.c        **** extern void FreeRTOS_Start();
+  33:main.c        **** 
+  34:main.c        **** static SemaphoreHandle_t xButtonSemaphore = NULL;  // Binary semaphore handle
+  35:main.c        **** 
+  36:main.c        **** 
+  37:main.c        **** CY_ISR (switch_isr_code)
+  38:main.c        **** {
+  28              		.loc 1 38 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 00B5     		push	{lr}
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 14, -4
+  35 0002 83B0     		sub	sp, sp, #12
+  36              		.cfi_def_cfa_offset 16
+  39:main.c        ****     BaseType_t xHigherPriorityTaskWoken = pdFALSE;   
+  37              		.loc 1 39 0
+  38 0004 02A9     		add	r1, sp, #8
+  39 0006 0023     		movs	r3, #0
+  40 0008 41F8043D 		str	r3, [r1, #-4]!
+  40:main.c        ****     
+  41:main.c        ****     // Give semaphore from ISR
+  42:main.c        ****     xSemaphoreGiveFromISR(xButtonSemaphore, &xHigherPriorityTaskWoken);
+  41              		.loc 1 42 0
+  42 000c 094B     		ldr	r3, .L4
+  43 000e 1868     		ldr	r0, [r3]
+  44 0010 FFF7FEFF 		bl	xQueueGiveFromISR
+  45              	.LVL0:
+  43:main.c        ****     
+  44:main.c        ****     // Request context switch if needed
+  45:main.c        ****     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+  46              		.loc 1 45 0
+  47 0014 019B     		ldr	r3, [sp, #4]
+  48 0016 3BB1     		cbz	r3, .L2
+  49              		.loc 1 45 0 is_stmt 0 discriminator 1
+  50 0018 4FF08052 		mov	r2, #268435456
+  51 001c 064B     		ldr	r3, .L4+4
+  52 001e 1A60     		str	r2, [r3]
+  53              		.syntax unified
+  54              	@ 45 "main.c" 1
+  55 0020 BFF34F8F 		dsb
+  56              	@ 0 "" 2
+  57              	@ 45 "main.c" 1
+  58 0024 BFF36F8F 		isb
+  59              	@ 0 "" 2
+  60              		.thumb
+  61              		.syntax unified
+  62              	.L2:
+  46:main.c        ****     
+  47:main.c        ****     Pin_SW_ClearInterrupt();
+  63              		.loc 1 47 0 is_stmt 1
+  64 0028 FFF7FEFF 		bl	Pin_SW_ClearInterrupt
+  65              	.LVL1:
+  48:main.c        **** }
+  66              		.loc 1 48 0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 3
+
+
+  67 002c 03B0     		add	sp, sp, #12
+  68              		.cfi_def_cfa_offset 4
+  69              		@ sp needed
+  70 002e 5DF804FB 		ldr	pc, [sp], #4
+  71              	.L5:
+  72 0032 00BF     		.align	2
+  73              	.L4:
+  74 0034 00000000 		.word	.LANCHOR0
+  75 0038 04ED00E0 		.word	-536810236
+  76              		.cfi_endproc
+  77              	.LFE69:
+  78              		.size	switch_isr_code, .-switch_isr_code
+  79              		.section	.text.led_task,"ax",%progbits
+  80              		.align	2
+  81              		.global	led_task
+  82              		.thumb
+  83              		.thumb_func
+  84              		.type	led_task, %function
+  85              	led_task:
+  86              	.LFB70:
+  49:main.c        **** 
+  50:main.c        **** void led_task()
+  51:main.c        **** {
+  87              		.loc 1 51 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91 0000 08B5     		push	{r3, lr}
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 3, -8
+  94              		.cfi_offset 14, -4
+  95              	.L7:
+  52:main.c        ****     while(1)
+  53:main.c        ****     {   
+  54:main.c        ****         /* Block indefinitely until semaphore is given */
+  55:main.c        ****         if (xSemaphoreTake(xButtonSemaphore, portMAX_DELAY) == pdTRUE)
+  96              		.loc 1 55 0
+  97 0002 4FF0FF31 		mov	r1, #-1
+  98 0006 074B     		ldr	r3, .L10
+  99 0008 1868     		ldr	r0, [r3]
+ 100 000a FFF7FEFF 		bl	xQueueSemaphoreTake
+ 101              	.LVL2:
+ 102 000e 0128     		cmp	r0, #1
+ 103 0010 F7D1     		bne	.L7
+ 104              	.LBB2:
+  56:main.c        ****         {
+  57:main.c        ****             uint8 led_state = !led_Read();  
+ 105              		.loc 1 57 0
+ 106 0012 FFF7FEFF 		bl	led_Read
+ 107              	.LVL3:
+  58:main.c        ****             led_Write(led_state);              
+ 108              		.loc 1 58 0
+ 109 0016 B0FA80F0 		clz	r0, r0
+ 110              	.LVL4:
+ 111 001a 4009     		lsrs	r0, r0, #5
+ 112 001c FFF7FEFF 		bl	led_Write
+ 113              	.LVL5:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 4
+
+
+ 114 0020 EFE7     		b	.L7
+ 115              	.L11:
+ 116 0022 00BF     		.align	2
+ 117              	.L10:
+ 118 0024 00000000 		.word	.LANCHOR0
+ 119              	.LBE2:
+ 120              		.cfi_endproc
+ 121              	.LFE70:
+ 122              		.size	led_task, .-led_task
+ 123              		.section	.text.main,"ax",%progbits
+ 124              		.align	2
+ 125              		.global	main
+ 126              		.thumb
+ 127              		.thumb_func
+ 128              		.type	main, %function
+ 129              	main:
+ 130              	.LFB71:
+  59:main.c        ****         }        
+  60:main.c        ****         
+  61:main.c        ****     }
+  62:main.c        **** }
+  63:main.c        **** 
+  64:main.c        **** 
+  65:main.c        **** int main(void)
+  66:main.c        **** {
+ 131              		.loc 1 66 0
+ 132              		.cfi_startproc
+ 133              		@ Volatile: function does not return.
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 00B5     		push	{lr}
+ 137              		.cfi_def_cfa_offset 4
+ 138              		.cfi_offset 14, -4
+ 139 0002 83B0     		sub	sp, sp, #12
+ 140              		.cfi_def_cfa_offset 16
+  67:main.c        ****     CyGlobalIntEnable;    
+ 141              		.loc 1 67 0
+ 142              		.syntax unified
+ 143              	@ 67 "main.c" 1
+ 144 0004 62B6     		CPSIE   i
+ 145              	@ 0 "" 2
+  68:main.c        ****        
+  69:main.c        ****     isr_1_StartEx(switch_isr_code);
+ 146              		.loc 1 69 0
+ 147              		.thumb
+ 148              		.syntax unified
+ 149 0006 0C48     		ldr	r0, .L15
+ 150 0008 FFF7FEFF 		bl	isr_1_StartEx
+ 151              	.LVL6:
+  70:main.c        **** 
+  71:main.c        ****     FreeRTOS_Start();
+ 152              		.loc 1 71 0
+ 153 000c FFF7FEFF 		bl	FreeRTOS_Start
+ 154              	.LVL7:
+  72:main.c        ****     
+  73:main.c        ****     xButtonSemaphore = xSemaphoreCreateBinary();
+ 155              		.loc 1 73 0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 5
+
+
+ 156 0010 0322     		movs	r2, #3
+ 157 0012 0021     		movs	r1, #0
+ 158 0014 0120     		movs	r0, #1
+ 159 0016 FFF7FEFF 		bl	xQueueGenericCreate
+ 160              	.LVL8:
+ 161 001a 084B     		ldr	r3, .L15+4
+ 162 001c 1860     		str	r0, [r3]
+  74:main.c        ****     
+  75:main.c        ****     xTaskCreate(led_task, "LED_Task", 200, NULL, 5, NULL);  
+ 163              		.loc 1 75 0
+ 164 001e 0023     		movs	r3, #0
+ 165 0020 0193     		str	r3, [sp, #4]
+ 166 0022 0522     		movs	r2, #5
+ 167 0024 0092     		str	r2, [sp]
+ 168 0026 C822     		movs	r2, #200
+ 169 0028 0549     		ldr	r1, .L15+8
+ 170 002a 0648     		ldr	r0, .L15+12
+ 171 002c FFF7FEFF 		bl	xTaskCreate
+ 172              	.LVL9:
+  76:main.c        ****     
+  77:main.c        ****     vTaskStartScheduler();
+ 173              		.loc 1 77 0
+ 174 0030 FFF7FEFF 		bl	vTaskStartScheduler
+ 175              	.LVL10:
+ 176              	.L13:
+ 177 0034 FEE7     		b	.L13
+ 178              	.L16:
+ 179 0036 00BF     		.align	2
+ 180              	.L15:
+ 181 0038 00000000 		.word	switch_isr_code
+ 182 003c 00000000 		.word	.LANCHOR0
+ 183 0040 00000000 		.word	.LC0
+ 184 0044 00000000 		.word	led_task
+ 185              		.cfi_endproc
+ 186              	.LFE71:
+ 187              		.size	main, .-main
+ 188              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 189              		.align	2
+ 190              	.LC0:
+ 191 0000 4C45445F 		.ascii	"LED_Task\000"
+ 191      5461736B 
+ 191      00
+ 192              		.bss
+ 193              		.align	2
+ 194              		.set	.LANCHOR0,. + 0
+ 195              		.type	xButtonSemaphore, %object
+ 196              		.size	xButtonSemaphore, 4
+ 197              	xButtonSemaphore:
+ 198 0000 00000000 		.space	4
+ 199              		.text
+ 200              	.Letext0:
+ 201              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 202              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 203              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 204              		.file 5 "..\\FreeRTOS\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 205              		.file 6 "..\\FreeRTOS\\Source\\include/queue.h"
+ 206              		.file 7 "..\\FreeRTOS\\Source\\include/semphr.h"
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 6
+
+
+ 207              		.file 8 "Generated_Source\\PSoC5/Pin_SW.h"
+ 208              		.file 9 "Generated_Source\\PSoC5/led.h"
+ 209              		.file 10 "Generated_Source\\PSoC5/isr_1.h"
+ 210              		.file 11 "..\\FreeRTOS\\Source\\include/task.h"
+ 211              		.file 12 "Generated_Source\\PSoC5/core_cm3.h"
+ 212              		.section	.debug_info,"",%progbits
+ 213              	.Ldebug_info0:
+ 214 0000 DD020000 		.4byte	0x2dd
+ 215 0004 0400     		.2byte	0x4
+ 216 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 217 000a 04       		.byte	0x4
+ 218 000b 01       		.uleb128 0x1
+ 219 000c C7010000 		.4byte	.LASF41
+ 220 0010 0C       		.byte	0xc
+ 221 0011 86020000 		.4byte	.LASF42
+ 222 0015 7E000000 		.4byte	.LASF43
+ 223 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 224 001d 00000000 		.4byte	0
+ 225 0021 00000000 		.4byte	.Ldebug_line0
+ 226 0025 02       		.uleb128 0x2
+ 227 0026 01       		.byte	0x1
+ 228 0027 06       		.byte	0x6
+ 229 0028 F4020000 		.4byte	.LASF0
+ 230 002c 03       		.uleb128 0x3
+ 231 002d 00000000 		.4byte	.LASF4
+ 232 0031 02       		.byte	0x2
+ 233 0032 1D       		.byte	0x1d
+ 234 0033 37000000 		.4byte	0x37
+ 235 0037 02       		.uleb128 0x2
+ 236 0038 01       		.byte	0x1
+ 237 0039 08       		.byte	0x8
+ 238 003a 70000000 		.4byte	.LASF1
+ 239 003e 02       		.uleb128 0x2
+ 240 003f 02       		.byte	0x2
+ 241 0040 05       		.byte	0x5
+ 242 0041 AB020000 		.4byte	.LASF2
+ 243 0045 02       		.uleb128 0x2
+ 244 0046 02       		.byte	0x2
+ 245 0047 07       		.byte	0x7
+ 246 0048 1D010000 		.4byte	.LASF3
+ 247 004c 03       		.uleb128 0x3
+ 248 004d 15000000 		.4byte	.LASF5
+ 249 0051 02       		.byte	0x2
+ 250 0052 3F       		.byte	0x3f
+ 251 0053 57000000 		.4byte	0x57
+ 252 0057 02       		.uleb128 0x2
+ 253 0058 04       		.byte	0x4
+ 254 0059 05       		.byte	0x5
+ 255 005a D4020000 		.4byte	.LASF6
+ 256 005e 03       		.uleb128 0x3
+ 257 005f 63010000 		.4byte	.LASF7
+ 258 0063 02       		.byte	0x2
+ 259 0064 41       		.byte	0x41
+ 260 0065 69000000 		.4byte	0x69
+ 261 0069 02       		.uleb128 0x2
+ 262 006a 04       		.byte	0x4
+ 263 006b 07       		.byte	0x7
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 7
+
+
+ 264 006c 0B010000 		.4byte	.LASF8
+ 265 0070 02       		.uleb128 0x2
+ 266 0071 08       		.byte	0x8
+ 267 0072 05       		.byte	0x5
+ 268 0073 78020000 		.4byte	.LASF9
+ 269 0077 02       		.uleb128 0x2
+ 270 0078 08       		.byte	0x8
+ 271 0079 07       		.byte	0x7
+ 272 007a 94010000 		.4byte	.LASF10
+ 273 007e 04       		.uleb128 0x4
+ 274 007f 04       		.byte	0x4
+ 275 0080 05       		.byte	0x5
+ 276 0081 696E7400 		.ascii	"int\000"
+ 277 0085 02       		.uleb128 0x2
+ 278 0086 04       		.byte	0x4
+ 279 0087 07       		.byte	0x7
+ 280 0088 7E010000 		.4byte	.LASF11
+ 281 008c 02       		.uleb128 0x2
+ 282 008d 08       		.byte	0x8
+ 283 008e 04       		.byte	0x4
+ 284 008f E8020000 		.4byte	.LASF12
+ 285 0093 02       		.uleb128 0x2
+ 286 0094 04       		.byte	0x4
+ 287 0095 07       		.byte	0x7
+ 288 0096 6F020000 		.4byte	.LASF13
+ 289 009a 02       		.uleb128 0x2
+ 290 009b 01       		.byte	0x1
+ 291 009c 08       		.byte	0x8
+ 292 009d 8D020000 		.4byte	.LASF14
+ 293 00a1 03       		.uleb128 0x3
+ 294 00a2 AB010000 		.4byte	.LASF15
+ 295 00a6 03       		.byte	0x3
+ 296 00a7 18       		.byte	0x18
+ 297 00a8 2C000000 		.4byte	0x2c
+ 298 00ac 03       		.uleb128 0x3
+ 299 00ad 55020000 		.4byte	.LASF16
+ 300 00b1 03       		.byte	0x3
+ 301 00b2 2C       		.byte	0x2c
+ 302 00b3 4C000000 		.4byte	0x4c
+ 303 00b7 03       		.uleb128 0x3
+ 304 00b8 CB020000 		.4byte	.LASF17
+ 305 00bc 03       		.byte	0x3
+ 306 00bd 30       		.byte	0x30
+ 307 00be 5E000000 		.4byte	0x5e
+ 308 00c2 02       		.uleb128 0x2
+ 309 00c3 08       		.byte	0x8
+ 310 00c4 04       		.byte	0x4
+ 311 00c5 00030000 		.4byte	.LASF18
+ 312 00c9 02       		.uleb128 0x2
+ 313 00ca 04       		.byte	0x4
+ 314 00cb 04       		.byte	0x4
+ 315 00cc 6A000000 		.4byte	.LASF19
+ 316 00d0 05       		.uleb128 0x5
+ 317 00d1 B5020000 		.4byte	.LASF20
+ 318 00d5 04       		.byte	0x4
+ 319 00d6 E401     		.2byte	0x1e4
+ 320 00d8 37000000 		.4byte	0x37
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 8
+
+
+ 321 00dc 03       		.uleb128 0x3
+ 322 00dd DD020000 		.4byte	.LASF21
+ 323 00e1 05       		.byte	0x5
+ 324 00e2 38       		.byte	0x38
+ 325 00e3 57000000 		.4byte	0x57
+ 326 00e7 03       		.uleb128 0x3
+ 327 00e8 29030000 		.4byte	.LASF22
+ 328 00ec 05       		.byte	0x5
+ 329 00ed 39       		.byte	0x39
+ 330 00ee 69000000 		.4byte	0x69
+ 331 00f2 03       		.uleb128 0x3
+ 332 00f3 0A000000 		.4byte	.LASF23
+ 333 00f7 05       		.byte	0x5
+ 334 00f8 3F       		.byte	0x3f
+ 335 00f9 B7000000 		.4byte	0xb7
+ 336 00fd 03       		.uleb128 0x3
+ 337 00fe 1F000000 		.4byte	.LASF24
+ 338 0102 06       		.byte	0x6
+ 339 0103 30       		.byte	0x30
+ 340 0104 08010000 		.4byte	0x108
+ 341 0108 06       		.uleb128 0x6
+ 342 0109 04       		.byte	0x4
+ 343 010a 0E010000 		.4byte	0x10e
+ 344 010e 07       		.uleb128 0x7
+ 345 010f 6E010000 		.4byte	.LASF44
+ 346 0113 03       		.uleb128 0x3
+ 347 0114 51010000 		.4byte	.LASF25
+ 348 0118 07       		.byte	0x7
+ 349 0119 25       		.byte	0x25
+ 350 011a FD000000 		.4byte	0xfd
+ 351 011e 08       		.uleb128 0x8
+ 352 011f BB020000 		.4byte	.LASF26
+ 353 0123 01       		.byte	0x1
+ 354 0124 25       		.byte	0x25
+ 355 0125 00000000 		.4byte	.LFB69
+ 356 0129 3C000000 		.4byte	.LFE69-.LFB69
+ 357 012d 01       		.uleb128 0x1
+ 358 012e 9C       		.byte	0x9c
+ 359 012f 5F010000 		.4byte	0x15f
+ 360 0133 09       		.uleb128 0x9
+ 361 0134 92020000 		.4byte	.LASF28
+ 362 0138 01       		.byte	0x1
+ 363 0139 27       		.byte	0x27
+ 364 013a DC000000 		.4byte	0xdc
+ 365 013e 02       		.uleb128 0x2
+ 366 013f 91       		.byte	0x91
+ 367 0140 74       		.sleb128 -12
+ 368 0141 0A       		.uleb128 0xa
+ 369 0142 14000000 		.4byte	.LVL0
+ 370 0146 6D020000 		.4byte	0x26d
+ 371 014a 55010000 		.4byte	0x155
+ 372 014e 0B       		.uleb128 0xb
+ 373 014f 01       		.uleb128 0x1
+ 374 0150 51       		.byte	0x51
+ 375 0151 02       		.uleb128 0x2
+ 376 0152 91       		.byte	0x91
+ 377 0153 74       		.sleb128 -12
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 9
+
+
+ 378 0154 00       		.byte	0
+ 379 0155 0C       		.uleb128 0xc
+ 380 0156 2C000000 		.4byte	.LVL1
+ 381 015a 79020000 		.4byte	0x279
+ 382 015e 00       		.byte	0
+ 383 015f 0D       		.uleb128 0xd
+ 384 0160 8B010000 		.4byte	.LASF27
+ 385 0164 01       		.byte	0x1
+ 386 0165 32       		.byte	0x32
+ 387 0166 00000000 		.4byte	.LFB70
+ 388 016a 28000000 		.4byte	.LFE70-.LFB70
+ 389 016e 01       		.uleb128 0x1
+ 390 016f 9C       		.byte	0x9c
+ 391 0170 B4010000 		.4byte	0x1b4
+ 392 0174 0E       		.uleb128 0xe
+ 393 0175 12000000 		.4byte	.LBB2
+ 394 0179 16000000 		.4byte	.LBE2-.LBB2
+ 395 017d A3010000 		.4byte	0x1a3
+ 396 0181 0F       		.uleb128 0xf
+ 397 0182 01010000 		.4byte	.LASF29
+ 398 0186 01       		.byte	0x1
+ 399 0187 39       		.byte	0x39
+ 400 0188 D0000000 		.4byte	0xd0
+ 401 018c 00000000 		.4byte	.LLST0
+ 402 0190 0C       		.uleb128 0xc
+ 403 0191 16000000 		.4byte	.LVL3
+ 404 0195 84020000 		.4byte	0x284
+ 405 0199 0C       		.uleb128 0xc
+ 406 019a 20000000 		.4byte	.LVL5
+ 407 019e 8F020000 		.4byte	0x28f
+ 408 01a2 00       		.byte	0
+ 409 01a3 10       		.uleb128 0x10
+ 410 01a4 0E000000 		.4byte	.LVL2
+ 411 01a8 9A020000 		.4byte	0x29a
+ 412 01ac 0B       		.uleb128 0xb
+ 413 01ad 01       		.uleb128 0x1
+ 414 01ae 51       		.byte	0x51
+ 415 01af 02       		.uleb128 0x2
+ 416 01b0 09       		.byte	0x9
+ 417 01b1 FF       		.byte	0xff
+ 418 01b2 00       		.byte	0
+ 419 01b3 00       		.byte	0
+ 420 01b4 11       		.uleb128 0x11
+ 421 01b5 C2010000 		.4byte	.LASF45
+ 422 01b9 01       		.byte	0x1
+ 423 01ba 41       		.byte	0x41
+ 424 01bb 7E000000 		.4byte	0x7e
+ 425 01bf 00000000 		.4byte	.LFB71
+ 426 01c3 48000000 		.4byte	.LFE71-.LFB71
+ 427 01c7 01       		.uleb128 0x1
+ 428 01c8 9C       		.byte	0x9c
+ 429 01c9 4B020000 		.4byte	0x24b
+ 430 01cd 0A       		.uleb128 0xa
+ 431 01ce 0C000000 		.4byte	.LVL6
+ 432 01d2 A6020000 		.4byte	0x2a6
+ 433 01d6 E4010000 		.4byte	0x1e4
+ 434 01da 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 10
+
+
+ 435 01db 01       		.uleb128 0x1
+ 436 01dc 50       		.byte	0x50
+ 437 01dd 05       		.uleb128 0x5
+ 438 01de 03       		.byte	0x3
+ 439 01df 00000000 		.4byte	switch_isr_code
+ 440 01e3 00       		.byte	0
+ 441 01e4 0C       		.uleb128 0xc
+ 442 01e5 10000000 		.4byte	.LVL7
+ 443 01e9 B1020000 		.4byte	0x2b1
+ 444 01ed 0A       		.uleb128 0xa
+ 445 01ee 1A000000 		.4byte	.LVL8
+ 446 01f2 BC020000 		.4byte	0x2bc
+ 447 01f6 0A020000 		.4byte	0x20a
+ 448 01fa 0B       		.uleb128 0xb
+ 449 01fb 01       		.uleb128 0x1
+ 450 01fc 50       		.byte	0x50
+ 451 01fd 01       		.uleb128 0x1
+ 452 01fe 31       		.byte	0x31
+ 453 01ff 0B       		.uleb128 0xb
+ 454 0200 01       		.uleb128 0x1
+ 455 0201 51       		.byte	0x51
+ 456 0202 01       		.uleb128 0x1
+ 457 0203 30       		.byte	0x30
+ 458 0204 0B       		.uleb128 0xb
+ 459 0205 01       		.uleb128 0x1
+ 460 0206 52       		.byte	0x52
+ 461 0207 01       		.uleb128 0x1
+ 462 0208 33       		.byte	0x33
+ 463 0209 00       		.byte	0
+ 464 020a 0A       		.uleb128 0xa
+ 465 020b 30000000 		.4byte	.LVL9
+ 466 020f C8020000 		.4byte	0x2c8
+ 467 0213 41020000 		.4byte	0x241
+ 468 0217 0B       		.uleb128 0xb
+ 469 0218 01       		.uleb128 0x1
+ 470 0219 50       		.byte	0x50
+ 471 021a 05       		.uleb128 0x5
+ 472 021b 03       		.byte	0x3
+ 473 021c 00000000 		.4byte	led_task
+ 474 0220 0B       		.uleb128 0xb
+ 475 0221 01       		.uleb128 0x1
+ 476 0222 51       		.byte	0x51
+ 477 0223 05       		.uleb128 0x5
+ 478 0224 03       		.byte	0x3
+ 479 0225 00000000 		.4byte	.LC0
+ 480 0229 0B       		.uleb128 0xb
+ 481 022a 01       		.uleb128 0x1
+ 482 022b 52       		.byte	0x52
+ 483 022c 02       		.uleb128 0x2
+ 484 022d 08       		.byte	0x8
+ 485 022e C8       		.byte	0xc8
+ 486 022f 0B       		.uleb128 0xb
+ 487 0230 01       		.uleb128 0x1
+ 488 0231 53       		.byte	0x53
+ 489 0232 01       		.uleb128 0x1
+ 490 0233 30       		.byte	0x30
+ 491 0234 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 11
+
+
+ 492 0235 02       		.uleb128 0x2
+ 493 0236 7D       		.byte	0x7d
+ 494 0237 00       		.sleb128 0
+ 495 0238 01       		.uleb128 0x1
+ 496 0239 35       		.byte	0x35
+ 497 023a 0B       		.uleb128 0xb
+ 498 023b 02       		.uleb128 0x2
+ 499 023c 7D       		.byte	0x7d
+ 500 023d 04       		.sleb128 4
+ 501 023e 01       		.uleb128 0x1
+ 502 023f 30       		.byte	0x30
+ 503 0240 00       		.byte	0
+ 504 0241 0C       		.uleb128 0xc
+ 505 0242 34000000 		.4byte	.LVL10
+ 506 0246 D4020000 		.4byte	0x2d4
+ 507 024a 00       		.byte	0
+ 508 024b 09       		.uleb128 0x9
+ 509 024c 35030000 		.4byte	.LASF30
+ 510 0250 01       		.byte	0x1
+ 511 0251 22       		.byte	0x22
+ 512 0252 13010000 		.4byte	0x113
+ 513 0256 05       		.uleb128 0x5
+ 514 0257 03       		.byte	0x3
+ 515 0258 00000000 		.4byte	xButtonSemaphore
+ 516 025c 12       		.uleb128 0x12
+ 517 025d 30010000 		.4byte	.LASF46
+ 518 0261 0C       		.byte	0xc
+ 519 0262 1207     		.2byte	0x712
+ 520 0264 68020000 		.4byte	0x268
+ 521 0268 13       		.uleb128 0x13
+ 522 0269 AC000000 		.4byte	0xac
+ 523 026d 14       		.uleb128 0x14
+ 524 026e 5D020000 		.4byte	.LASF31
+ 525 0272 5D020000 		.4byte	.LASF31
+ 526 0276 06       		.byte	0x6
+ 527 0277 1005     		.2byte	0x510
+ 528 0279 15       		.uleb128 0x15
+ 529 027a 41000000 		.4byte	.LASF32
+ 530 027e 41000000 		.4byte	.LASF32
+ 531 0282 08       		.byte	0x8
+ 532 0283 2B       		.byte	0x2b
+ 533 0284 15       		.uleb128 0x15
+ 534 0285 57000000 		.4byte	.LASF33
+ 535 0289 57000000 		.4byte	.LASF33
+ 536 028d 09       		.byte	0x9
+ 537 028e 29       		.byte	0x29
+ 538 028f 15       		.uleb128 0x15
+ 539 0290 60000000 		.4byte	.LASF34
+ 540 0294 60000000 		.4byte	.LASF34
+ 541 0298 09       		.byte	0x9
+ 542 0299 26       		.byte	0x26
+ 543 029a 14       		.uleb128 0x14
+ 544 029b 07030000 		.4byte	.LASF35
+ 545 029f 07030000 		.4byte	.LASF35
+ 546 02a3 06       		.byte	0x6
+ 547 02a4 8A05     		.2byte	0x58a
+ 548 02a6 15       		.uleb128 0x15
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 12
+
+
+ 549 02a7 1B030000 		.4byte	.LASF36
+ 550 02ab 1B030000 		.4byte	.LASF36
+ 551 02af 0A       		.byte	0xa
+ 552 02b0 18       		.byte	0x18
+ 553 02b1 15       		.uleb128 0x15
+ 554 02b2 B3010000 		.4byte	.LASF37
+ 555 02b6 B3010000 		.4byte	.LASF37
+ 556 02ba 01       		.byte	0x1
+ 557 02bb 20       		.byte	0x20
+ 558 02bc 14       		.uleb128 0x14
+ 559 02bd 3D010000 		.4byte	.LASF38
+ 560 02c1 3D010000 		.4byte	.LASF38
+ 561 02c5 06       		.byte	0x6
+ 562 02c6 D805     		.2byte	0x5d8
+ 563 02c8 14       		.uleb128 0x14
+ 564 02c9 46030000 		.4byte	.LASF39
+ 565 02cd 46030000 		.4byte	.LASF39
+ 566 02d1 0B       		.byte	0xb
+ 567 02d2 4A01     		.2byte	0x14a
+ 568 02d4 14       		.uleb128 0x14
+ 569 02d5 2D000000 		.4byte	.LASF40
+ 570 02d9 2D000000 		.4byte	.LASF40
+ 571 02dd 0B       		.byte	0xb
+ 572 02de 9704     		.2byte	0x497
+ 573 02e0 00       		.byte	0
+ 574              		.section	.debug_abbrev,"",%progbits
+ 575              	.Ldebug_abbrev0:
+ 576 0000 01       		.uleb128 0x1
+ 577 0001 11       		.uleb128 0x11
+ 578 0002 01       		.byte	0x1
+ 579 0003 25       		.uleb128 0x25
+ 580 0004 0E       		.uleb128 0xe
+ 581 0005 13       		.uleb128 0x13
+ 582 0006 0B       		.uleb128 0xb
+ 583 0007 03       		.uleb128 0x3
+ 584 0008 0E       		.uleb128 0xe
+ 585 0009 1B       		.uleb128 0x1b
+ 586 000a 0E       		.uleb128 0xe
+ 587 000b 55       		.uleb128 0x55
+ 588 000c 17       		.uleb128 0x17
+ 589 000d 11       		.uleb128 0x11
+ 590 000e 01       		.uleb128 0x1
+ 591 000f 10       		.uleb128 0x10
+ 592 0010 17       		.uleb128 0x17
+ 593 0011 00       		.byte	0
+ 594 0012 00       		.byte	0
+ 595 0013 02       		.uleb128 0x2
+ 596 0014 24       		.uleb128 0x24
+ 597 0015 00       		.byte	0
+ 598 0016 0B       		.uleb128 0xb
+ 599 0017 0B       		.uleb128 0xb
+ 600 0018 3E       		.uleb128 0x3e
+ 601 0019 0B       		.uleb128 0xb
+ 602 001a 03       		.uleb128 0x3
+ 603 001b 0E       		.uleb128 0xe
+ 604 001c 00       		.byte	0
+ 605 001d 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 13
+
+
+ 606 001e 03       		.uleb128 0x3
+ 607 001f 16       		.uleb128 0x16
+ 608 0020 00       		.byte	0
+ 609 0021 03       		.uleb128 0x3
+ 610 0022 0E       		.uleb128 0xe
+ 611 0023 3A       		.uleb128 0x3a
+ 612 0024 0B       		.uleb128 0xb
+ 613 0025 3B       		.uleb128 0x3b
+ 614 0026 0B       		.uleb128 0xb
+ 615 0027 49       		.uleb128 0x49
+ 616 0028 13       		.uleb128 0x13
+ 617 0029 00       		.byte	0
+ 618 002a 00       		.byte	0
+ 619 002b 04       		.uleb128 0x4
+ 620 002c 24       		.uleb128 0x24
+ 621 002d 00       		.byte	0
+ 622 002e 0B       		.uleb128 0xb
+ 623 002f 0B       		.uleb128 0xb
+ 624 0030 3E       		.uleb128 0x3e
+ 625 0031 0B       		.uleb128 0xb
+ 626 0032 03       		.uleb128 0x3
+ 627 0033 08       		.uleb128 0x8
+ 628 0034 00       		.byte	0
+ 629 0035 00       		.byte	0
+ 630 0036 05       		.uleb128 0x5
+ 631 0037 16       		.uleb128 0x16
+ 632 0038 00       		.byte	0
+ 633 0039 03       		.uleb128 0x3
+ 634 003a 0E       		.uleb128 0xe
+ 635 003b 3A       		.uleb128 0x3a
+ 636 003c 0B       		.uleb128 0xb
+ 637 003d 3B       		.uleb128 0x3b
+ 638 003e 05       		.uleb128 0x5
+ 639 003f 49       		.uleb128 0x49
+ 640 0040 13       		.uleb128 0x13
+ 641 0041 00       		.byte	0
+ 642 0042 00       		.byte	0
+ 643 0043 06       		.uleb128 0x6
+ 644 0044 0F       		.uleb128 0xf
+ 645 0045 00       		.byte	0
+ 646 0046 0B       		.uleb128 0xb
+ 647 0047 0B       		.uleb128 0xb
+ 648 0048 49       		.uleb128 0x49
+ 649 0049 13       		.uleb128 0x13
+ 650 004a 00       		.byte	0
+ 651 004b 00       		.byte	0
+ 652 004c 07       		.uleb128 0x7
+ 653 004d 13       		.uleb128 0x13
+ 654 004e 00       		.byte	0
+ 655 004f 03       		.uleb128 0x3
+ 656 0050 0E       		.uleb128 0xe
+ 657 0051 3C       		.uleb128 0x3c
+ 658 0052 19       		.uleb128 0x19
+ 659 0053 00       		.byte	0
+ 660 0054 00       		.byte	0
+ 661 0055 08       		.uleb128 0x8
+ 662 0056 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 14
+
+
+ 663 0057 01       		.byte	0x1
+ 664 0058 3F       		.uleb128 0x3f
+ 665 0059 19       		.uleb128 0x19
+ 666 005a 03       		.uleb128 0x3
+ 667 005b 0E       		.uleb128 0xe
+ 668 005c 3A       		.uleb128 0x3a
+ 669 005d 0B       		.uleb128 0xb
+ 670 005e 3B       		.uleb128 0x3b
+ 671 005f 0B       		.uleb128 0xb
+ 672 0060 27       		.uleb128 0x27
+ 673 0061 19       		.uleb128 0x19
+ 674 0062 11       		.uleb128 0x11
+ 675 0063 01       		.uleb128 0x1
+ 676 0064 12       		.uleb128 0x12
+ 677 0065 06       		.uleb128 0x6
+ 678 0066 40       		.uleb128 0x40
+ 679 0067 18       		.uleb128 0x18
+ 680 0068 9742     		.uleb128 0x2117
+ 681 006a 19       		.uleb128 0x19
+ 682 006b 01       		.uleb128 0x1
+ 683 006c 13       		.uleb128 0x13
+ 684 006d 00       		.byte	0
+ 685 006e 00       		.byte	0
+ 686 006f 09       		.uleb128 0x9
+ 687 0070 34       		.uleb128 0x34
+ 688 0071 00       		.byte	0
+ 689 0072 03       		.uleb128 0x3
+ 690 0073 0E       		.uleb128 0xe
+ 691 0074 3A       		.uleb128 0x3a
+ 692 0075 0B       		.uleb128 0xb
+ 693 0076 3B       		.uleb128 0x3b
+ 694 0077 0B       		.uleb128 0xb
+ 695 0078 49       		.uleb128 0x49
+ 696 0079 13       		.uleb128 0x13
+ 697 007a 02       		.uleb128 0x2
+ 698 007b 18       		.uleb128 0x18
+ 699 007c 00       		.byte	0
+ 700 007d 00       		.byte	0
+ 701 007e 0A       		.uleb128 0xa
+ 702 007f 898201   		.uleb128 0x4109
+ 703 0082 01       		.byte	0x1
+ 704 0083 11       		.uleb128 0x11
+ 705 0084 01       		.uleb128 0x1
+ 706 0085 31       		.uleb128 0x31
+ 707 0086 13       		.uleb128 0x13
+ 708 0087 01       		.uleb128 0x1
+ 709 0088 13       		.uleb128 0x13
+ 710 0089 00       		.byte	0
+ 711 008a 00       		.byte	0
+ 712 008b 0B       		.uleb128 0xb
+ 713 008c 8A8201   		.uleb128 0x410a
+ 714 008f 00       		.byte	0
+ 715 0090 02       		.uleb128 0x2
+ 716 0091 18       		.uleb128 0x18
+ 717 0092 9142     		.uleb128 0x2111
+ 718 0094 18       		.uleb128 0x18
+ 719 0095 00       		.byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 15
+
+
+ 720 0096 00       		.byte	0
+ 721 0097 0C       		.uleb128 0xc
+ 722 0098 898201   		.uleb128 0x4109
+ 723 009b 00       		.byte	0
+ 724 009c 11       		.uleb128 0x11
+ 725 009d 01       		.uleb128 0x1
+ 726 009e 31       		.uleb128 0x31
+ 727 009f 13       		.uleb128 0x13
+ 728 00a0 00       		.byte	0
+ 729 00a1 00       		.byte	0
+ 730 00a2 0D       		.uleb128 0xd
+ 731 00a3 2E       		.uleb128 0x2e
+ 732 00a4 01       		.byte	0x1
+ 733 00a5 3F       		.uleb128 0x3f
+ 734 00a6 19       		.uleb128 0x19
+ 735 00a7 03       		.uleb128 0x3
+ 736 00a8 0E       		.uleb128 0xe
+ 737 00a9 3A       		.uleb128 0x3a
+ 738 00aa 0B       		.uleb128 0xb
+ 739 00ab 3B       		.uleb128 0x3b
+ 740 00ac 0B       		.uleb128 0xb
+ 741 00ad 8701     		.uleb128 0x87
+ 742 00af 19       		.uleb128 0x19
+ 743 00b0 11       		.uleb128 0x11
+ 744 00b1 01       		.uleb128 0x1
+ 745 00b2 12       		.uleb128 0x12
+ 746 00b3 06       		.uleb128 0x6
+ 747 00b4 40       		.uleb128 0x40
+ 748 00b5 18       		.uleb128 0x18
+ 749 00b6 9742     		.uleb128 0x2117
+ 750 00b8 19       		.uleb128 0x19
+ 751 00b9 01       		.uleb128 0x1
+ 752 00ba 13       		.uleb128 0x13
+ 753 00bb 00       		.byte	0
+ 754 00bc 00       		.byte	0
+ 755 00bd 0E       		.uleb128 0xe
+ 756 00be 0B       		.uleb128 0xb
+ 757 00bf 01       		.byte	0x1
+ 758 00c0 11       		.uleb128 0x11
+ 759 00c1 01       		.uleb128 0x1
+ 760 00c2 12       		.uleb128 0x12
+ 761 00c3 06       		.uleb128 0x6
+ 762 00c4 01       		.uleb128 0x1
+ 763 00c5 13       		.uleb128 0x13
+ 764 00c6 00       		.byte	0
+ 765 00c7 00       		.byte	0
+ 766 00c8 0F       		.uleb128 0xf
+ 767 00c9 34       		.uleb128 0x34
+ 768 00ca 00       		.byte	0
+ 769 00cb 03       		.uleb128 0x3
+ 770 00cc 0E       		.uleb128 0xe
+ 771 00cd 3A       		.uleb128 0x3a
+ 772 00ce 0B       		.uleb128 0xb
+ 773 00cf 3B       		.uleb128 0x3b
+ 774 00d0 0B       		.uleb128 0xb
+ 775 00d1 49       		.uleb128 0x49
+ 776 00d2 13       		.uleb128 0x13
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 16
+
+
+ 777 00d3 02       		.uleb128 0x2
+ 778 00d4 17       		.uleb128 0x17
+ 779 00d5 00       		.byte	0
+ 780 00d6 00       		.byte	0
+ 781 00d7 10       		.uleb128 0x10
+ 782 00d8 898201   		.uleb128 0x4109
+ 783 00db 01       		.byte	0x1
+ 784 00dc 11       		.uleb128 0x11
+ 785 00dd 01       		.uleb128 0x1
+ 786 00de 31       		.uleb128 0x31
+ 787 00df 13       		.uleb128 0x13
+ 788 00e0 00       		.byte	0
+ 789 00e1 00       		.byte	0
+ 790 00e2 11       		.uleb128 0x11
+ 791 00e3 2E       		.uleb128 0x2e
+ 792 00e4 01       		.byte	0x1
+ 793 00e5 3F       		.uleb128 0x3f
+ 794 00e6 19       		.uleb128 0x19
+ 795 00e7 03       		.uleb128 0x3
+ 796 00e8 0E       		.uleb128 0xe
+ 797 00e9 3A       		.uleb128 0x3a
+ 798 00ea 0B       		.uleb128 0xb
+ 799 00eb 3B       		.uleb128 0x3b
+ 800 00ec 0B       		.uleb128 0xb
+ 801 00ed 27       		.uleb128 0x27
+ 802 00ee 19       		.uleb128 0x19
+ 803 00ef 49       		.uleb128 0x49
+ 804 00f0 13       		.uleb128 0x13
+ 805 00f1 8701     		.uleb128 0x87
+ 806 00f3 19       		.uleb128 0x19
+ 807 00f4 11       		.uleb128 0x11
+ 808 00f5 01       		.uleb128 0x1
+ 809 00f6 12       		.uleb128 0x12
+ 810 00f7 06       		.uleb128 0x6
+ 811 00f8 40       		.uleb128 0x40
+ 812 00f9 18       		.uleb128 0x18
+ 813 00fa 9742     		.uleb128 0x2117
+ 814 00fc 19       		.uleb128 0x19
+ 815 00fd 01       		.uleb128 0x1
+ 816 00fe 13       		.uleb128 0x13
+ 817 00ff 00       		.byte	0
+ 818 0100 00       		.byte	0
+ 819 0101 12       		.uleb128 0x12
+ 820 0102 34       		.uleb128 0x34
+ 821 0103 00       		.byte	0
+ 822 0104 03       		.uleb128 0x3
+ 823 0105 0E       		.uleb128 0xe
+ 824 0106 3A       		.uleb128 0x3a
+ 825 0107 0B       		.uleb128 0xb
+ 826 0108 3B       		.uleb128 0x3b
+ 827 0109 05       		.uleb128 0x5
+ 828 010a 49       		.uleb128 0x49
+ 829 010b 13       		.uleb128 0x13
+ 830 010c 3F       		.uleb128 0x3f
+ 831 010d 19       		.uleb128 0x19
+ 832 010e 3C       		.uleb128 0x3c
+ 833 010f 19       		.uleb128 0x19
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 17
+
+
+ 834 0110 00       		.byte	0
+ 835 0111 00       		.byte	0
+ 836 0112 13       		.uleb128 0x13
+ 837 0113 35       		.uleb128 0x35
+ 838 0114 00       		.byte	0
+ 839 0115 49       		.uleb128 0x49
+ 840 0116 13       		.uleb128 0x13
+ 841 0117 00       		.byte	0
+ 842 0118 00       		.byte	0
+ 843 0119 14       		.uleb128 0x14
+ 844 011a 2E       		.uleb128 0x2e
+ 845 011b 00       		.byte	0
+ 846 011c 3F       		.uleb128 0x3f
+ 847 011d 19       		.uleb128 0x19
+ 848 011e 3C       		.uleb128 0x3c
+ 849 011f 19       		.uleb128 0x19
+ 850 0120 6E       		.uleb128 0x6e
+ 851 0121 0E       		.uleb128 0xe
+ 852 0122 03       		.uleb128 0x3
+ 853 0123 0E       		.uleb128 0xe
+ 854 0124 3A       		.uleb128 0x3a
+ 855 0125 0B       		.uleb128 0xb
+ 856 0126 3B       		.uleb128 0x3b
+ 857 0127 05       		.uleb128 0x5
+ 858 0128 00       		.byte	0
+ 859 0129 00       		.byte	0
+ 860 012a 15       		.uleb128 0x15
+ 861 012b 2E       		.uleb128 0x2e
+ 862 012c 00       		.byte	0
+ 863 012d 3F       		.uleb128 0x3f
+ 864 012e 19       		.uleb128 0x19
+ 865 012f 3C       		.uleb128 0x3c
+ 866 0130 19       		.uleb128 0x19
+ 867 0131 6E       		.uleb128 0x6e
+ 868 0132 0E       		.uleb128 0xe
+ 869 0133 03       		.uleb128 0x3
+ 870 0134 0E       		.uleb128 0xe
+ 871 0135 3A       		.uleb128 0x3a
+ 872 0136 0B       		.uleb128 0xb
+ 873 0137 3B       		.uleb128 0x3b
+ 874 0138 0B       		.uleb128 0xb
+ 875 0139 00       		.byte	0
+ 876 013a 00       		.byte	0
+ 877 013b 00       		.byte	0
+ 878              		.section	.debug_loc,"",%progbits
+ 879              	.Ldebug_loc0:
+ 880              	.LLST0:
+ 881 0000 16000000 		.4byte	.LVL3
+ 882 0004 1A000000 		.4byte	.LVL4
+ 883 0008 0500     		.2byte	0x5
+ 884 000a 70       		.byte	0x70
+ 885 000b 00       		.sleb128 0
+ 886 000c 30       		.byte	0x30
+ 887 000d 29       		.byte	0x29
+ 888 000e 9F       		.byte	0x9f
+ 889 000f 00000000 		.4byte	0
+ 890 0013 00000000 		.4byte	0
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 18
+
+
+ 891              		.section	.debug_aranges,"",%progbits
+ 892 0000 2C000000 		.4byte	0x2c
+ 893 0004 0200     		.2byte	0x2
+ 894 0006 00000000 		.4byte	.Ldebug_info0
+ 895 000a 04       		.byte	0x4
+ 896 000b 00       		.byte	0
+ 897 000c 0000     		.2byte	0
+ 898 000e 0000     		.2byte	0
+ 899 0010 00000000 		.4byte	.LFB69
+ 900 0014 3C000000 		.4byte	.LFE69-.LFB69
+ 901 0018 00000000 		.4byte	.LFB70
+ 902 001c 28000000 		.4byte	.LFE70-.LFB70
+ 903 0020 00000000 		.4byte	.LFB71
+ 904 0024 48000000 		.4byte	.LFE71-.LFB71
+ 905 0028 00000000 		.4byte	0
+ 906 002c 00000000 		.4byte	0
+ 907              		.section	.debug_ranges,"",%progbits
+ 908              	.Ldebug_ranges0:
+ 909 0000 00000000 		.4byte	.LFB69
+ 910 0004 3C000000 		.4byte	.LFE69
+ 911 0008 00000000 		.4byte	.LFB70
+ 912 000c 28000000 		.4byte	.LFE70
+ 913 0010 00000000 		.4byte	.LFB71
+ 914 0014 48000000 		.4byte	.LFE71
+ 915 0018 00000000 		.4byte	0
+ 916 001c 00000000 		.4byte	0
+ 917              		.section	.debug_line,"",%progbits
+ 918              	.Ldebug_line0:
+ 919 0000 28020000 		.section	.debug_str,"MS",%progbits,1
+ 919      0200DF01 
+ 919      00000201 
+ 919      FB0E0D00 
+ 919      01010101 
+ 920              	.LASF4:
+ 921 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 921      6E74385F 
+ 921      7400
+ 922              	.LASF23:
+ 923 000a 5469636B 		.ascii	"TickType_t\000"
+ 923      54797065 
+ 923      5F7400
+ 924              	.LASF5:
+ 925 0015 5F5F696E 		.ascii	"__int32_t\000"
+ 925      7433325F 
+ 925      7400
+ 926              	.LASF24:
+ 927 001f 51756575 		.ascii	"QueueHandle_t\000"
+ 927      6548616E 
+ 927      646C655F 
+ 927      7400
+ 928              	.LASF40:
+ 929 002d 76546173 		.ascii	"vTaskStartScheduler\000"
+ 929      6B537461 
+ 929      72745363 
+ 929      68656475 
+ 929      6C657200 
+ 930              	.LASF32:
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 19
+
+
+ 931 0041 50696E5F 		.ascii	"Pin_SW_ClearInterrupt\000"
+ 931      53575F43 
+ 931      6C656172 
+ 931      496E7465 
+ 931      72727570 
+ 932              	.LASF33:
+ 933 0057 6C65645F 		.ascii	"led_Read\000"
+ 933      52656164 
+ 933      00
+ 934              	.LASF34:
+ 935 0060 6C65645F 		.ascii	"led_Write\000"
+ 935      57726974 
+ 935      6500
+ 936              	.LASF19:
+ 937 006a 666C6F61 		.ascii	"float\000"
+ 937      7400
+ 938              	.LASF1:
+ 939 0070 756E7369 		.ascii	"unsigned char\000"
+ 939      676E6564 
+ 939      20636861 
+ 939      7200
+ 940              	.LASF43:
+ 941 007e 443A5C6D 		.ascii	"D:\\myFolder\\projects\\Embedded-Systems-by-Dr.-Pol"
+ 941      79466F6C 
+ 941      6465725C 
+ 941      70726F6A 
+ 941      65637473 
+ 942 00ae 61636861 		.ascii	"achan\\Code Examples\\PSoC-5 Lab Book\\freeRTOS Exa"
+ 942      6E5C436F 
+ 942      64652045 
+ 942      78616D70 
+ 942      6C65735C 
+ 943 00de 6D706C65 		.ascii	"mples\\freertos_semaphore_isr.cydsn\000"
+ 943      735C6672 
+ 943      65657274 
+ 943      6F735F73 
+ 943      656D6170 
+ 944              	.LASF29:
+ 945 0101 6C65645F 		.ascii	"led_state\000"
+ 945      73746174 
+ 945      6500
+ 946              	.LASF8:
+ 947 010b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 947      20756E73 
+ 947      69676E65 
+ 947      6420696E 
+ 947      7400
+ 948              	.LASF3:
+ 949 011d 73686F72 		.ascii	"short unsigned int\000"
+ 949      7420756E 
+ 949      7369676E 
+ 949      65642069 
+ 949      6E7400
+ 950              	.LASF46:
+ 951 0130 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 951      52784275 
+ 951      66666572 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 20
+
+
+ 951      00
+ 952              	.LASF38:
+ 953 013d 78517565 		.ascii	"xQueueGenericCreate\000"
+ 953      75654765 
+ 953      6E657269 
+ 953      63437265 
+ 953      61746500 
+ 954              	.LASF25:
+ 955 0151 53656D61 		.ascii	"SemaphoreHandle_t\000"
+ 955      70686F72 
+ 955      6548616E 
+ 955      646C655F 
+ 955      7400
+ 956              	.LASF7:
+ 957 0163 5F5F7569 		.ascii	"__uint32_t\000"
+ 957      6E743332 
+ 957      5F7400
+ 958              	.LASF44:
+ 959 016e 51756575 		.ascii	"QueueDefinition\000"
+ 959      65446566 
+ 959      696E6974 
+ 959      696F6E00 
+ 960              	.LASF11:
+ 961 017e 756E7369 		.ascii	"unsigned int\000"
+ 961      676E6564 
+ 961      20696E74 
+ 961      00
+ 962              	.LASF27:
+ 963 018b 6C65645F 		.ascii	"led_task\000"
+ 963      7461736B 
+ 963      00
+ 964              	.LASF10:
+ 965 0194 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 965      206C6F6E 
+ 965      6720756E 
+ 965      7369676E 
+ 965      65642069 
+ 966              	.LASF15:
+ 967 01ab 75696E74 		.ascii	"uint8_t\000"
+ 967      385F7400 
+ 968              	.LASF37:
+ 969 01b3 46726565 		.ascii	"FreeRTOS_Start\000"
+ 969      52544F53 
+ 969      5F537461 
+ 969      727400
+ 970              	.LASF45:
+ 971 01c2 6D61696E 		.ascii	"main\000"
+ 971      00
+ 972              	.LASF41:
+ 973 01c7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 973      43313120 
+ 973      352E342E 
+ 973      31203230 
+ 973      31363036 
+ 974 01fa 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 974      20726576 
+ 974      6973696F 
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 21
+
+
+ 974      6E203233 
+ 974      37373135 
+ 975 022d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 975      66756E63 
+ 975      74696F6E 
+ 975      2D736563 
+ 975      74696F6E 
+ 976              	.LASF16:
+ 977 0255 696E7433 		.ascii	"int32_t\000"
+ 977      325F7400 
+ 978              	.LASF31:
+ 979 025d 78517565 		.ascii	"xQueueGiveFromISR\000"
+ 979      75654769 
+ 979      76654672 
+ 979      6F6D4953 
+ 979      5200
+ 980              	.LASF13:
+ 981 026f 73697A65 		.ascii	"sizetype\000"
+ 981      74797065 
+ 981      00
+ 982              	.LASF9:
+ 983 0278 6C6F6E67 		.ascii	"long long int\000"
+ 983      206C6F6E 
+ 983      6720696E 
+ 983      7400
+ 984              	.LASF42:
+ 985 0286 6D61696E 		.ascii	"main.c\000"
+ 985      2E6300
+ 986              	.LASF14:
+ 987 028d 63686172 		.ascii	"char\000"
+ 987      00
+ 988              	.LASF28:
+ 989 0292 78486967 		.ascii	"xHigherPriorityTaskWoken\000"
+ 989      68657250 
+ 989      72696F72 
+ 989      69747954 
+ 989      61736B57 
+ 990              	.LASF2:
+ 991 02ab 73686F72 		.ascii	"short int\000"
+ 991      7420696E 
+ 991      7400
+ 992              	.LASF20:
+ 993 02b5 75696E74 		.ascii	"uint8\000"
+ 993      3800
+ 994              	.LASF26:
+ 995 02bb 73776974 		.ascii	"switch_isr_code\000"
+ 995      63685F69 
+ 995      73725F63 
+ 995      6F646500 
+ 996              	.LASF17:
+ 997 02cb 75696E74 		.ascii	"uint32_t\000"
+ 997      33325F74 
+ 997      00
+ 998              	.LASF6:
+ 999 02d4 6C6F6E67 		.ascii	"long int\000"
+ 999      20696E74 
+ 999      00
+ARM GAS  C:\Users\kuria\AppData\Local\Temp\ccezxpkq.s 			page 22
+
+
+ 1000              	.LASF21:
+ 1001 02dd 42617365 		.ascii	"BaseType_t\000"
+ 1001      54797065 
+ 1001      5F7400
+ 1002              	.LASF12:
+ 1003 02e8 6C6F6E67 		.ascii	"long double\000"
+ 1003      20646F75 
+ 1003      626C6500 
+ 1004              	.LASF0:
+ 1005 02f4 7369676E 		.ascii	"signed char\000"
+ 1005      65642063 
+ 1005      68617200 
+ 1006              	.LASF18:
+ 1007 0300 646F7562 		.ascii	"double\000"
+ 1007      6C6500
+ 1008              	.LASF35:
+ 1009 0307 78517565 		.ascii	"xQueueSemaphoreTake\000"
+ 1009      75655365 
+ 1009      6D617068 
+ 1009      6F726554 
+ 1009      616B6500 
+ 1010              	.LASF36:
+ 1011 031b 6973725F 		.ascii	"isr_1_StartEx\000"
+ 1011      315F5374 
+ 1011      61727445 
+ 1011      7800
+ 1012              	.LASF22:
+ 1013 0329 55426173 		.ascii	"UBaseType_t\000"
+ 1013      65547970 
+ 1013      655F7400 
+ 1014              	.LASF30:
+ 1015 0335 78427574 		.ascii	"xButtonSemaphore\000"
+ 1015      746F6E53 
+ 1015      656D6170 
+ 1015      686F7265 
+ 1015      00
+ 1016              	.LASF39:
+ 1017 0346 78546173 		.ascii	"xTaskCreate\000"
+ 1017      6B437265 
+ 1017      61746500 
+ 1018              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

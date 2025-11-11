@@ -1,0 +1,92 @@
+--------------- Rebuild Started: 11/11/2025 14:32:10 Project: freertos_semaphore_isr, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\main.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\FreeRTOS.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\port.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\heap_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\croutine.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\event_groups.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\list.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\queue.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\stream_buffer.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\tasks.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\timers.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cymetadata.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\led.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Cm3Start.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyDmac.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyFlash.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CyLib.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyPm.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\CySpc.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\cyutils.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_INT.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_BOOT.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\UART_IntClock.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\Pin_SW.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\isr_1.o"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.hex"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.elf"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.map"
+Deleting file ".\freertos_semaphore_isr.cycdx"
+Deleting file ".\freertos_semaphore_isr.svd"
+Deleting file ".\freertos_semaphore_isr.rpt"
+Deleting file ".\freertos_semaphore_isr_timing.html"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
+Deleting file ".\CortexM3\ARM_GCC_541\Debug\.deps\SOURCE_ASM__ARM_GCC_GENERIC.P"
+cydsfit.exe -.appdatapath "C:\Users\kuria\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p "D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\freertos_semaphore_isr.cyprj" -d CY8C5888LTI-LP097 -s "D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\Generated_Source\PSoC5" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+HDL Generation...
+Synthesis...
+Tech Mapping...
+Analog Placement...
+Analog Routing...
+Analog Code Generation...
+Digital Placement...
+Digital Routing...
+Bitstream Generation...
+Bitstream Verification...
+Static timing analysis...
+API Generation...
+Dependency Generation...
+Cleanup...
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/FreeRTOS.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c FreeRTOS.c -o .\CortexM3\ARM_GCC_541\Debug\FreeRTOS.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/port.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c -o .\CortexM3\ARM_GCC_541\Debug\port.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/heap_1.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\portable\MemMang\heap_1.c -o .\CortexM3\ARM_GCC_541\Debug\heap_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/croutine.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\croutine.c -o .\CortexM3\ARM_GCC_541\Debug\croutine.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/event_groups.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\event_groups.c -o .\CortexM3\ARM_GCC_541\Debug\event_groups.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/list.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\list.c -o .\CortexM3\ARM_GCC_541\Debug\list.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/queue.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\queue.c -o .\CortexM3\ARM_GCC_541\Debug\queue.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/stream_buffer.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\stream_buffer.c -o .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/tasks.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\tasks.c -o .\CortexM3\ARM_GCC_541\Debug\tasks.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/timers.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c ..\FreeRTOS\Source\timers.c -o .\CortexM3\ARM_GCC_541\Debug\timers.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cymetadata.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/led.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\led.c -o .\CortexM3\ARM_GCC_541\Debug\led.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cy_em_eeprom.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cy_em_eeprom.c -o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/Cm3Start.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\Cm3Start.c -o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/CyDmac.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\CyDmac.c -o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/CyFlash.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\CyFlash.c -o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/CyLib.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\CyLib.c -o .\CortexM3\ARM_GCC_541\Debug\CyLib.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyPm.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cyPm.c -o .\CortexM3\ARM_GCC_541\Debug\cyPm.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/CySpc.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\CySpc.c -o .\CortexM3\ARM_GCC_541\Debug\CySpc.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cyutils.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\cyutils.c -o .\CortexM3\ARM_GCC_541\Debug\cyutils.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/Pin_SW.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\Pin_SW.c -o .\CortexM3\ARM_GCC_541\Debug\Pin_SW.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I..\FreeRTOS\Source -I..\FreeRTOS\Source\include -I..\FreeRTOS\Source\portable\GCC\ARM_CM3 -I..\FreeRTOS\Source\portable\MemMang -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/isr_1.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC5\isr_1.c -o .\CortexM3\ARM_GCC_541\Debug\isr_1.o
+arm-none-eabi-as.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=.\CortexM3\ARM_GCC_541\Debug/CyBootAsmGnu.lst -g -W -o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o Generated_Source\PSoC5\CyBootAsmGnu.s
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.a .\CortexM3\ARM_GCC_541\Debug\led.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\Pin_SW.o .\CortexM3\ARM_GCC_541\Debug\isr_1.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.elf" .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\FreeRTOS.o .\CortexM3\ARM_GCC_541\Debug\port.o .\CortexM3\ARM_GCC_541\Debug\heap_1.o .\CortexM3\ARM_GCC_541\Debug\croutine.o .\CortexM3\ARM_GCC_541\Debug\event_groups.o .\CortexM3\ARM_GCC_541\Debug\list.o .\CortexM3\ARM_GCC_541\Debug\queue.o .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o .\CortexM3\ARM_GCC_541\Debug\tasks.o .\CortexM3\ARM_GCC_541\Debug\timers.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -l m -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/freertos_semaphore_isr.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -u _printf_float -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S "D:\myFolder\projects\Embedded-Systems-by-Dr.-Polachan\Code Examples\PSoC-5 Lab Book\freeRTOS Examples\freertos_semaphore_isr.cydsn\CortexM3\ARM_GCC_541\Debug\freertos_semaphore_isr.elf"
+Flash used: 14436 of 262144 bytes (5.5%).
+SRAM used: 41657 of 65536 bytes (63.6%). Stack: 4096 bytes. Heap: 4096 bytes.
+--------------- Rebuild Succeeded: 11/11/2025 14:32:25 ---------------
