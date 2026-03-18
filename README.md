@@ -47,6 +47,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 7: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Analog-Blocks.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 - [Lecture 9: Embedded Implementation of Digital Filters](./Lecture%20Slides/Embedded-Systems/digital-filter.pdf)
+- [Lecture 10: FreeRTOS Basics](./Lecture%20Slides/Embedded-Systems/basics-freeRTOS.pdf)
 
 
 **Lab Materials**
