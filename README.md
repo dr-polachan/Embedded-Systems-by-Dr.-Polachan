@@ -91,9 +91,13 @@ This course covers a range of topics in electronics systems packaging, including
   - [KICAD project template by Dr. Kurian Polachan](./KICAD-Projects/prj-kicad.zip)
 
 **Course Projects**
-- [RP2040 Evaluation Board KICAD Design by Chandra Shekhar Jha](https://github.com/csjha2000/RP2040)
+- [RP2040 Evaluation Board KICAD Design by Chandra Shekhar Jha, 2025](https://github.com/csjha2000/RP2040)
+- [PSoC-5LP Stamp Board Design by V Kumar, 2026](https://github.com/kumarveluru/PSoC-5-Stamp-Board)
 
 **Reference Materials**
 - [Reflow and Wave Soldering methods to attach SMDs by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=ORTmAqTk6xw&list=PLD50A0FB75B98EDA3&index=33)
 - [Tin-lead and lead-free solders,Phase diagrams,Thermal profiles for reflow soldering by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=HEyzweP9RTM)
+- [1-Layer PCB Manufacturing Process, Manual Method](https://www.youtube.com/watch?v=t-zxq6aNg7Y&t=108sb)
+- [Multi-Layer PCB Manufacturing Process, Industrial Setting](https://www.youtube.com/watch?v=dISWDecK9AU)
+- [In-Lab Quick PCB Prototyping for education/projects using Voltera](https://www.youtube.com/watch?v=M-EX7piCV3k)
 
