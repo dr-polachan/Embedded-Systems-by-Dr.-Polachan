@@ -97,7 +97,7 @@ This course covers a range of topics in electronics systems packaging, including
 **Reference Materials**
 - [Reflow and Wave Soldering methods to attach SMDs by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=ORTmAqTk6xw&list=PLD50A0FB75B98EDA3&index=33)
 - [Tin-lead and lead-free solders,Phase diagrams,Thermal profiles for reflow soldering by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=HEyzweP9RTM)
+- [What is a PCB ?](https://www.youtube.com/watch?v=YJr-kHy6STg)
 - [1-Layer PCB Manufacturing Process, Manual Method](https://www.youtube.com/watch?v=t-zxq6aNg7Y&t=108sb)
-- [Multi-Layer PCB Manufacturing Process, Industrial Setting](https://www.youtube.com/watch?v=dISWDecK9AU)
 - [In-Lab Quick PCB Prototyping for education/projects using Voltera](https://www.youtube.com/watch?v=M-EX7piCV3k)
 
