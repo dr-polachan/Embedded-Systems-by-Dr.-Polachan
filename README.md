@@ -43,7 +43,7 @@ This course covers a range of topics in electronics systems packaging, including
 - [Lecture 3: IO Pins and Drives](./Lecture%20Slides/Embedded-Systems/IO-Pins-n-Drives.pdf)
 - [Lecture 4: Embedded Computer (Basics of Memory, CPU, Interrupt, RTOS, Programming)](./Lecture%20Slides/Embedded-Systems/Embedded-Computer.pdf)
 - [Lecture 5: Communication Protocols (UART, SPI and I2C)](./Lecture%20Slides/Embedded-Systems/Communication-Protocols.pdf)
-- [Lecture 6: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Digital-Blocks.pdf)
+- [Lecture 6: Digital Blocks (PWM, Counter)](./Lecture%20Slides/Embedded-Systems/Digital-Blocks-rev2.pdf)
 - [Lecture 7: Analog Blocks (Basics of ADC)](./Lecture%20Slides/Embedded-Systems/Analog-Blocks.pdf)
 - [Lecture 8: Power Management (Basics of Power Modes, Battery Capacity, Cold Start)](./Lecture%20Slides/Embedded-Systems/Power-Management.pdf)
 - [Lecture 9: Embedded Implementation of Digital Filters](./Lecture%20Slides/Embedded-Systems/digital-filter.pdf)
@@ -93,6 +93,7 @@ This course covers a range of topics in electronics systems packaging, including
 **Course Projects**
 - [RP2040 Evaluation Board KICAD Design by Chandra Shekhar Jha, 2025](https://github.com/csjha2000/RP2040)
 - [PSoC-5LP Stamp Board Design by V Kumar, 2026](https://github.com/kumarveluru/PSoC-5-Stamp-Board)
+- [ESP32-Zero Board by Vamsi Krishna](https://github.com/vamsiarya31/ESP32-S3-Zero)
 
 **Reference Materials**
 - [Reflow and Wave Soldering methods to attach SMDs by Prof. G.V. Mahesh](https://www.youtube.com/watch?v=ORTmAqTk6xw&list=PLD50A0FB75B98EDA3&index=33)
