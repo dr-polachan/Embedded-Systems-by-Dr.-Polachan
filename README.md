@@ -4,7 +4,7 @@
 GitHub repository hosting the resources and projects for the embedded systems courses offered at [International Institute of Information Technology, Bangalore (IIIT-B)](https://www.iiitb.ac.in/), instructed by [Dr. Kurian Polachan](https://sites.google.com/view/cdwl/home).
 
 ## VL 864 - Embedded Systems Design  
-**Offered**: 2023, 2024, 2025
+**Offered**: 2023, 2024, 2025, 2026
 **Teaching Assistant**: 
 - Year 2025: Talakokkula Karthik Satyanarayana, Nagarajan S and Bhavana
 - Year 2024: [Dilli Babu](https://www.linkedin.com/in/dilli-babu-porlapothula-a123951b1)
@@ -103,4 +103,8 @@ This course covers a range of topics in electronics systems packaging, including
 - [What is a PCB ?](https://www.youtube.com/watch?v=YJr-kHy6STg)
 - [1-Layer PCB Manufacturing Process, Manual Method](https://www.youtube.com/watch?v=t-zxq6aNg7Y&t=108sb)
 - [In-Lab Quick PCB Prototyping for education/projects using Voltera](https://www.youtube.com/watch?v=M-EX7piCV3k)
+
+## EGC 102 - Digital System Design
+**Reference Materials**
+- [Quine-McCluskey Method Tutorial](https://www.youtube.com/watch?v=qxbeUyRBFIQ)
 
