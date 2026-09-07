@@ -87,6 +87,8 @@ This course covers a range of topics in electronics systems packaging, including
   - [(Video Tutorial) Importing Symbols, Footprints, and 3D Models in KICAD by Dr. Kurian Polachan](https://www.youtube.com/watch?v=-AH720Zc-Fg)
   - [(Video Tutorial) KICAD: Generating Gerber Files Using Plugin - Fabrication Toolkit by Dr. Kurian Polachan](https://www.youtube.com/watch?v=GEexEjGzz-4)
   - [(Video Tutorial) Hierarchical Schematic Design by Dr. Kurian Polachan](https://www.youtube.com/watch?v=aEfVsJ7I0Vk)
+  - [(Video Tutorial) KICAD Design Example: ESP32-S3 Layout Entry and Gerber Generation](https://www.youtube.com/watch?v=FFOqaTSZSxI)
+
 - **KICAD Projects**
   - [KICAD project template by Dr. Kurian Polachan](./KICAD-Projects/prj-kicad.zip)
 
