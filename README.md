@@ -106,5 +106,5 @@ This course covers a range of topics in electronics systems packaging, including
 
 ## EGC 102 - Digital System Design
 **Reference Materials**
-- [Quine-McCluskey Method Tutorial](https://www.youtube.com/watch?v=qxbeUyRBFIQ)
+- [Quine-McCluskey Method Tutorial by Anay Datta](https://www.youtube.com/watch?v=qxbeUyRBFIQ)
 
